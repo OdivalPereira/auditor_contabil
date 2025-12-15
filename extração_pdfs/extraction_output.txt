@@ -1,0 +1,2081 @@
+Pages: 25
+
+--- Page 1 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome CNPJ Posição Data de emissão
+MCM FOODS LTDA 51.975.141/0001-60 Setembro/2025 29.10.2025
+Agência (prefixo/dv) GS Conta nº/dv Data da abertura
+2936-X 37 50.123-9 14.09.2023
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+29.08.2025 Saldo anterior 0,00 C
+01.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300206 3.000,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+01.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300207 1.400,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+01.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300208 50,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+01.09.2025 870-Transferência recebida 99020 3935 603935000011535 16.614,43 C
+01/09 11:40 MILENY DE ALMEIDA ARRUDA
+01.09.2025 870-Transferência recebida 99021 612936000049132 200,00 C
+30/08 09:50 ARRUDA & BARROS LTDA
+01.09.2025 870-Transferência recebida 99021 612936000049132 223,07 C
+30/08 15:06 ARRUDA & BARROS LTDA
+01.09.2025 830-Dep dinheiro ATM 71232 7810 781071232170522 2.000,00 C
+30/08 17:05 SOP-AV.BANDEIRANTES
+01.09.2025 830-Dep dinheiro ATM 71232 7810 781071232170652 650,00 C
+30/08 17:06 SOP-AV.BANDEIRANTES
+01.09.2025 830-Dep dinheiro ATM 71232 7810 781071232170840 2.000,00 C
+30/08 17:08 SOP-AV.BANDEIRANTES
+01.09.2025 830-Dep dinheiro ATM 71232 7810 781071232170926 2.000,00 C
+30/08 17:09 SOP-AV.BANDEIRANTES
+01.09.2025 830-Dep dinheiro ATM 71232 7810 781071232171007 1.970,00 C
+30/08 17:10 SOP-AV.BANDEIRANTES
+01.09.2025 732-Cielo Vendas Crédito 14024 897780139 15.222,55 C
+01.09.2025 732-Cielo Vendas Débito 14024 897780139 4.765,08 C
+01.09.2025 732-Cielo Vendas Débito 14024 897780139 4.866,84 C
+01.09.2025 732-Cielo Vendas Débito 14024 897780139 1.488,10 C
+01.09.2025 234-Compra com Cartão 99008 425758 223,07 D
+30/08 14:39 CASA DE CARNE ORIENT
+01.09.2025 234-Compra com Cartão 99008 979483 88,00 D
+30/08 11:47 VITORIA COMERCI
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 1
+TABLE CONTENT:
+ |  |  |  |  |  | 
+ | Agência (prefixo/dv) 2936-X |  | GS 37 |  | Conta nº/dv 50.123-9 | 
+
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 01.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300206 3.000,00 C |  |  |  |  |  |  |  | 
+ | 7810-13-SOP-AVENIDA CORONEL ANTONINO-C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 01.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300208 50,00 C |  |  |  |  |  |  |  | 
+ | 7810-13-SOP-AVENIDA CORONEL ANTONINO-C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 01.09.2025 870-Transferência recebida 99021 612936000049132 200,00 C |  |  |  |  |  |  |  | 
+ | 30/08 09:50 ARRUDA & BARROS LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 01.09.2025 830-Dep dinheiro ATM 71232 7810 781071232170522 2.000,00 C |  |  |  |  |  |  |  | 
+ | 30/08 17:05 SOP-AV.BANDEIRANTES |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 01.09.2025 830-Dep dinheiro ATM 71232 7810 781071232170840 2.000,00 C |  |  |  |  |  |  |  | 
+ | 30/08 17:08 SOP-AV.BANDEIRANTES |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 01.09.2025 830-Dep dinheiro ATM 71232 7810 781071232171007 1.970,00 C |  |  |  |  |  |  |  | 
+ | 30/08 17:10 SOP-AV.BANDEIRANTES |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 01.09.2025 732-Cielo Vendas Débito 14024 897780139 4.765,08 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 01.09.2025 732-Cielo Vendas Débito 14024 897780139 1.488,10 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 01.09.2025 234-Compra com Cartão 99008 979483 88,00 D |  |  |  |  |  |  |  | 
+ | 30/08 11:47 VITORIA COMERCI |  |  |  |  |  |  |  | 
+
+--------------------------------------------------
+
+--- Page 2 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome Agência (prefixo/dv) GS Conta nº/dv
+MCM FOODS LTDA 2936-X 37 50.123-9
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+01.09.2025 470-Transferência enviada 99021 611873000132161 3.346,00 D
+01/09 13:36 CECILIA AMARILA SOARES
+01.09.2025 109-Pagamento de Boleto 13105 90101 655,18 D
+DONANA ALIMENTOS
+01.09.2025 109-Pagamento de Boleto 13105 90102 389,26 D
+SPAL IND BRAS DE BEBIDAS SA
+01.09.2025 109-Pagamento de Boleto 13105 90103 230,00 D
+LATICINIOS CAMBY LTDA
+01.09.2025 109-Pagamento de Boleto 13105 90104 689,52 D
+OESA COM E REPRES SA
+01.09.2025 109-Pagamento de Boleto 13105 90105 803,86 D
+PENNACCHI CIA LTDA
+01.09.2025 109-Pagamento de Boleto 13105 90106 1.330,07 D
+PENNACCHI CIA LTDA
+01.09.2025 109-Pagamento de Boleto 13105 90107 1.380,00 D
+55162704 RAYSSA COXEV SILVA
+01.09.2025 109-Pagamento de Boleto 13105 90108 150,00 D
+PASTELARIA DO MILTON
+01.09.2025 109-Pagamento de Boleto 13105 90109 490,00 D
+UNICENTRAL D E LTDA
+01.09.2025 109-Pagamento de Boleto 13105 90110 500,00 D
+ARRAIS ALIMENTOS
+01.09.2025 109-Pagamento de Boleto 13105 90111 569,77 D
+DISTRIBUIDORA CENTRAL EMBALAGE
+01.09.2025 109-Pagamento de Boleto 13105 90112 3.843,88 D
+BELLO ALIMENTOS LTDA
+01.09.2025 109-Pagamento de Boleto 13105 90113 1.119,00 D
+SPAL IND BRAS DE BEBIDAS SA
+01.09.2025 109-Pagamento de Boleto 13105 90114 1.037,40 D
+BELLO ALIMENTOS LTDA
+01.09.2025 500-FCO Liberação 13128 293626060000038 16.614,43 D
+01.09.2025 351-BB Rende Fácil 9903 22.990,63 D 0,00 C
+Rende Facil
+02.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300211 3.200,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+02.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300212 850,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 2
+TABLE CONTENT:
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 01.09.2025 109-Pagamento de Boleto 13105 90101 655,18 D |  |  |  |  |  |  |  | 
+ | DONANA ALIMENTOS |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 01.09.2025 109-Pagamento de Boleto 13105 90103 230,00 D |  |  |  |  |  |  |  | 
+ | LATICINIOS CAMBY LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 01.09.2025 109-Pagamento de Boleto 13105 90105 803,86 D |  |  |  |  |  |  |  | 
+ | PENNACCHI CIA LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 01.09.2025 109-Pagamento de Boleto 13105 90107 1.380,00 D |  |  |  |  |  |  |  | 
+ | 55162704 RAYSSA COXEV SILVA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 01.09.2025 109-Pagamento de Boleto 13105 90109 490,00 D |  |  |  |  |  |  |  | 
+ | UNICENTRAL D E LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 01.09.2025 109-Pagamento de Boleto 13105 90111 569,77 D |  |  |  |  |  |  |  | 
+ | DISTRIBUIDORA CENTRAL EMBALAGE |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 01.09.2025 109-Pagamento de Boleto 13105 90113 1.119,00 D |  |  |  |  |  |  |  | 
+ | SPAL IND BRAS DE BEBIDAS SA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 01.09.2025 500-FCO Liberação 13128 293626060000038 16.614,43 D |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 02.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300211 3.200,00 C |  |  |  |  |  |  |  | 
+ | 7810-13-SOP-AVENIDA CORONEL ANTONINO-C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+
+--------------------------------------------------
+
+--- Page 3 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome Agência (prefixo/dv) GS Conta nº/dv
+MCM FOODS LTDA 2936-X 37 50.123-9
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+02.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300213 400,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+02.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300214 540,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+02.09.2025 732-Cielo Vendas Crédito 14024 897780139 4.553,28 C
+02.09.2025 732-Cielo Vendas Débito 14024 897780139 1.652,24 C
+02.09.2025 732-Cielo Vendas Débito 14024 897780139 2.525,75 C
+02.09.2025 732-Cielo Vendas Débito 14024 897780139 333,79 C
+02.09.2025 234-Compra com Cartão 99008 554441 1.529,68 D
+02/09 09:41 ATACADAO 0003 AS
+02.09.2025 109-Pagamento de Boleto 13105 90201 1.454,45 D
+SPAL IND BRAS DE BEBIDAS SA
+02.09.2025 109-Pagamento de Boleto 13105 90202 276,00 D
+LATICINIOS CAMBY LTDA
+02.09.2025 109-Pagamento de Boleto 13105 90203 322,00 D
+LATICINIOS CAMBY LTDA
+02.09.2025 109-Pagamento de Boleto 13105 90204 460,00 D
+LATICINIOS CAMBY LTDA
+02.09.2025 109-Pagamento de Boleto 13105 90205 460,00 D
+NOVA SAFRA
+02.09.2025 351-BB Rende Fácil 9903 9.552,93 D 0,00 C
+Rende Facil
+03.09.2025 830-Dep dinheiro inter agencia 11341 7810 78101134100079 1.800,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+03.09.2025 830-Dep dinheiro inter agencia 11341 7810 78101134100080 1.200,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+03.09.2025 830-Dep dinheiro inter agencia 11341 7810 78101134100081 210,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+03.09.2025 830-Dep dinheiro inter agencia 11341 7810 78101134100082 1.000,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+03.09.2025 830-Dep dinheiro inter agencia 11341 7810 78101134100083 130,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+03.09.2025 830-Dep dinheiro inter agencia 11341 7810 78101134100084 600,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 3
+TABLE CONTENT:
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 02.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300214 540,00 C |  |  |  |  |  |  |  | 
+ | 7810-13-SOP-AVENIDA CORONEL ANTONINO-C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 02.09.2025 732-Cielo Vendas Débito 14024 897780139 1.652,24 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 02.09.2025 732-Cielo Vendas Débito 14024 897780139 333,79 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 02.09.2025 109-Pagamento de Boleto 13105 90201 1.454,45 D |  |  |  |  |  |  |  | 
+ | SPAL IND BRAS DE BEBIDAS SA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 02.09.2025 109-Pagamento de Boleto 13105 90203 322,00 D |  |  |  |  |  |  |  | 
+ | LATICINIOS CAMBY LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 02.09.2025 109-Pagamento de Boleto 13105 90205 460,00 D |  |  |  |  |  |  |  | 
+ | NOVA SAFRA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 03.09.2025 830-Dep dinheiro inter agencia 11341 7810 78101134100079 1.800,00 C |  |  |  |  |  |  |  | 
+ | 7810-13-SOP-AVENIDA CORONEL ANTONINO-C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 03.09.2025 830-Dep dinheiro inter agencia 11341 7810 78101134100081 210,00 C |  |  |  |  |  |  |  | 
+ | 7810-13-SOP-AVENIDA CORONEL ANTONINO-C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 03.09.2025 830-Dep dinheiro inter agencia 11341 7810 78101134100083 130,00 C |  |  |  |  |  |  |  | 
+ | 7810-13-SOP-AVENIDA CORONEL ANTONINO-C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+
+--------------------------------------------------
+
+--- Page 4 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome Agência (prefixo/dv) GS Conta nº/dv
+MCM FOODS LTDA 2936-X 37 50.123-9
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+03.09.2025 870-Transferência recebida 99021 612936000049132 2.521,96 C
+03/09 15:17 ARRUDA & BARROS LTDA
+03.09.2025 732-Cielo Vendas Crédito 14024 897780139 28,00 C
+03.09.2025 732-Cielo Vendas Débito 14024 897780139 1.942,99 C
+03.09.2025 732-Cielo Vendas Débito 14024 897780139 2.641,75 C
+03.09.2025 732-Cielo Vendas Débito 14024 897780139 496,53 C
+03.09.2025 470-Transferência enviada 99021 613935000011535 20.819,57 D
+03/09 17:44 MILENY DE ALMEIDA ARRUDA
+03.09.2025 470-Transferência enviada 99021 613935000011535 790,00 D
+03/09 18:38 MILENY DE ALMEIDA ARRUDA
+03.09.2025 470-Transferência enviada 99021 614211000002715 7.696,62 D
+03/09 15:13 REI F E LTDA - ME
+03.09.2025 470-Transferência enviada 99021 614336000110568 764,92 D
+03/09 18:35 CINTHIA JANINE L BARROS
+03.09.2025 470-Transferência enviada 99021 614336000110568 2.000,00 D
+03/09 19:36 CINTHIA JANINE L BARROS
+03.09.2025 109-Pagamento de Boleto 13105 90301 4.585,38 D
+LIOTECNICA TECN ALIM LTDA
+03.09.2025 109-Pagamento de Boleto 13105 90302 283,04 D
+THG TRANSPORTES COMERCIO LOGIS
+03.09.2025 109-Pagamento de Boleto 13105 90303 253,20 D
+MENDES E IUKIHIRO LTDA ME
+03.09.2025 798-BB Rende Fácil 9903 24.621,50 C 0,00 C
+Rende Facil
+04.09.2025 830-Dep dinheiro ATM 71264 7810 781071264172952 1.470,00 C
+04/09 17:29 SOP-JARDIM TIJUCA-MS
+04.09.2025 830-Dep dinheiro ATM 71264 7810 781071264173037 420,00 C
+04/09 17:30 SOP-JARDIM TIJUCA-MS
+04.09.2025 830-Dep dinheiro ATM 71264 7810 781071264173122 2.000,00 C
+04/09 17:31 SOP-JARDIM TIJUCA-MS
+04.09.2025 830-Dep dinheiro ATM 71265 7810 781071265173359 1.950,00 C
+04/09 17:33 SOP-JARDIM TIJUCA-MS
+04.09.2025 830-Dep dinheiro ATM 71265 7810 781071265173505 1.260,00 C
+04/09 17:35 SOP-JARDIM TIJUCA-MS
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 4
+TABLE CONTENT:
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 03.09.2025 732-Cielo Vendas Crédito 14024 897780139 28,00 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 03.09.2025 732-Cielo Vendas Débito 14024 897780139 2.641,75 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 03.09.2025 470-Transferência enviada 99021 613935000011535 20.819,57 D |  |  |  |  |  |  |  | 
+ | 03/09 17:44 MILENY DE ALMEIDA ARRUDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 03.09.2025 470-Transferência enviada 99021 614211000002715 7.696,62 D |  |  |  |  |  |  |  | 
+ | 03/09 15:13 REI F E LTDA - ME |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 03.09.2025 470-Transferência enviada 99021 614336000110568 2.000,00 D |  |  |  |  |  |  |  | 
+ | 03/09 19:36 CINTHIA JANINE L BARROS |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 03.09.2025 109-Pagamento de Boleto 13105 90302 283,04 D |  |  |  |  |  |  |  | 
+ | THG TRANSPORTES COMERCIO LOGIS |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 03.09.2025 798-BB Rende Fácil 9903 24.621,50 C 0,00 C |  |  |  |  |  |  |  | 
+ | Rende Facil |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 04.09.2025 830-Dep dinheiro ATM 71264 7810 781071264173037 420,00 C |  |  |  |  |  |  |  | 
+ | 04/09 17:30 SOP-JARDIM TIJUCA-MS |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 04.09.2025 830-Dep dinheiro ATM 71265 7810 781071265173359 1.950,00 C |  |  |  |  |  |  |  | 
+ | 04/09 17:33 SOP-JARDIM TIJUCA-MS |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+
+--------------------------------------------------
+
+--- Page 5 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome Agência (prefixo/dv) GS Conta nº/dv
+MCM FOODS LTDA 2936-X 37 50.123-9
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+04.09.2025 830-Dep dinheiro ATM 71265 7810 781071265173540 20,00 C
+04/09 17:35 SOP-JARDIM TIJUCA-MS
+04.09.2025 732-Cielo Vendas Crédito 14024 897780139 4.689,96 C
+04.09.2025 732-Cielo Vendas Débito 14024 897780139 2.742,97 C
+04.09.2025 732-Cielo Vendas Débito 14024 897780139 2.473,41 C
+04.09.2025 732-Cielo Vendas Débito 14024 897780139 467,11 C
+04.09.2025 109-Pagamento de Boleto 13105 90401 4.281,82 D
+SUPERGASBRAS ENERGIA LTDA
+04.09.2025 109-Pagamento de Boleto 13105 90402 348,50 D
+PANTANAL COMERCIO DE ALIMENTOS
+04.09.2025 109-Pagamento de Boleto 13105 90403 1.174,47 D
+COTHERPACK IND E C DE EMB LTDA
+04.09.2025 109-Pagamento de Boleto 13105 90404 405,00 D
+LCA IND E COM DE PROD ALI LTDA
+04.09.2025 351-BB Rende Fácil 9903 11.283,66 D 0,00 C
+Rende Facil
+05.09.2025 830-Dep dinheiro ATM 71258 7810 781071258172433 350,00 C
+05/09 17:24 SOP-AV.CEL.ANTONINO
+05.09.2025 830-Dep dinheiro ATM 71258 7810 781071258172525 220,00 C
+05/09 17:25 SOP-AV.CEL.ANTONINO
+05.09.2025 830-Dep dinheiro ATM 71543 7810 781071543170937 1.590,00 C
+05/09 17:09 SOP-AV.CEL.ANTONINO
+05.09.2025 830-Dep dinheiro ATM 71543 7810 781071543171027 2.000,00 C
+05/09 17:10 SOP-AV.CEL.ANTONINO
+05.09.2025 830-Dep dinheiro ATM 71543 7810 781071543171538 1.450,00 C
+05/09 17:15 SOP-AV.CEL.ANTONINO
+05.09.2025 830-Dep dinheiro ATM 71543 7810 781071543171618 800,00 C
+05/09 17:16 SOP-AV.CEL.ANTONINO
+05.09.2025 830-Dep dinheiro ATM 71543 7810 781071543172044 650,00 C
+05/09 17:20 SOP-AV.CEL.ANTONINO
+05.09.2025 732-Cielo Vendas Crédito 14024 897780139 3.746,62 C
+05.09.2025 732-Cielo Vendas Débito 14024 897780139 1.880,49 C
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 5
+TABLE CONTENT:
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 04.09.2025 732-Cielo Vendas Crédito 14024 897780139 4.689,96 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 04.09.2025 732-Cielo Vendas Débito 14024 897780139 2.473,41 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 04.09.2025 109-Pagamento de Boleto 13105 90401 4.281,82 D |  |  |  |  |  |  |  | 
+ | SUPERGASBRAS ENERGIA LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 04.09.2025 109-Pagamento de Boleto 13105 90403 1.174,47 D |  |  |  |  |  |  |  | 
+ | COTHERPACK IND E C DE EMB LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 04.09.2025 351-BB Rende Fácil 9903 11.283,66 D 0,00 C |  |  |  |  |  |  |  | 
+ | Rende Facil |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 05.09.2025 830-Dep dinheiro ATM 71258 7810 781071258172525 220,00 C |  |  |  |  |  |  |  | 
+ | 05/09 17:25 SOP-AV.CEL.ANTONINO |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 05.09.2025 830-Dep dinheiro ATM 71543 7810 781071543171027 2.000,00 C |  |  |  |  |  |  |  | 
+ | 05/09 17:10 SOP-AV.CEL.ANTONINO |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 05.09.2025 830-Dep dinheiro ATM 71543 7810 781071543171618 800,00 C |  |  |  |  |  |  |  | 
+ | 05/09 17:16 SOP-AV.CEL.ANTONINO |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 05.09.2025 732-Cielo Vendas Crédito 14024 897780139 3.746,62 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+
+--------------------------------------------------
+
+--- Page 6 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome Agência (prefixo/dv) GS Conta nº/dv
+MCM FOODS LTDA 2936-X 37 50.123-9
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+05.09.2025 732-Cielo Vendas Débito 14024 897780139 1.845,20 C
+05.09.2025 732-Cielo Vendas Débito 14024 897780139 739,14 C
+05.09.2025 109-Pagamento de Boleto 13105 90501 1.075,67 D
+INDUSTRIA E COMERCIO DE BEBIDA
+05.09.2025 109-Pagamento de Boleto 13105 90502 250,00 D
+D.H.GARCIA
+05.09.2025 109-Pagamento de Boleto 13105 90503 465,00 D
+FABIO CORTEZ MARTINS JUNIOR EI
+05.09.2025 109-Pagamento de Boleto 13105 90504 500,00 D
+ARRAIS ALIMENTOS
+05.09.2025 351-BB Rende Fácil 9903 12.980,78 D 0,00 C
+Rende Facil
+08.09.2025 830-Dep dinheiro ATM 71546 7810 781071546170347 2.000,00 C
+06/09 17:03 SOP-AV.BANDEIRANTES
+08.09.2025 830-Dep dinheiro ATM 71546 7810 781071546170446 1.250,00 C
+06/09 17:04 SOP-AV.BANDEIRANTES
+08.09.2025 830-Dep dinheiro ATM 71546 7810 781071546170531 2.000,00 C
+06/09 17:05 SOP-AV.BANDEIRANTES
+08.09.2025 830-Dep dinheiro ATM 71546 7810 781071546170613 2.000,00 C
+06/09 17:06 SOP-AV.BANDEIRANTES
+08.09.2025 830-Dep dinheiro ATM 71546 7810 781071546170658 440,00 C
+06/09 17:06 SOP-AV.BANDEIRANTES
+08.09.2025 830-Dep dinheiro ATM 71546 7810 781071546170736 40,00 C
+06/09 17:07 SOP-AV.BANDEIRANTES
+08.09.2025 732-Cielo Vendas Crédito 14024 897780139 15.465,80 C
+08.09.2025 732-Cielo Vendas Débito 14024 897780139 5.187,38 C
+08.09.2025 732-Cielo Vendas Débito 14024 897780139 6.660,17 C
+08.09.2025 732-Cielo Vendas Débito 14024 897780139 1.238,11 C
+08.09.2025 470-Transferência enviada 99021 611873000132161 3.949,00 D
+08/09 11:56 CECILIA AMARILA SOARES
+08.09.2025 470-Transferência enviada 99021 613935000011535 63.000,00 D
+08/09 13:23 MILENY DE ALMEIDA ARRUDA
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 6
+TABLE CONTENT:
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 05.09.2025 732-Cielo Vendas Débito 14024 897780139 739,14 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 05.09.2025 109-Pagamento de Boleto 13105 90502 250,00 D |  |  |  |  |  |  |  | 
+ | D.H.GARCIA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 05.09.2025 109-Pagamento de Boleto 13105 90504 500,00 D |  |  |  |  |  |  |  | 
+ | ARRAIS ALIMENTOS |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 08.09.2025 830-Dep dinheiro ATM 71546 7810 781071546170347 2.000,00 C |  |  |  |  |  |  |  | 
+ | 06/09 17:03 SOP-AV.BANDEIRANTES |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 08.09.2025 830-Dep dinheiro ATM 71546 7810 781071546170531 2.000,00 C |  |  |  |  |  |  |  | 
+ | 06/09 17:05 SOP-AV.BANDEIRANTES |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 08.09.2025 830-Dep dinheiro ATM 71546 7810 781071546170658 440,00 C |  |  |  |  |  |  |  | 
+ | 06/09 17:06 SOP-AV.BANDEIRANTES |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 08.09.2025 732-Cielo Vendas Crédito 14024 897780139 15.465,80 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 08.09.2025 732-Cielo Vendas Débito 14024 897780139 6.660,17 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 08.09.2025 470-Transferência enviada 99021 611873000132161 3.949,00 D |  |  |  |  |  |  |  | 
+ | 08/09 11:56 CECILIA AMARILA SOARES |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+
+--------------------------------------------------
+
+--- Page 7 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome Agência (prefixo/dv) GS Conta nº/dv
+MCM FOODS LTDA 2936-X 37 50.123-9
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+08.09.2025 109-Pagamento de Boleto 13105 90801 593,99 D
+L.C.A-IND.E COM. DE PRODUTOS A
+08.09.2025 109-Pagamento de Boleto 13105 90802 184,60 D
+VERO S.A.
+08.09.2025 109-Pagamento de Boleto 13105 90803 200,00 D
+PASTELARIA DO MILTON
+08.09.2025 109-Pagamento de Boleto 13105 90804 276,50 D
+PANTANAL COMERCIO DE ALIMENTOS
+08.09.2025 109-Pagamento de Boleto 13105 90805 569,76 D
+DISTRIBUIDORA CENTRAL EMBALAGE
+08.09.2025 109-Pagamento de Boleto 13105 90806 412,52 D
+DONANA ALIMENTOS
+08.09.2025 109-Pagamento de Boleto 13105 90807 330,00 D
+NOVA SAFRA
+08.09.2025 109-Pagamento de Boleto 13105 90808 4.716,69 D
+BELLO ALIMENTOS LTDA
+08.09.2025 109-Pagamento de Boleto 13105 90809 1.248,95 D
+PENNACCHI CIA LTDA
+08.09.2025 109-Pagamento de Boleto 13105 90810 1.380,00 D
+55162704 RAYSSA COXEV SILVA
+08.09.2025 109-Pagamento de Boleto 13105 90811 681,18 D
+SPAL IND BRAS DE BEBIDAS SA
+08.09.2025 109-Pagamento de Boleto 13105 90812 730,10 D
+SPAL IND BRAS DE BEBIDAS SA
+08.09.2025 109-Pagamento de Boleto 13105 90813 799,19 D
+BELLO ALIMENTOS LTDA
+08.09.2025 798-BB Rende Fácil 9903 42.791,02 C 0,00 C
+Rende Facil
+09.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300141 1.200,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+09.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300142 100,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+09.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300143 3.100,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+09.09.2025 830-Dep dinheiro ATM 71543 7810 781071543101915 850,00 C
+09/09 10:19 SOP-AV.CEL.ANTONINO
+09.09.2025 830-Dep dinheiro ATM 71543 7810 781071543101958 2.000,00 C
+09/09 10:19 SOP-AV.CEL.ANTONINO
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 7
+TABLE CONTENT:
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 08.09.2025 109-Pagamento de Boleto 13105 90802 184,60 D |  |  |  |  |  |  |  | 
+ | VERO S.A. |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 08.09.2025 109-Pagamento de Boleto 13105 90804 276,50 D |  |  |  |  |  |  |  | 
+ | PANTANAL COMERCIO DE ALIMENTOS |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 08.09.2025 109-Pagamento de Boleto 13105 90806 412,52 D |  |  |  |  |  |  |  | 
+ | DONANA ALIMENTOS |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 08.09.2025 109-Pagamento de Boleto 13105 90808 4.716,69 D |  |  |  |  |  |  |  | 
+ | BELLO ALIMENTOS LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 08.09.2025 109-Pagamento de Boleto 13105 90810 1.380,00 D |  |  |  |  |  |  |  | 
+ | 55162704 RAYSSA COXEV SILVA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 08.09.2025 109-Pagamento de Boleto 13105 90812 730,10 D |  |  |  |  |  |  |  | 
+ | SPAL IND BRAS DE BEBIDAS SA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 08.09.2025 798-BB Rende Fácil 9903 42.791,02 C 0,00 C |  |  |  |  |  |  |  | 
+ | Rende Facil |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 09.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300142 100,00 C |  |  |  |  |  |  |  | 
+ | 7810-13-SOP-AVENIDA CORONEL ANTONINO-C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 09.09.2025 830-Dep dinheiro ATM 71543 7810 781071543101915 850,00 C |  |  |  |  |  |  |  | 
+ | 09/09 10:19 SOP-AV.CEL.ANTONINO |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+
+--------------------------------------------------
+
+--- Page 8 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome Agência (prefixo/dv) GS Conta nº/dv
+MCM FOODS LTDA 2936-X 37 50.123-9
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+09.09.2025 830-Dep dinheiro ATM 71543 7810 781071543102214 2.000,00 C
+09/09 10:22 SOP-AV.CEL.ANTONINO
+09.09.2025 830-Dep dinheiro ATM 71543 7810 781071543102344 430,00 C
+09/09 10:23 SOP-AV.CEL.ANTONINO
+09.09.2025 732-Cielo Vendas Crédito 14024 897780139 4.744,90 C
+09.09.2025 732-Cielo Vendas Débito 14024 897780139 1.864,93 C
+09.09.2025 732-Cielo Vendas Débito 14024 897780139 2.446,24 C
+09.09.2025 732-Cielo Vendas Débito 14024 897780139 299,48 C
+09.09.2025 234-Compra com Cartão 99008 795886 316,31 D
+09/09 08:56 LIBERDADE
+09.09.2025 234-Compra com Cartão 99008 820825 18,90 D
+09/09 09:13 GUIA DO MARCENEIRO
+09.09.2025 234-Compra com Cartão 99008 917155 2.675,96 D
+09/09 10:12 ATACADAO 0003 AS
+09.09.2025 234-Compra com Cartão 99008 996967 59,00 D
+09/09 10:58 ADAIR GONCALVES BRAN
+09.09.2025 470-Transferência enviada 99021 613426000025246 890,00 D
+09/09 16:01 SAGRADO SABOR LTDA
+09.09.2025 109-Pagamento de Boleto 13105 90901 387,00 D
+UNICENTRAL D E LTDA
+09.09.2025 109-Pagamento de Boleto 13105 90902 276,00 D
+LATICINIOS CAMBY LTDA
+09.09.2025 109-Pagamento de Boleto 13105 90903 322,00 D
+LATICINIOS CAMBY LTDA
+09.09.2025 109-Pagamento de Boleto 13105 90904 357,47 D
+DISTRIBUIDORA CENTRAL EMBALAGE
+09.09.2025 109-Pagamento de Boleto 13105 90905 368,00 D
+LATICINIOS CAMBY LTDA
+09.09.2025 109-Pagamento de Boleto 13105 90906 441,00 D
+L.C.A-IND.E COM. DE PRODUTOS A
+09.09.2025 109-Pagamento de Boleto 13105 90907 800,12 D
+SPAL IND BRAS DE BEBIDAS SA
+09.09.2025 351-BB Rende Fácil 9903 12.123,79 D 0,00 C
+Rende Facil
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 8
+TABLE CONTENT:
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 09.09.2025 830-Dep dinheiro ATM 71543 7810 781071543102344 430,00 C |  |  |  |  |  |  |  | 
+ | 09/09 10:23 SOP-AV.CEL.ANTONINO |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 09.09.2025 732-Cielo Vendas Débito 14024 897780139 1.864,93 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 09.09.2025 732-Cielo Vendas Débito 14024 897780139 299,48 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 09.09.2025 234-Compra com Cartão 99008 820825 18,90 D |  |  |  |  |  |  |  | 
+ | 09/09 09:13 GUIA DO MARCENEIRO |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 09.09.2025 234-Compra com Cartão 99008 996967 59,00 D |  |  |  |  |  |  |  | 
+ | 09/09 10:58 ADAIR GONCALVES BRAN |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 09.09.2025 109-Pagamento de Boleto 13105 90901 387,00 D |  |  |  |  |  |  |  | 
+ | UNICENTRAL D E LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 09.09.2025 109-Pagamento de Boleto 13105 90903 322,00 D |  |  |  |  |  |  |  | 
+ | LATICINIOS CAMBY LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 09.09.2025 109-Pagamento de Boleto 13105 90905 368,00 D |  |  |  |  |  |  |  | 
+ | LATICINIOS CAMBY LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 09.09.2025 109-Pagamento de Boleto 13105 90907 800,12 D |  |  |  |  |  |  |  | 
+ | SPAL IND BRAS DE BEBIDAS SA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+
+--------------------------------------------------
+
+--- Page 9 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome Agência (prefixo/dv) GS Conta nº/dv
+MCM FOODS LTDA 2936-X 37 50.123-9
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+10.09.2025 830-Dep dinheiro inter agencia 11352 7810 78101135200107 2.600,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+10.09.2025 830-Dep dinheiro inter agencia 11352 7810 78101135200108 650,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+10.09.2025 830-Dep dinheiro inter agencia 11352 7810 78101135200109 310,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+10.09.2025 830-Dep dinheiro inter agencia 11352 7810 78101135200110 700,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+10.09.2025 870-Transferência recebida 99020 3935 603935000011535 2.524,00 C
+10/09 14:49 MILENY DE ALMEIDA ARRUDA
+10.09.2025 870-Transferência recebida 99021 3426 613426000025246 250,00 C
+10/09 15:52 SAGRADO SABOR LTDA
+10.09.2025 732-Cielo Vendas Débito 14024 897780139 2.534,24 C
+10.09.2025 732-Cielo Vendas Débito 14024 897780139 1.938,74 C
+10.09.2025 732-Cielo Vendas Débito 14024 897780139 903,35 C
+10.09.2025 821-Pix - Recebido 14397 101445224216832 357,00 C
+10/09 14:45 32677538000121 SAGRADO SAB
+10.09.2025 821-Pix - Recebido 14397 101446096716492 680,25 C
+10/09 14:46 32677538000121 SAGRADO SAB
+10.09.2025 821-Pix - Recebido 14397 101447118793011 250,00 C
+10/09 14:47 32677538000121 SAGRADO SAB
+10.09.2025 470-Transferência enviada 99021 614211000002715 9.280,58 D
+10/09 15:12 REI F E LTDA - ME
+10.09.2025 470-Transferência enviada 99021 614336000110568 1.979,00 D
+10/09 14:24 CINTHIA JANINE L BARROS
+10.09.2025 470-Transferência enviada 99021 614336000110568 500,00 D
+10/09 14:28 CINTHIA JANINE L BARROS
+10.09.2025 109-Pagamento de Boleto 13105 91001 1.350,00 D
+DOURALEX CONTABILIDADE LTDA
+10.09.2025 109-Pagamento de Boleto 13105 91002 116,40 D
+MENDES E IUKIHIRO LTDA ME
+10.09.2025 109-Pagamento de Boleto 13105 91003 250,00 D
+KAPITAL SEGURANCA LTDA
+10.09.2025 109-Pagamento de Boleto 13105 91004 305,00 D
+NOVA SAFRA
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 9
+TABLE CONTENT:
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 10.09.2025 830-Dep dinheiro inter agencia 11352 7810 78101135200108 650,00 C |  |  |  |  |  |  |  | 
+ | 7810-13-SOP-AVENIDA CORONEL ANTONINO-C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 10.09.2025 830-Dep dinheiro inter agencia 11352 7810 78101135200110 700,00 C |  |  |  |  |  |  |  | 
+ | 7810-13-SOP-AVENIDA CORONEL ANTONINO-C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 10.09.2025 870-Transferência recebida 99021 3426 613426000025246 250,00 C |  |  |  |  |  |  |  | 
+ | 10/09 15:52 SAGRADO SABOR LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 10.09.2025 732-Cielo Vendas Débito 14024 897780139 1.938,74 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 10.09.2025 821-Pix - Recebido 14397 101445224216832 357,00 C |  |  |  |  |  |  |  | 
+ | 10/09 14:45 32677538000121 SAGRADO SAB |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 10.09.2025 821-Pix - Recebido 14397 101447118793011 250,00 C |  |  |  |  |  |  |  | 
+ | 10/09 14:47 32677538000121 SAGRADO SAB |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 10.09.2025 470-Transferência enviada 99021 614336000110568 1.979,00 D |  |  |  |  |  |  |  | 
+ | 10/09 14:24 CINTHIA JANINE L BARROS |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 10.09.2025 109-Pagamento de Boleto 13105 91001 1.350,00 D |  |  |  |  |  |  |  | 
+ | DOURALEX CONTABILIDADE LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 10.09.2025 109-Pagamento de Boleto 13105 91003 250,00 D |  |  |  |  |  |  |  | 
+ | KAPITAL SEGURANCA LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+
+--------------------------------------------------
+
+--- Page 10 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome Agência (prefixo/dv) GS Conta nº/dv
+MCM FOODS LTDA 2936-X 37 50.123-9
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+10.09.2025 109-Pagamento de Boleto 13105 91005 500,00 D
+ARRAIS ALIMENTOS
+10.09.2025 109-Pagamento de Boleto 13105 91006 427,50 D
+VPS INTELIGENCIA EMPRESARIAL L
+10.09.2025 109-Pagamento de Boleto 13105 91007 933,00 D
+SILVA E CIA SERVICOS MEDICOS D
+10.09.2025 328-Pagto cartão crédito 13158 166353893 1.859,72 D
+EMPRESARIAL ELO
+10.09.2025 328-Pagto cartão crédito 13158 169351214 7.817,06 D
+EMPRESARIAL ELO
+10.09.2025 364-BB Consórcio - Prestação 13013 14033 1.262,00 D
+BB ADMIN CONSORCIO SA
+10.09.2025 364-BB Consórcio - Prestação 13013 14033 1.262,00 D
+BB ADMIN CONSORCIO SA
+10.09.2025 798-BB Rende Fácil 9903 14.144,68 C 0,00 C
+Rende Facil
+11.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300135 36,50 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+11.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300137 3.613,50 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+11.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300138 550,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+11.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300139 100,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+11.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300140 1.860,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+11.09.2025 732-Cielo Vendas Crédito 14024 897780139 3.765,63 C
+11.09.2025 732-Cielo Vendas Débito 14024 897780139 2.000,31 C
+11.09.2025 732-Cielo Vendas Débito 14024 897780139 3.147,76 C
+11.09.2025 732-Cielo Vendas Débito 14024 897780139 672,49 C
+11.09.2025 234-Compra com Cartão 99008 630560 620,44 D
+11/09 14:55 ATACADAO 0031 AS
+11.09.2025 109-Pagamento de Boleto 13105 91101 1.174,47 D
+COTHERPACK IND E C DE EMB LTDA
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 10
+TABLE CONTENT:
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 10.09.2025 109-Pagamento de Boleto 13105 91006 427,50 D |  |  |  |  |  |  |  | 
+ | VPS INTELIGENCIA EMPRESARIAL L |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 10.09.2025 328-Pagto cartão crédito 13158 166353893 1.859,72 D |  |  |  |  |  |  |  | 
+ | EMPRESARIAL ELO |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 10.09.2025 364-BB Consórcio - Prestação 13013 14033 1.262,00 D |  |  |  |  |  |  |  | 
+ | BB ADMIN CONSORCIO SA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 10.09.2025 798-BB Rende Fácil 9903 14.144,68 C 0,00 C |  |  |  |  |  |  |  | 
+ | Rende Facil |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 11.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300137 3.613,50 C |  |  |  |  |  |  |  | 
+ | 7810-13-SOP-AVENIDA CORONEL ANTONINO-C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 11.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300139 100,00 C |  |  |  |  |  |  |  | 
+ | 7810-13-SOP-AVENIDA CORONEL ANTONINO-C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 11.09.2025 732-Cielo Vendas Crédito 14024 897780139 3.765,63 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 11.09.2025 732-Cielo Vendas Débito 14024 897780139 3.147,76 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 11.09.2025 234-Compra com Cartão 99008 630560 620,44 D |  |  |  |  |  |  |  | 
+ | 11/09 14:55 ATACADAO 0031 AS |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+
+--------------------------------------------------
+
+--- Page 11 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome Agência (prefixo/dv) GS Conta nº/dv
+MCM FOODS LTDA 2936-X 37 50.123-9
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+11.09.2025 109-Pagamento de Boleto 13105 91102 785,10 D
+FRIGOESTRELA S A
+11.09.2025 109-Pagamento de Boleto 13105 91103 455,57 D
+ENERGISA MS
+11.09.2025 351-BB Rende Fácil 9903 12.710,61 D 0,00 C
+Rende Facil
+12.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300161 2.500,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+12.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300162 250,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+12.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300163 1.750,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+12.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300164 100,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+12.09.2025 732-Cielo Vendas Crédito 14024 897780139 4.550,27 C
+12.09.2025 732-Cielo Vendas Débito 14024 897780139 2.063,11 C
+12.09.2025 732-Cielo Vendas Débito 14024 897780139 2.310,00 C
+12.09.2025 732-Cielo Vendas Débito 14024 897780139 286,25 C
+12.09.2025 234-Compra com Cartão 99008 701748 34,00 D
+12/09 09:38 EFICAZ ATACADAO DA L
+12.09.2025 109-Pagamento de Boleto 13105 91201 275,00 D
+NOVA SAFRA
+12.09.2025 375-Impostos 13105 91202 2.615,78 D
+ARRECADACAO-DAEMS
+12.09.2025 109-Pagamento de Boleto 13105 91203 465,00 D
+FABIO CORTEZ MARTINS JUNIOR EI
+12.09.2025 351-BB Rende Fácil 9903 10.419,85 D 0,00 C
+Rende Facil
+15.09.2025 870-Transferência recebida 99021 612936000049132 1.165,51 C
+15/09 14:59 ARRUDA & BARROS LTDA
+15.09.2025 830-Dep dinheiro ATM 71232 7810 781071232172924 100,00 C
+13/09 17:29 SOP-AV.BANDEIRANTES
+15.09.2025 830-Dep dinheiro ATM 71233 7810 781071233171952 2.000,00 C
+13/09 17:19 SOP-AV.BANDEIRANTES
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 11
+TABLE CONTENT:
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 11.09.2025 109-Pagamento de Boleto 13105 91103 455,57 D |  |  |  |  |  |  |  | 
+ | ENERGISA MS |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 12.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300161 2.500,00 C |  |  |  |  |  |  |  | 
+ | 7810-13-SOP-AVENIDA CORONEL ANTONINO-C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 12.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300163 1.750,00 C |  |  |  |  |  |  |  | 
+ | 7810-13-SOP-AVENIDA CORONEL ANTONINO-C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 12.09.2025 732-Cielo Vendas Crédito 14024 897780139 4.550,27 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 12.09.2025 732-Cielo Vendas Débito 14024 897780139 2.310,00 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 12.09.2025 234-Compra com Cartão 99008 701748 34,00 D |  |  |  |  |  |  |  | 
+ | 12/09 09:38 EFICAZ ATACADAO DA L |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 12.09.2025 375-Impostos 13105 91202 2.615,78 D |  |  |  |  |  |  |  | 
+ | ARRECADACAO-DAEMS |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 12.09.2025 351-BB Rende Fácil 9903 10.419,85 D 0,00 C |  |  |  |  |  |  |  | 
+ | Rende Facil |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 15.09.2025 830-Dep dinheiro ATM 71232 7810 781071232172924 100,00 C |  |  |  |  |  |  |  | 
+ | 13/09 17:29 SOP-AV.BANDEIRANTES |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+
+--------------------------------------------------
+
+--- Page 12 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome Agência (prefixo/dv) GS Conta nº/dv
+MCM FOODS LTDA 2936-X 37 50.123-9
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+15.09.2025 830-Dep dinheiro ATM 71233 7810 781071233172040 2.000,00 C
+13/09 17:20 SOP-AV.BANDEIRANTES
+15.09.2025 830-Dep dinheiro ATM 71233 7810 781071233172146 1.650,00 C
+13/09 17:21 SOP-AV.BANDEIRANTES
+15.09.2025 830-Dep dinheiro ATM 71233 7810 781071233172257 330,00 C
+13/09 17:22 SOP-AV.BANDEIRANTES
+15.09.2025 830-Dep dinheiro ATM 71233 7810 781071233172446 260,00 C
+13/09 17:24 SOP-AV.BANDEIRANTES
+15.09.2025 830-Dep dinheiro ATM 71233 7810 781071233172709 1.950,00 C
+13/09 17:27 SOP-AV.BANDEIRANTES
+15.09.2025 830-Dep dinheiro ATM 71233 7810 781071233172936 390,00 C
+13/09 17:29 SOP-AV.BANDEIRANTES
+15.09.2025 830-Dep dinheiro ATM 71233 7810 781071233173016 300,00 C
+13/09 17:30 SOP-AV.BANDEIRANTES
+15.09.2025 830-Dep dinheiro ATM 71543 7810 781071543142245 2.000,00 C
+15/09 14:22 SOP-AV.CEL.ANTONINO
+15.09.2025 830-Dep dinheiro ATM 71543 7810 781071543142320 150,00 C
+15/09 14:23 SOP-AV.CEL.ANTONINO
+15.09.2025 830-Dep dinheiro ATM 71543 7810 781071543142359 800,00 C
+15/09 14:23 SOP-AV.CEL.ANTONINO
+15.09.2025 732-Cielo Vendas Crédito 14024 897780139 16.702,97 C
+15.09.2025 732-Cielo Vendas Débito 14024 897780139 5.047,09 C
+15.09.2025 732-Cielo Vendas Débito 14024 897780139 4.459,68 C
+15.09.2025 732-Cielo Vendas Débito 14024 897780139 946,97 C
+15.09.2025 470-Transferência enviada 99021 611873000132161 3.903,20 D
+15/09 12:20 CECILIA AMARILA SOARES
+15.09.2025 470-Transferência enviada 99021 613935000011535 30.000,00 D
+15/09 12:12 MILENY DE ALMEIDA ARRUDA
+15.09.2025 470-Transferência enviada 99021 614336000110568 210,00 D
+15/09 14:57 CINTHIA JANINE L BARROS
+15.09.2025 109-Pagamento de Boleto 13105 91501 718,82 D
+OESA COM E REPRES SA
+15.09.2025 109-Pagamento de Boleto 13105 91502 300,00 D
+PASTELARIA DO MILTON
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 12
+TABLE CONTENT:
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 15.09.2025 830-Dep dinheiro ATM 71233 7810 781071233172146 1.650,00 C |  |  |  |  |  |  |  | 
+ | 13/09 17:21 SOP-AV.BANDEIRANTES |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 15.09.2025 830-Dep dinheiro ATM 71233 7810 781071233172446 260,00 C |  |  |  |  |  |  |  | 
+ | 13/09 17:24 SOP-AV.BANDEIRANTES |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 15.09.2025 830-Dep dinheiro ATM 71233 7810 781071233172936 390,00 C |  |  |  |  |  |  |  | 
+ | 13/09 17:29 SOP-AV.BANDEIRANTES |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 15.09.2025 830-Dep dinheiro ATM 71543 7810 781071543142245 2.000,00 C |  |  |  |  |  |  |  | 
+ | 15/09 14:22 SOP-AV.CEL.ANTONINO |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 15.09.2025 830-Dep dinheiro ATM 71543 7810 781071543142359 800,00 C |  |  |  |  |  |  |  | 
+ | 15/09 14:23 SOP-AV.CEL.ANTONINO |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 15.09.2025 732-Cielo Vendas Débito 14024 897780139 5.047,09 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 15.09.2025 732-Cielo Vendas Débito 14024 897780139 946,97 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 15.09.2025 470-Transferência enviada 99021 613935000011535 30.000,00 D |  |  |  |  |  |  |  | 
+ | 15/09 12:12 MILENY DE ALMEIDA ARRUDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 15.09.2025 109-Pagamento de Boleto 13105 91501 718,82 D |  |  |  |  |  |  |  | 
+ | OESA COM E REPRES SA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+
+--------------------------------------------------
+
+--- Page 13 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome Agência (prefixo/dv) GS Conta nº/dv
+MCM FOODS LTDA 2936-X 37 50.123-9
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+15.09.2025 109-Pagamento de Boleto 13105 91503 301,16 D
+THG TRANSPORTES COMERCIO LOGIS
+15.09.2025 109-Pagamento de Boleto 13105 91504 500,00 D
+ARRAIS ALIMENTOS
+15.09.2025 109-Pagamento de Boleto 13105 91505 593,99 D
+L.C.A-IND.E COM. DE PRODUTOS A
+15.09.2025 109-Pagamento de Boleto 13105 91506 933,75 D
+SPAL IND BRAS DE BEBIDAS SA
+15.09.2025 109-Pagamento de Boleto 13105 91507 1.380,00 D
+55162704 RAYSSA COXEV SILVA
+15.09.2025 109-Pagamento de Boleto 13105 91508 2.727,68 D
+SUPERGASBRAS ENERGIA LTDA
+15.09.2025 109-Pagamento de Boleto 13105 91509 2.953,29 D
+PENNACCHI CIA LTDA
+15.09.2025 109-Pagamento de Boleto 13105 91510 900,00 D
+SPAL IND BRAS DE BEBIDAS SA
+15.09.2025 109-Pagamento de Boleto 13105 91511 3.392,17 D
+BELLO ALIMENTOS LTDA
+15.09.2025 109-Pagamento de Boleto 13105 91512 3.106,71 D
+BELLO ALIMENTOS LTDA
+15.09.2025 109-Pagamento de Boleto 13105 91513 387,90 D
+DONANA ALIMENTOS
+15.09.2025 109-Pagamento de Boleto 13105 91514 1.331,02 D
+AYMORE CREDITO FINANCIAMENTO
+15.09.2025 109-Pagamento de Boleto 13105 91515 280,00 D
+KAPITAL SEGURANCA LTDA
+15.09.2025 435-Tarifa de Pacote de Serviços 13113 832581100561662 188,80 D
+Cobrança referente 15/09/2025
+15.09.2025 798-BB Rende Fácil 9903 13.856,27 C 0,00 C
+Rende Facil
+16.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300191 2.000,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+16.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300192 1.400,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+16.09.2025 732-Cielo Vendas Crédito 14024 897780139 4.863,17 C
+16.09.2025 732-Cielo Vendas Débito 14024 897780139 1.712,73 C
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 13
+TABLE CONTENT:
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 15.09.2025 109-Pagamento de Boleto 13105 91504 500,00 D |  |  |  |  |  |  |  | 
+ | ARRAIS ALIMENTOS |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 15.09.2025 109-Pagamento de Boleto 13105 91506 933,75 D |  |  |  |  |  |  |  | 
+ | SPAL IND BRAS DE BEBIDAS SA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 15.09.2025 109-Pagamento de Boleto 13105 91508 2.727,68 D |  |  |  |  |  |  |  | 
+ | SUPERGASBRAS ENERGIA LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 15.09.2025 109-Pagamento de Boleto 13105 91510 900,00 D |  |  |  |  |  |  |  | 
+ | SPAL IND BRAS DE BEBIDAS SA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 15.09.2025 109-Pagamento de Boleto 13105 91512 3.106,71 D |  |  |  |  |  |  |  | 
+ | BELLO ALIMENTOS LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 15.09.2025 109-Pagamento de Boleto 13105 91514 1.331,02 D |  |  |  |  |  |  |  | 
+ | AYMORE CREDITO FINANCIAMENTO |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 15.09.2025 435-Tarifa de Pacote de Serviços 13113 832581100561662 188,80 D |  |  |  |  |  |  |  | 
+ | Cobrança referente 15/09/2025 |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 16.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300191 2.000,00 C |  |  |  |  |  |  |  | 
+ | 7810-13-SOP-AVENIDA CORONEL ANTONINO-C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 16.09.2025 732-Cielo Vendas Crédito 14024 897780139 4.863,17 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+
+--------------------------------------------------
+
+--- Page 14 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome Agência (prefixo/dv) GS Conta nº/dv
+MCM FOODS LTDA 2936-X 37 50.123-9
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+16.09.2025 732-Cielo Vendas Débito 14024 897780139 1.701,46 C
+16.09.2025 732-Cielo Vendas Débito 14024 897780139 453,40 C
+16.09.2025 234-Compra com Cartão 99008 202582 2.221,89 D
+16/09 09:30 ATACADAO 0003 AS
+16.09.2025 234-Compra com Cartão 99008 276093 65,40 D
+16/09 10:17 ASSAI ATACADISTA
+16.09.2025 234-Compra com Cartão 99008 769400 729,00 D
+16/09 15:12 ASSAI ATACADISTA
+16.09.2025 109-Pagamento de Boleto 13105 91601 368,00 D
+LATICINIOS CAMBY LTDA
+16.09.2025 109-Pagamento de Boleto 13105 91602 116,40 D
+MENDES E IUKIHIRO LTDA ME
+16.09.2025 109-Pagamento de Boleto 13105 91603 272,99 D
+DISTRIBUIDORA CENTRAL EMBALAGE
+16.09.2025 109-Pagamento de Boleto 13105 91604 276,00 D
+LATICINIOS CAMBY LTDA
+16.09.2025 109-Pagamento de Boleto 13105 91605 330,00 D
+NOVA SAFRA
+16.09.2025 109-Pagamento de Boleto 13105 91606 932,17 D
+SPAL IND BRAS DE BEBIDAS SA
+16.09.2025 109-Pagamento de Boleto 13105 91607 368,00 D
+LATICINIOS CAMBY LTDA
+16.09.2025 109-Pagamento de Boleto 13105 91608 441,00 D
+L.C.A-IND.E COM. DE PRODUTOS A
+16.09.2025 109-Pagamento de Boleto 13105 91609 554,00 D
+UNICENTRAL D E LTDA
+16.09.2025 351-BB Rende Fácil 9903 5.455,91 D 0,00 C
+Rende Facil
+17.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300131 190,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+17.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300132 590,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+17.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300133 40,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+17.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300134 910,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 14
+TABLE CONTENT:
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 16.09.2025 732-Cielo Vendas Débito 14024 897780139 453,40 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 16.09.2025 234-Compra com Cartão 99008 276093 65,40 D |  |  |  |  |  |  |  | 
+ | 16/09 10:17 ASSAI ATACADISTA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 16.09.2025 109-Pagamento de Boleto 13105 91601 368,00 D |  |  |  |  |  |  |  | 
+ | LATICINIOS CAMBY LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 16.09.2025 109-Pagamento de Boleto 13105 91603 272,99 D |  |  |  |  |  |  |  | 
+ | DISTRIBUIDORA CENTRAL EMBALAGE |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 16.09.2025 109-Pagamento de Boleto 13105 91605 330,00 D |  |  |  |  |  |  |  | 
+ | NOVA SAFRA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 16.09.2025 109-Pagamento de Boleto 13105 91607 368,00 D |  |  |  |  |  |  |  | 
+ | LATICINIOS CAMBY LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 16.09.2025 109-Pagamento de Boleto 13105 91609 554,00 D |  |  |  |  |  |  |  | 
+ | UNICENTRAL D E LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 17.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300131 190,00 C |  |  |  |  |  |  |  | 
+ | 7810-13-SOP-AVENIDA CORONEL ANTONINO-C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 17.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300133 40,00 C |  |  |  |  |  |  |  | 
+ | 7810-13-SOP-AVENIDA CORONEL ANTONINO-C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+
+--------------------------------------------------
+
+--- Page 15 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome Agência (prefixo/dv) GS Conta nº/dv
+MCM FOODS LTDA 2936-X 37 50.123-9
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+17.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300135 1.000,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+17.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300136 3.500,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+17.09.2025 870-Transferência recebida 99020 4336 604336000110568 120,00 C
+17/09 14:44 CINTHIA JANINE L BARROS
+17.09.2025 732-Cielo Vendas Crédito 14024 897780139 99,45 C
+17.09.2025 732-Cielo Vendas Débito 14024 897780139 1.866,40 C
+17.09.2025 732-Cielo Vendas Débito 14024 897780139 1.457,38 C
+17.09.2025 732-Cielo Vendas Débito 14024 897780139 555,83 C
+17.09.2025 470-Transferência enviada 99021 614211000002715 9.109,33 D
+17/09 13:05 REI F E LTDA - ME
+17.09.2025 109-Pagamento de Boleto 13105 91701 1.442,65 D
+RED S A
+17.09.2025 109-Pagamento de Boleto 13105 91702 247,80 D
+DAMASCENO ALVES LTDA
+17.09.2025 109-Pagamento de Boleto 13105 91703 300,00 D
+NOVA SAFRA
+17.09.2025 431-Tarifa Depósito Proces-Caixa 13113 832601100076809 9,30 D
+Cobrança referente 17/09/2025
+17.09.2025 798-BB Rende Fácil 9903 780,02 C 0,00 C
+Rende Facil
+18.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300106 3.050,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+18.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300107 1.400,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+18.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300108 875,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+18.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300109 110,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+18.09.2025 732-Cielo Vendas Crédito 14024 897780139 3.782,94 C
+18.09.2025 732-Cielo Vendas Débito 14024 897780139 1.658,86 C
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 15
+TABLE CONTENT:
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 17.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300136 3.500,00 C |  |  |  |  |  |  |  | 
+ | 7810-13-SOP-AVENIDA CORONEL ANTONINO-C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 17.09.2025 732-Cielo Vendas Crédito 14024 897780139 99,45 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 17.09.2025 732-Cielo Vendas Débito 14024 897780139 1.457,38 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 17.09.2025 470-Transferência enviada 99021 614211000002715 9.109,33 D |  |  |  |  |  |  |  | 
+ | 17/09 13:05 REI F E LTDA - ME |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 17.09.2025 109-Pagamento de Boleto 13105 91702 247,80 D |  |  |  |  |  |  |  | 
+ | DAMASCENO ALVES LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 17.09.2025 431-Tarifa Depósito Proces-Caixa 13113 832601100076809 9,30 D |  |  |  |  |  |  |  | 
+ | Cobrança referente 17/09/2025 |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 18.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300106 3.050,00 C |  |  |  |  |  |  |  | 
+ | 7810-13-SOP-AVENIDA CORONEL ANTONINO-C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 18.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300108 875,00 C |  |  |  |  |  |  |  | 
+ | 7810-13-SOP-AVENIDA CORONEL ANTONINO-C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 18.09.2025 732-Cielo Vendas Crédito 14024 897780139 3.782,94 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+
+--------------------------------------------------
+
+--- Page 16 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome Agência (prefixo/dv) GS Conta nº/dv
+MCM FOODS LTDA 2936-X 37 50.123-9
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+18.09.2025 732-Cielo Vendas Débito 14024 897780139 1.838,01 C
+18.09.2025 732-Cielo Vendas Débito 14024 897780139 263,21 C
+18.09.2025 109-Pagamento de Boleto 13105 91801 1.174,47 D
+COTHERPACK IND E C DE EMB LTDA
+18.09.2025 109-Pagamento de Boleto 13105 91802 374,00 D
+PANTANAL COMERCIO DE ALIMENTOS
+18.09.2025 431-Tarifa Depósito Proces-Caixa 13113 822611100081679 9,30 D
+Cobrança referente 18/09/2025
+18.09.2025 351-BB Rende Fácil 9903 11.420,25 D 0,00 C
+Rende Facil
+19.09.2025 830-Dep dinheiro inter agencia 11352 7810 78101135200111 1.600,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+19.09.2025 830-Dep dinheiro inter agencia 11352 7810 78101135200112 555,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+19.09.2025 830-Dep dinheiro inter agencia 11352 7810 78101135200113 750,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+19.09.2025 870-Transferência recebida 99021 612936000049132 6.335,00 C
+19/09 11:25 ARRUDA & BARROS LTDA
+19.09.2025 870-Transferência recebida 99021 3426 613426000025246 5.218,00 C
+19/09 11:29 SAGRADO SABOR LTDA
+19.09.2025 732-Cielo Vendas Crédito 14024 897780139 4.844,39 C
+19.09.2025 732-Cielo Vendas Débito 14024 897780139 1.679,63 C
+19.09.2025 732-Cielo Vendas Débito 14024 897780139 2.585,00 C
+19.09.2025 732-Cielo Vendas Débito 14024 897780139 497,99 C
+19.09.2025 234-Compra com Cartão 99008 364683 3.882,60 D
+19/09 14:56 ASSAI ATACADISTA
+19.09.2025 234-Compra com Cartão 99008 934640 431,56 D
+19/09 11:15 CAFE DA 15
+19.09.2025 109-Pagamento de Boleto 13105 91901 1.014,91 D
+SPAL IND BRAS DE BEBIDAS SA
+19.09.2025 109-Pagamento de Boleto 13105 91902 465,00 D
+FABIO CORTEZ MARTINS JUNIOR EI
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 16
+TABLE CONTENT:
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 18.09.2025 732-Cielo Vendas Débito 14024 897780139 263,21 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 18.09.2025 109-Pagamento de Boleto 13105 91802 374,00 D |  |  |  |  |  |  |  | 
+ | PANTANAL COMERCIO DE ALIMENTOS |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 18.09.2025 351-BB Rende Fácil 9903 11.420,25 D 0,00 C |  |  |  |  |  |  |  | 
+ | Rende Facil |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 19.09.2025 830-Dep dinheiro inter agencia 11352 7810 78101135200112 555,00 C |  |  |  |  |  |  |  | 
+ | 7810-13-SOP-AVENIDA CORONEL ANTONINO-C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 19.09.2025 870-Transferência recebida 99021 612936000049132 6.335,00 C |  |  |  |  |  |  |  | 
+ | 19/09 11:25 ARRUDA & BARROS LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 19.09.2025 732-Cielo Vendas Crédito 14024 897780139 4.844,39 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 19.09.2025 732-Cielo Vendas Débito 14024 897780139 2.585,00 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 19.09.2025 234-Compra com Cartão 99008 364683 3.882,60 D |  |  |  |  |  |  |  | 
+ | 19/09 14:56 ASSAI ATACADISTA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 19.09.2025 109-Pagamento de Boleto 13105 91901 1.014,91 D |  |  |  |  |  |  |  | 
+ | SPAL IND BRAS DE BEBIDAS SA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+
+--------------------------------------------------
+
+--- Page 17 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome Agência (prefixo/dv) GS Conta nº/dv
+MCM FOODS LTDA 2936-X 37 50.123-9
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+19.09.2025 109-Pagamento de Boleto 13105 91903 500,00 D
+ARRAIS ALIMENTOS
+19.09.2025 109-Pagamento de Boleto 13105 91904 545,02 D
+COMERCIO DE ALIMENTOS SAO PEDR
+19.09.2025 144-Pix - Enviado 13105 91905 8.547,07 D
+19/09 11:21 RECEITA FEDERAL
+19.09.2025 144-Pix - Enviado 13105 91906 10.085,25 D
+19/09 11:25 CEF MATRIZ
+19.09.2025 431-Tarifa Depósito Proces-Caixa 13113 822621100098817 9,30 D
+Cobrança referente 19/09/2025
+19.09.2025 798-BB Rende Fácil 9903 1.415,70 C 0,00 C
+Rende Facil
+22.09.2025 870-Transferência recebida 99021 612936000049132 60,00 C
+22/09 14:41 ARRUDA & BARROS LTDA
+22.09.2025 870-Transferência recebida 99021 3426 613426000025246 60,00 C
+22/09 14:45 SAGRADO SABOR LTDA
+22.09.2025 830-Dep dinheiro ATM 70122 7810 781070122172056 2.000,00 C
+20/09 17:20 SOP-AV.BANDEIRANTES
+22.09.2025 830-Dep dinheiro ATM 70122 7810 781070122172149 150,00 C
+20/09 17:21 SOP-AV.BANDEIRANTES
+22.09.2025 830-Dep dinheiro ATM 71233 7810 781071233171129 2.000,00 C
+20/09 17:11 SOP-AV.BANDEIRANTES
+22.09.2025 830-Dep dinheiro ATM 71233 7810 781071233171216 1.050,00 C
+20/09 17:12 SOP-AV.BANDEIRANTES
+22.09.2025 830-Dep dinheiro ATM 71233 7810 781071233171257 350,00 C
+20/09 17:12 SOP-AV.BANDEIRANTES
+22.09.2025 830-Dep dinheiro ATM 71233 7810 781071233171332 450,00 C
+20/09 17:13 SOP-AV.BANDEIRANTES
+22.09.2025 830-Dep dinheiro ATM 71233 7810 781071233171410 190,00 C
+20/09 17:14 SOP-AV.BANDEIRANTES
+22.09.2025 830-Dep dinheiro ATM 71253 7810 781071253171854 1.850,00 C
+20/09 17:18 SOP-AV.BANDEIRANTES
+22.09.2025 830-Dep dinheiro ATM 71258 7810 781071258142259 2.000,00 C
+22/09 14:22 SOP-AV.CEL.ANTONINO
+22.09.2025 830-Dep dinheiro ATM 71258 7810 781071258142348 850,00 C
+22/09 14:23 SOP-AV.CEL.ANTONINO
+22.09.2025 732-Cielo Vendas Crédito 14024 897780139 14.780,04 C
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 17
+TABLE CONTENT:
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 19.09.2025 109-Pagamento de Boleto 13105 91904 545,02 D |  |  |  |  |  |  |  | 
+ | COMERCIO DE ALIMENTOS SAO PEDR |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 19.09.2025 144-Pix - Enviado 13105 91906 10.085,25 D |  |  |  |  |  |  |  | 
+ | 19/09 11:25 CEF MATRIZ |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 19.09.2025 798-BB Rende Fácil 9903 1.415,70 C 0,00 C |  |  |  |  |  |  |  | 
+ | Rende Facil |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 22.09.2025 870-Transferência recebida 99021 3426 613426000025246 60,00 C |  |  |  |  |  |  |  | 
+ | 22/09 14:45 SAGRADO SABOR LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 22.09.2025 830-Dep dinheiro ATM 70122 7810 781070122172149 150,00 C |  |  |  |  |  |  |  | 
+ | 20/09 17:21 SOP-AV.BANDEIRANTES |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 22.09.2025 830-Dep dinheiro ATM 71233 7810 781071233171216 1.050,00 C |  |  |  |  |  |  |  | 
+ | 20/09 17:12 SOP-AV.BANDEIRANTES |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 22.09.2025 830-Dep dinheiro ATM 71233 7810 781071233171332 450,00 C |  |  |  |  |  |  |  | 
+ | 20/09 17:13 SOP-AV.BANDEIRANTES |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 22.09.2025 830-Dep dinheiro ATM 71253 7810 781071253171854 1.850,00 C |  |  |  |  |  |  |  | 
+ | 20/09 17:18 SOP-AV.BANDEIRANTES |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 22.09.2025 830-Dep dinheiro ATM 71258 7810 781071258142348 850,00 C |  |  |  |  |  |  |  | 
+ | 22/09 14:23 SOP-AV.CEL.ANTONINO |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+
+--------------------------------------------------
+
+--- Page 18 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome Agência (prefixo/dv) GS Conta nº/dv
+MCM FOODS LTDA 2936-X 37 50.123-9
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+22.09.2025 732-Cielo Vendas Débito 14024 897780139 4.246,74 C
+22.09.2025 732-Cielo Vendas Débito 14024 897780139 4.308,46 C
+22.09.2025 732-Cielo Vendas Débito 14024 897780139 1.079,79 C
+22.09.2025 234-Compra com Cartão 99008 293055 1.769,45 D
+22/09 15:00 ATACADAO 0137 AS
+22.09.2025 234-Compra com Cartão 99008 493837 59,00 D
+20/09 08:41 ADAIR GONCALVES BRAN
+22.09.2025 234-Compra com Cartão 99008 589457 11,70 D
+20/09 09:27 PPMateriais
+22.09.2025 470-Transferência enviada 99021 611873000132161 4.959,00 D
+22/09 15:00 CECILIA AMARILA SOARES
+22.09.2025 470-Transferência enviada 99021 613935000011535 195,00 D
+22/09 14:42 MILENY DE ALMEIDA ARRUDA
+22.09.2025 470-Transferência enviada 99021 614336000110568 27.000,00 D
+22/09 11:55 CINTHIA JANINE L BARROS
+22.09.2025 109-Pagamento de Boleto 13105 92201 594,02 D
+L.C.A-IND.E COM. DE PRODUTOS A
+22.09.2025 109-Pagamento de Boleto 13105 92202 200,00 D
+PASTELARIA DO MILTON
+22.09.2025 109-Pagamento de Boleto 13105 92203 286,18 D
+THG TRANSPORTES COMERCIO LOGIS
+22.09.2025 109-Pagamento de Boleto 13105 92204 414,00 D
+LATICINIOS CAMBY LTDA
+22.09.2025 109-Pagamento de Boleto 13105 92205 567,32 D
+OESA COM E REPRES SA
+22.09.2025 109-Pagamento de Boleto 13105 92206 618,82 D
+DONANA ALIMENTOS
+22.09.2025 109-Pagamento de Boleto 13105 92207 2.029,90 D
+SUPERGASBRAS ENERGIA LTDA
+22.09.2025 109-Pagamento de Boleto 13105 92208 980,64 D
+PENNACCHI CIA LTDA
+22.09.2025 109-Pagamento de Boleto 13105 92209 1.249,50 D
+QUIMISUL PRODUTOS PARA LIMPEZA
+22.09.2025 375-Impostos 13105 92210 180,00 D
+DAS - SIMPLES NACIONAL
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 18
+TABLE CONTENT:
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 22.09.2025 732-Cielo Vendas Débito 14024 897780139 4.308,46 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 22.09.2025 234-Compra com Cartão 99008 293055 1.769,45 D |  |  |  |  |  |  |  | 
+ | 22/09 15:00 ATACADAO 0137 AS |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 22.09.2025 234-Compra com Cartão 99008 589457 11,70 D |  |  |  |  |  |  |  | 
+ | 20/09 09:27 PPMateriais |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 22.09.2025 470-Transferência enviada 99021 613935000011535 195,00 D |  |  |  |  |  |  |  | 
+ | 22/09 14:42 MILENY DE ALMEIDA ARRUDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 22.09.2025 109-Pagamento de Boleto 13105 92201 594,02 D |  |  |  |  |  |  |  | 
+ | L.C.A-IND.E COM. DE PRODUTOS A |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 22.09.2025 109-Pagamento de Boleto 13105 92203 286,18 D |  |  |  |  |  |  |  | 
+ | THG TRANSPORTES COMERCIO LOGIS |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 22.09.2025 109-Pagamento de Boleto 13105 92205 567,32 D |  |  |  |  |  |  |  | 
+ | OESA COM E REPRES SA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 22.09.2025 109-Pagamento de Boleto 13105 92207 2.029,90 D |  |  |  |  |  |  |  | 
+ | SUPERGASBRAS ENERGIA LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 22.09.2025 109-Pagamento de Boleto 13105 92209 1.249,50 D |  |  |  |  |  |  |  | 
+ | QUIMISUL PRODUTOS PARA LIMPEZA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+
+--------------------------------------------------
+
+--- Page 19 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome Agência (prefixo/dv) GS Conta nº/dv
+MCM FOODS LTDA 2936-X 37 50.123-9
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+22.09.2025 109-Pagamento de Boleto 13105 92211 577,10 D
+SPAL IND BRAS DE BEBIDAS SA
+22.09.2025 109-Pagamento de Boleto 13105 92212 2.229,17 D
+BELLO ALIMENTOS LTDA
+22.09.2025 109-Pagamento de Boleto 13105 92213 468,70 D
+SPAL IND BRAS DE BEBIDAS SA
+22.09.2025 240-Pagamento Mensalidade Seguro 13013 12695 150,95 D
+BB SEGUROS
+22.09.2025 798-BB Rende Fácil 9903 9.115,42 C 0,00 C
+Rende Facil
+23.09.2025 870-Transferência recebida 99021 612936000049132 1.769,45 C
+23/09 09:59 ARRUDA & BARROS LTDA
+23.09.2025 732-Cielo Vendas Crédito 14024 897780139 4.136,84 C
+23.09.2025 732-Cielo Vendas Débito 14024 897780139 2.444,07 C
+23.09.2025 732-Cielo Vendas Débito 14024 897780139 1.994,51 C
+23.09.2025 732-Cielo Vendas Débito 14024 897780139 176,94 C
+23.09.2025 821-Pix - Recebido 14397 231122127350882 300,00 C
+23/09 11:22 00002107581126 ADRIANA JES
+23.09.2025 821-Pix - Recebido 14397 231720233794201 777,00 C
+23/09 17:20 05547224103 HEITOR G SILVA
+23.09.2025 234-Compra com Cartão 99008 163322 2.981,88 D
+23/09 09:42 ATACADAO 0003 AS
+23.09.2025 234-Compra com Cartão 99008 250088 59,00 D
+23/09 10:37 ADAIR GONCALVES BRAN
+23.09.2025 234-Compra com Cartão 99008 293921 33,50 D
+23/09 11:04 EFICAZ ATACADAO DA L
+23.09.2025 109-Pagamento de Boleto 13105 92301 500,00 D
+ARRAIS ALIMENTOS
+23.09.2025 109-Pagamento de Boleto 13105 92302 137,80 D
+DAMASCENO ALVES LTDA
+23.09.2025 109-Pagamento de Boleto 13105 92303 184,00 D
+LATICINIOS CAMBY LTDA
+23.09.2025 109-Pagamento de Boleto 13105 92304 184,00 D
+LATICINIOS CAMBY LTDA
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 19
+TABLE CONTENT:
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 22.09.2025 109-Pagamento de Boleto 13105 92212 2.229,17 D |  |  |  |  |  |  |  | 
+ | BELLO ALIMENTOS LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 22.09.2025 240-Pagamento Mensalidade Seguro 13013 12695 150,95 D |  |  |  |  |  |  |  | 
+ | BB SEGUROS |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 23.09.2025 870-Transferência recebida 99021 612936000049132 1.769,45 C |  |  |  |  |  |  |  | 
+ | 23/09 09:59 ARRUDA & BARROS LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 23.09.2025 732-Cielo Vendas Débito 14024 897780139 2.444,07 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 23.09.2025 732-Cielo Vendas Débito 14024 897780139 176,94 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 23.09.2025 821-Pix - Recebido 14397 231720233794201 777,00 C |  |  |  |  |  |  |  | 
+ | 23/09 17:20 05547224103 HEITOR G SILVA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 23.09.2025 234-Compra com Cartão 99008 250088 59,00 D |  |  |  |  |  |  |  | 
+ | 23/09 10:37 ADAIR GONCALVES BRAN |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 23.09.2025 109-Pagamento de Boleto 13105 92301 500,00 D |  |  |  |  |  |  |  | 
+ | ARRAIS ALIMENTOS |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 23.09.2025 109-Pagamento de Boleto 13105 92303 184,00 D |  |  |  |  |  |  |  | 
+ | LATICINIOS CAMBY LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+
+--------------------------------------------------
+
+--- Page 20 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome Agência (prefixo/dv) GS Conta nº/dv
+MCM FOODS LTDA 2936-X 37 50.123-9
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+23.09.2025 109-Pagamento de Boleto 13105 92305 441,00 D
+L.C.A-IND.E COM. DE PRODUTOS A
+23.09.2025 109-Pagamento de Boleto 13105 92306 1.250,00 D
+Arthurclean
+23.09.2025 109-Pagamento de Boleto 13105 92307 298,52 D
+DISTRIBUIDORA CENTRAL EMBALAGE
+23.09.2025 109-Pagamento de Boleto 13105 92308 460,00 D
+LATICINIOS CAMBY LTDA
+23.09.2025 109-Pagamento de Boleto 13105 92309 527,90 D
+UNICENTRAL D E LTDA
+23.09.2025 109-Pagamento de Boleto 13105 92310 4.778,67 D
+CORADINI ALIMENTOS LTDA
+23.09.2025 798-BB Rende Fácil 9903 237,46 C 0,00 C
+Rende Facil
+24.09.2025 870-Transferência recebida 99021 612936000049132 137,00 C
+24/09 12:22 ARRUDA & BARROS LTDA
+24.09.2025 830-Dep dinheiro ATM 71174 7810 781071174100922 2.000,00 C
+24/09 10:09 SOP-AV.CEL.ANTONINO
+24.09.2025 830-Dep dinheiro ATM 71174 7810 781071174101020 1.450,00 C
+24/09 10:10 SOP-AV.CEL.ANTONINO
+24.09.2025 830-Dep dinheiro ATM 71174 7810 781071174101133 90,00 C
+24/09 10:11 SOP-AV.CEL.ANTONINO
+24.09.2025 830-Dep dinheiro ATM 71174 7810 781071174101231 1.160,00 C
+24/09 10:12 SOP-AV.CEL.ANTONINO
+24.09.2025 830-Dep dinheiro ATM 71174 7810 781071174101314 50,00 C
+24/09 10:13 SOP-AV.CEL.ANTONINO
+24.09.2025 830-Dep dinheiro ATM 71174 7810 781071174101406 50,00 C
+24/09 10:14 SOP-AV.CEL.ANTONINO
+24.09.2025 830-Dep dinheiro ATM 71174 7810 781071174101455 50,00 C
+24/09 10:14 SOP-AV.CEL.ANTONINO
+24.09.2025 830-Dep dinheiro ATM 71258 7810 781071258100432 1.240,00 C
+24/09 10:04 SOP-AV.CEL.ANTONINO
+24.09.2025 732-Cielo Vendas Débito 14024 897780139 2.020,83 C
+24.09.2025 732-Cielo Vendas Débito 14024 897780139 1.985,33 C
+24.09.2025 732-Cielo Vendas Débito 14024 897780139 306,84 C
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 20
+TABLE CONTENT:
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 23.09.2025 109-Pagamento de Boleto 13105 92306 1.250,00 D |  |  |  |  |  |  |  | 
+ | Arthurclean |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 23.09.2025 109-Pagamento de Boleto 13105 92308 460,00 D |  |  |  |  |  |  |  | 
+ | LATICINIOS CAMBY LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 23.09.2025 109-Pagamento de Boleto 13105 92310 4.778,67 D |  |  |  |  |  |  |  | 
+ | CORADINI ALIMENTOS LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 24.09.2025 870-Transferência recebida 99021 612936000049132 137,00 C |  |  |  |  |  |  |  | 
+ | 24/09 12:22 ARRUDA & BARROS LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 24.09.2025 830-Dep dinheiro ATM 71174 7810 781071174101020 1.450,00 C |  |  |  |  |  |  |  | 
+ | 24/09 10:10 SOP-AV.CEL.ANTONINO |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 24.09.2025 830-Dep dinheiro ATM 71174 7810 781071174101231 1.160,00 C |  |  |  |  |  |  |  | 
+ | 24/09 10:12 SOP-AV.CEL.ANTONINO |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 24.09.2025 830-Dep dinheiro ATM 71174 7810 781071174101406 50,00 C |  |  |  |  |  |  |  | 
+ | 24/09 10:14 SOP-AV.CEL.ANTONINO |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 24.09.2025 830-Dep dinheiro ATM 71258 7810 781071258100432 1.240,00 C |  |  |  |  |  |  |  | 
+ | 24/09 10:04 SOP-AV.CEL.ANTONINO |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 24.09.2025 732-Cielo Vendas Débito 14024 897780139 1.985,33 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+
+--------------------------------------------------
+
+--- Page 21 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome Agência (prefixo/dv) GS Conta nº/dv
+MCM FOODS LTDA 2936-X 37 50.123-9
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+24.09.2025 821-Pix - Recebido 14397 241233289925161 205,20 C
+24/09 12:33 25246912000179 SAGRADO SAB
+24.09.2025 234-Compra com Cartão 99008 372444 37,33 D
+24/09 16:55 FRIGELAR FILIAL 63
+24.09.2025 470-Transferência enviada 99021 614211000002715 7.876,98 D
+24/09 09:40 REI F E LTDA - ME
+24.09.2025 109-Pagamento de Boleto 13105 92401 899,93 D
+SPAL IND BRAS DE BEBIDAS SA
+24.09.2025 109-Pagamento de Boleto 13105 92402 329,84 D
+DISTRIBUIDORA CENTRAL EMBALAGE
+24.09.2025 351-BB Rende Fácil 9903 1.601,12 D 0,00 C
+Rende Facil
+25.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300177 3.400,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+25.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300178 3.475,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+25.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300179 760,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+25.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300180 600,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+25.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300181 40,00 C
+7810-13-SOP-AVENIDA CORONEL ANTONINO-C
+25.09.2025 732-Cielo Vendas Crédito 14024 897780139 3.577,47 C
+25.09.2025 732-Cielo Vendas Débito 14024 897780139 1.848,12 C
+25.09.2025 732-Cielo Vendas Débito 14024 897780139 1.228,80 C
+25.09.2025 732-Cielo Vendas Débito 14024 897780139 302,43 C
+25.09.2025 234-Compra com Cartão 99008 638071 411,60 D
+25/09 14:38 REFRIGEL COMERCIO E
+25.09.2025 234-Compra com Cartão 99008 686953 2.433,60 D
+25/09 15:10 ASSAI ATACADISTA
+25.09.2025 470-Transferência enviada 99021 612936000049132 950,00 D
+25/09 14:20 ARRUDA & BARROS LTDA
+25.09.2025 470-Transferência enviada 99021 613426000025246 500,00 D
+25/09 14:17 SAGRADO SABOR LTDA
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 21
+TABLE CONTENT:
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 24.09.2025 234-Compra com Cartão 99008 372444 37,33 D |  |  |  |  |  |  |  | 
+ | 24/09 16:55 FRIGELAR FILIAL 63 |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 24.09.2025 109-Pagamento de Boleto 13105 92401 899,93 D |  |  |  |  |  |  |  | 
+ | SPAL IND BRAS DE BEBIDAS SA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 24.09.2025 351-BB Rende Fácil 9903 1.601,12 D 0,00 C |  |  |  |  |  |  |  | 
+ | Rende Facil |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 25.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300178 3.475,00 C |  |  |  |  |  |  |  | 
+ | 7810-13-SOP-AVENIDA CORONEL ANTONINO-C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 25.09.2025 830-Dep dinheiro inter agencia 10633 7810 78101063300180 600,00 C |  |  |  |  |  |  |  | 
+ | 7810-13-SOP-AVENIDA CORONEL ANTONINO-C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 25.09.2025 732-Cielo Vendas Crédito 14024 897780139 3.577,47 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 25.09.2025 732-Cielo Vendas Débito 14024 897780139 1.228,80 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 25.09.2025 234-Compra com Cartão 99008 638071 411,60 D |  |  |  |  |  |  |  | 
+ | 25/09 14:38 REFRIGEL COMERCIO E |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 25.09.2025 470-Transferência enviada 99021 612936000049132 950,00 D |  |  |  |  |  |  |  | 
+ | 25/09 14:20 ARRUDA & BARROS LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+
+--------------------------------------------------
+
+--- Page 22 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome Agência (prefixo/dv) GS Conta nº/dv
+MCM FOODS LTDA 2936-X 37 50.123-9
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+25.09.2025 109-Pagamento de Boleto 13105 92501 1.174,47 D
+COTHERPACK IND E C DE EMB LTDA
+25.09.2025 109-Pagamento de Boleto 13105 92502 145,80 D
+FRIGOESTRELA SA
+25.09.2025 109-Pagamento de Boleto 13105 92503 251,58 D
+FRIGOESTRELA SA
+25.09.2025 109-Pagamento de Boleto 13105 92504 342,00 D
+PANTANAL COMERCIO DE ALIMENTOS
+25.09.2025 109-Pagamento de Boleto 13105 92505 516,60 D
+MENDES E IUKIHIRO LTDA ME
+25.09.2025 375-Impostos 13105 92506 1.574,64 D
+RFB-DARF CODIGO DE BARRAS
+25.09.2025 375-Impostos 13105 92507 7.252,89 D
+RFB-DARF CODIGO DE BARRAS
+25.09.2025 144-Pix - Enviado 13105 92508 440,57 D
+25/09 14:13 CEF MATRIZ
+25.09.2025 431-Tarifa Depósito Proces-Caixa 13113 822681100115631 9,30 D
+Cobrança referente 25/09/2025
+25.09.2025 798-BB Rende Fácil 9903 771,23 C 0,00 C
+Rende Facil
+26.09.2025 830-Dep dinheiro ATM 71233 7810 781071233174948 1.100,00 C
+26/09 17:49 SOP-AV.BANDEIRANTES
+26.09.2025 830-Dep dinheiro ATM 71233 7810 781071233175033 550,00 C
+26/09 17:50 SOP-AV.BANDEIRANTES
+26.09.2025 830-Dep dinheiro ATM 71233 7810 781071233175108 10,00 C
+26/09 17:51 SOP-AV.BANDEIRANTES
+26.09.2025 830-Dep dinheiro ATM 71233 7810 781071233175156 2.000,00 C
+26/09 17:51 SOP-AV.BANDEIRANTES
+26.09.2025 830-Dep dinheiro ATM 71233 7810 781071233175238 2.000,00 C
+26/09 17:52 SOP-AV.BANDEIRANTES
+26.09.2025 830-Dep dinheiro ATM 71233 7810 781071233175334 220,00 C
+26/09 17:53 SOP-AV.BANDEIRANTES
+26.09.2025 732-Cielo Vendas Débito 14024 897780139 1.845,68 C
+26.09.2025 732-Cielo Vendas Débito 14024 897780139 1.616,84 C
+26.09.2025 732-Cielo Vendas Débito 14024 897780139 609,25 C
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 22
+TABLE CONTENT:
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 25.09.2025 109-Pagamento de Boleto 13105 92502 145,80 D |  |  |  |  |  |  |  | 
+ | FRIGOESTRELA SA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 25.09.2025 109-Pagamento de Boleto 13105 92504 342,00 D |  |  |  |  |  |  |  | 
+ | PANTANAL COMERCIO DE ALIMENTOS |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 25.09.2025 375-Impostos 13105 92506 1.574,64 D |  |  |  |  |  |  |  | 
+ | RFB-DARF CODIGO DE BARRAS |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 25.09.2025 144-Pix - Enviado 13105 92508 440,57 D |  |  |  |  |  |  |  | 
+ | 25/09 14:13 CEF MATRIZ |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 25.09.2025 798-BB Rende Fácil 9903 771,23 C 0,00 C |  |  |  |  |  |  |  | 
+ | Rende Facil |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 26.09.2025 830-Dep dinheiro ATM 71233 7810 781071233175033 550,00 C |  |  |  |  |  |  |  | 
+ | 26/09 17:50 SOP-AV.BANDEIRANTES |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 26.09.2025 830-Dep dinheiro ATM 71233 7810 781071233175156 2.000,00 C |  |  |  |  |  |  |  | 
+ | 26/09 17:51 SOP-AV.BANDEIRANTES |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 26.09.2025 830-Dep dinheiro ATM 71233 7810 781071233175334 220,00 C |  |  |  |  |  |  |  | 
+ | 26/09 17:53 SOP-AV.BANDEIRANTES |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 26.09.2025 732-Cielo Vendas Débito 14024 897780139 1.616,84 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+
+--------------------------------------------------
+
+--- Page 23 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome Agência (prefixo/dv) GS Conta nº/dv
+MCM FOODS LTDA 2936-X 37 50.123-9
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+26.09.2025 470-Transferência enviada 99021 613426000025246 360,00 D
+26/09 16:18 SAGRADO SABOR LTDA
+26.09.2025 109-Pagamento de Boleto 13105 92601 633,92 D
+COMERCIO DE ALIMENTOS SAO PEDR
+26.09.2025 109-Pagamento de Boleto 13105 92602 478,07 D
+DONANA ALIMENTOS
+26.09.2025 109-Pagamento de Boleto 13105 92603 480,00 D
+ARRAIS ALIMENTOS
+26.09.2025 109-Pagamento de Boleto 13105 92604 1.861,20 D
+CONSORCIO GUAICURUS
+26.09.2025 109-Pagamento de Boleto 13105 92605 14,85 D
+CONSORCIO GUAICURUS
+26.09.2025 351-BB Rende Fácil 9903 6.123,73 D 0,00 C
+Rende Facil
+29.09.2025 830-Dep dinheiro ATM 71233 7810 781071233164432 2.000,00 C
+29/09 16:44 SOP-AV.BANDEIRANTES
+29.09.2025 830-Dep dinheiro ATM 71233 7810 781071233164530 960,00 C
+29/09 16:45 SOP-AV.BANDEIRANTES
+29.09.2025 830-Dep dinheiro ATM 71233 7810 781071233164616 100,00 C
+29/09 16:46 SOP-AV.BANDEIRANTES
+29.09.2025 830-Dep dinheiro ATM 71233 7810 781071233164652 950,00 C
+29/09 16:46 SOP-AV.BANDEIRANTES
+29.09.2025 830-Dep dinheiro ATM 71233 7810 781071233164746 396,00 C
+29/09 16:47 SOP-AV.BANDEIRANTES
+29.09.2025 830-Dep dinheiro ATM 71233 7810 781071233173625 1.940,00 C
+27/09 17:36 SOP-AV.BANDEIRANTES
+29.09.2025 830-Dep dinheiro ATM 71233 7810 781071233173727 2.000,00 C
+27/09 17:37 SOP-AV.BANDEIRANTES
+29.09.2025 830-Dep dinheiro ATM 71233 7810 781071233173821 1.500,00 C
+27/09 17:38 SOP-AV.BANDEIRANTES
+29.09.2025 732-Cielo Vendas Crédito 14024 897780139 14.201,77 C
+29.09.2025 732-Cielo Vendas Débito 14024 897780139 4.440,13 C
+29.09.2025 732-Cielo Vendas Débito 14024 897780139 5.029,29 C
+29.09.2025 732-Cielo Vendas Débito 14024 897780139 1.070,02 C
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 23
+TABLE CONTENT:
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 26.09.2025 109-Pagamento de Boleto 13105 92601 633,92 D |  |  |  |  |  |  |  | 
+ | COMERCIO DE ALIMENTOS SAO PEDR |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 26.09.2025 109-Pagamento de Boleto 13105 92603 480,00 D |  |  |  |  |  |  |  | 
+ | ARRAIS ALIMENTOS |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 26.09.2025 109-Pagamento de Boleto 13105 92605 14,85 D |  |  |  |  |  |  |  | 
+ | CONSORCIO GUAICURUS |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 29.09.2025 830-Dep dinheiro ATM 71233 7810 781071233164432 2.000,00 C |  |  |  |  |  |  |  | 
+ | 29/09 16:44 SOP-AV.BANDEIRANTES |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 29.09.2025 830-Dep dinheiro ATM 71233 7810 781071233164616 100,00 C |  |  |  |  |  |  |  | 
+ | 29/09 16:46 SOP-AV.BANDEIRANTES |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 29.09.2025 830-Dep dinheiro ATM 71233 7810 781071233164746 396,00 C |  |  |  |  |  |  |  | 
+ | 29/09 16:47 SOP-AV.BANDEIRANTES |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 29.09.2025 830-Dep dinheiro ATM 71233 7810 781071233173727 2.000,00 C |  |  |  |  |  |  |  | 
+ | 27/09 17:37 SOP-AV.BANDEIRANTES |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 29.09.2025 732-Cielo Vendas Crédito 14024 897780139 14.201,77 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 29.09.2025 732-Cielo Vendas Débito 14024 897780139 5.029,29 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+
+--------------------------------------------------
+
+--- Page 24 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome Agência (prefixo/dv) GS Conta nº/dv
+MCM FOODS LTDA 2936-X 37 50.123-9
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+29.09.2025 470-Transferência enviada 99021 611873000132161 3.866,90 D
+29/09 11:53 CECILIA AMARILA SOARES
+29.09.2025 470-Transferência enviada 99021 614336000110568 40.000,00 D
+29/09 08:29 CINTHIA JANINE L BARROS
+29.09.2025 109-Pagamento de Boleto 13105 92901 1.065,60 D
+GOMES E CAVACINI LTDA
+29.09.2025 109-Pagamento de Boleto 13105 92902 556,52 D
+OESA COM E REPRES SA
+29.09.2025 109-Pagamento de Boleto 13105 92903 618,81 D
+DONANA ALIMENTOS
+29.09.2025 109-Pagamento de Boleto 13105 92904 1.140,00 D
+55162704 RAYSSA COXEV SILVA
+29.09.2025 109-Pagamento de Boleto 13105 92905 165,05 D
+THG TRANSPORTES COMERCIO LOGIS
+29.09.2025 109-Pagamento de Boleto 13105 92906 924,00 D
+PENNACCHI CIA LTDA
+29.09.2025 109-Pagamento de Boleto 13105 92907 3.975,76 D
+BELLO ALIMENTOS LTDA
+29.09.2025 109-Pagamento de Boleto 13105 92908 527,90 D
+UNICENTRAL D E LTDA
+29.09.2025 798-BB Rende Fácil 9903 18.253,33 C 0,00 C
+Rende Facil
+30.09.2025 732-Cielo Vendas Crédito 14024 897780139 6.189,70 C
+30.09.2025 732-Cielo Vendas Débito 14024 897780139 1.837,72 C
+30.09.2025 732-Cielo Vendas Débito 14024 897780139 1.977,24 C
+30.09.2025 732-Cielo Vendas Débito 14024 897780139 417,61 C
+30.09.2025 234-Compra com Cartão 99008 45502 1.763,31 D
+30/09 09:35 ATACADAO 0003 AS
+30.09.2025 109-Pagamento de Boleto 13105 93001 827,65 D
+UNICENTRAL D E LTDA
+30.09.2025 109-Pagamento de Boleto 13105 93002 184,00 D
+LATICINIOS CAMBY LTDA
+30.09.2025 109-Pagamento de Boleto 13105 93003 322,00 D
+LATICINIOS CAMBY LTDA
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 24
+TABLE CONTENT:
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 29.09.2025 470-Transferência enviada 99021 614336000110568 40.000,00 D |  |  |  |  |  |  |  | 
+ | 29/09 08:29 CINTHIA JANINE L BARROS |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 29.09.2025 109-Pagamento de Boleto 13105 92902 556,52 D |  |  |  |  |  |  |  | 
+ | OESA COM E REPRES SA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 29.09.2025 109-Pagamento de Boleto 13105 92904 1.140,00 D |  |  |  |  |  |  |  | 
+ | 55162704 RAYSSA COXEV SILVA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 29.09.2025 109-Pagamento de Boleto 13105 92906 924,00 D |  |  |  |  |  |  |  | 
+ | PENNACCHI CIA LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 29.09.2025 109-Pagamento de Boleto 13105 92908 527,90 D |  |  |  |  |  |  |  | 
+ | UNICENTRAL D E LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 30.09.2025 732-Cielo Vendas Crédito 14024 897780139 6.189,70 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 30.09.2025 732-Cielo Vendas Débito 14024 897780139 1.977,24 C |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 30.09.2025 234-Compra com Cartão 99008 45502 1.763,31 D |  |  |  |  |  |  |  | 
+ | 30/09 09:35 ATACADAO 0003 AS |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 30.09.2025 109-Pagamento de Boleto 13105 93002 184,00 D |  |  |  |  |  |  |  | 
+ | LATICINIOS CAMBY LTDA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+
+--------------------------------------------------
+
+--- Page 25 ---
+TEXT CONTENT:
+Extrato de Conta
+Conta Corrente
+Nome Agência (prefixo/dv) GS Conta nº/dv
+MCM FOODS LTDA 2936-X 37 50.123-9
+Data Dia Histórico Lote Banco Origem Documento Valor - R$ Saldo - R$
+30.09.2025 109-Pagamento de Boleto 13105 93004 342,00 D
+PANTANAL COMERCIO DE ALIMENTOS
+30.09.2025 109-Pagamento de Boleto 13105 93005 363,74 D
+REFRIGEL ASSISTENCIA TECNICA
+30.09.2025 351-BB Rende Fácil 9903 6.619,57 D 0,00 C
+Rende Facil
+Bloqueado - R$ Disponível - R$ CPMF cobrado - R$ Vencimento Limite - R$
+0,00 0,00 C 0,00
+Mod. 0.51.291-3 - Jan/2025 - SISBB 25030 - bb.com.br - BB Responde 0800 78 5678 - pvb Folha 25
+TABLE CONTENT:
+ | Data | Dia | Histórico | Lote | Banco | Origem | Documento | Valor - R$ | Saldo - R$
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ | 30.09.2025 109-Pagamento de Boleto 13105 93005 363,74 D |  |  |  |  |  |  |  | 
+ | REFRIGEL ASSISTENCIA TECNICA |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  | 
+
+ |  |  |  |  |  |  |  | 
+ | Bloqueado - R$ 0,00 |  | Disponível - R$ 0,00 C |  | CPMF cobrado - R$ 0,00 |  | Vencimento | 
+
+--------------------------------------------------

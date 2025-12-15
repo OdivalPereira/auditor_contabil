@@ -1,0 +1,31 @@
+cookie:
+  expiry_days: 7
+  key: contai_auth_secret_key_change_in_production
+  name: contai_auth_cookie
+credentials:
+  usernames:
+    admin:
+      email: admin@contai.com
+      name: Administrador
+      password: $2b$12$Mv0kDeuKqOUpWU19E/u0Pe4dmZe3usGc7th.leRS8BJNVtbHJQjsy
+      role: admin
+    odivalmp:
+      email: odivalmp@gmail.com
+      first_name: ODIVAL
+      last_name: PEREIRA
+      logged_in: false
+      password: $2b$12$9isOAIp8..931UlS/3Pg.e6/497jkjJTGcHW9AqulVHVLI1mDhrdK
+      password_hint: Aquela
+      roles: null
+    usuario1:
+      email: usuario1@contai.com
+      name: "Usu\xE1rio 1"
+      password: $2b$12$LaawOVGsvZrNdl3fJdlFZOmXCZHCw6hExdHj9fucxjY.4ovRMjY1u
+      role: user
+    usuario2:
+      email: usuario2@contai.com
+      name: "Usu\xE1rio 2"
+      password: $2b$12$LaawOVGsvZrNdl3fJdlFZOmXCZHCw6hExdHj9fucxjY.4ovRMjY1u
+      role: user
+pre-authorized:
+  emails: []

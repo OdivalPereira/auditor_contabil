@@ -1,0 +1,11 @@
+{
+    "name": "Caixa Economica Federal",
+    "bank_id": "104",
+    "keywords": [
+        "Caixa Econômica Federal",
+        "Saldo Anterior",
+        "Extrato"
+    ],
+    "line_pattern": ".*",
+    "columns": []
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor PDF para OFX</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Conversor PDF para OFX</h1>
+            <p>Converta seus extratos bancários em segundos.</p>
+        </header>
+
+        <main>
+            <div class="upload-area" id="drop-zone">
+                <div class="icon">📄</div>
+                <h3>Arraste e solte seu PDF aqui</h3>
+                <p>ou</p>
+                <button id="browse-btn">Selecionar Arquivo</button>
+                <input type="file" id="file-input" accept=".pdf" hidden>
+            </div>
+
+            <div id="file-info" class="hidden">
+                <p>Arquivo selecionado: <span id="filename"></span></p>
+                
+                <div class="account-inputs">
+                    <div class="input-group">
+                        <label for="bank-id">Banco</label>
+                        <input type="text" id="bank-id" placeholder="001">
+                    </div>
+                    <div class="input-group">
+                        <label for="branch-id">Agência</label>
+                        <input type="text" id="branch-id" placeholder="0000">
+                    </div>
+                    <div class="input-group">
+                        <label for="acct-id">Conta</label>
+                        <input type="text" id="acct-id" placeholder="00000-0">
+                    </div>
+                </div>
+
+                <button id="convert-btn" class="primary-btn">Converter para OFX</button>
+            </div>
+
+            <div id="status" class="hidden">
+                <div class="loader"></div>
+                <p>Processando...</p>
+            </div>
+
+            <div id="result" class="hidden">
+                <div class="success-icon">✅</div>
+                <p>Conversão concluída!</p>
+                <a id="download-link" href="#" class="download-btn">Baixar OFX</a>
+                <button id="reset-btn" class="secondary-btn">Converter Outro</button>
+            </div>
+
+            <div id="error" class="hidden">
+                <p class="error-msg"></p>
+                <button id="retry-btn" class="secondary-btn">Tentar Novamente</button>
+            </div>
+        </main>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>

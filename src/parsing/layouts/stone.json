@@ -1,0 +1,11 @@
+{
+    "name": "Stone",
+    "bank_id": "197",
+    "keywords": [
+        "Stone",
+        "Instituição de Pagamento",
+        "Extrato"
+    ],
+    "line_pattern": ".*",
+    "columns": []
+}

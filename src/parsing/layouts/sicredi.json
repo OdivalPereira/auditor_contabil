@@ -1,0 +1,10 @@
+{
+    "name": "Sicredi",
+    "bank_id": "748",
+    "keywords": [
+        "Sicredi",
+        "Cooperativa"
+    ],
+    "line_pattern": ".*",
+    "columns": []
+}

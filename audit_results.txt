@@ -1,0 +1,78 @@
+
+============================================================
+AUDITING: Extrato Banco do Brasil  Janeiro 2025.pdf
+============================================================
+Potential Transaction Lines Found: 46
+Parsed Transactions: 28
+SUMMARY: Raw Candidates: 46 vs Parsed: 28
+WARNING: Count mismatch in Extrato Banco do Brasil  Janeiro 2025.pdf!
+--- UNMATCHED RAW LINES (Potential Missing Transactions) ---
+ [MISSING?] 03/01/2025 000013105109 Pagamento de Boleto 10.301 406,34 D332.231,48 C
+ [MISSING?] 06/01/2025 315399015470 Transferência enviada553.426.000.019.9131.256,68 D
+ [MISSING?] 06/01 10:24 EDILSON JOSE GIACHINI
+ [MISSING?] 06/01/2025 315399015470 Transferência enviada553.426.000.019.91348.000,00 D
+ [MISSING?] 06/01 10:29 EDILSON JOSE GIACHINI
+ [MISSING?] 06/01/2025 000013105361 Pgto conta água 10.601 163,99 D282.810,81 C
+ [MISSING?] 07/01/2025 834673143331 Saque dinheiro ATM cartao 71.646.404.641.121100,00 D
+ [MISSING?] 07/01 16:46 SOP-DOURADOS
+ [MISSING?] 07/01/2025 834673140331 Saque dinheiro ATM cartao 71.649.354.641.121600,00 D
+ [MISSING?] 07/01 16:49 SOP-DOURADOS
+ [MISSING?] 07/01/2025 834673140331 Saque dinheiro ATM cartao 71.650.184.641.121300,00 D
+ [MISSING?] 07/01 16:50 SOP-DOURADOS
+ [MISSING?] 07/01/2025 315399015120 Transferido para Poupança550.391.510.029.999260,00 D
+ [MISSING?] 07/01 11:23 DIEGO PEGO CAVALHEIRO
+ [MISSING?] 07/01/2025 315399015470 Transferência enviada553.426.000.502.671400.000,00 D
+ [MISSING?] 07/01 11:24 ARMANDO PASSINI
+ ... (truncating) ...
+
+============================================================
+AUDITING: Extrato Banco do Brasil - Novembro 2025.pdf
+============================================================
+Potential Transaction Lines Found: 44
+Parsed Transactions: 33
+SUMMARY: Raw Candidates: 44 vs Parsed: 33
+WARNING: Count mismatch in Extrato Banco do Brasil - Novembro 2025.pdf!
+--- UNMATCHED RAW LINES (Potential Missing Transactions) ---
+ [MISSING?] 03/11/2025 0000 13105109 Pagamento de Boleto 110.301 406,51 D132.869,20 C
+ [MISSING?] 04/11/2025 0000 13105109 Pagamento de Boleto 110.401 651,40 D132.217,80 C
+ [MISSING?] 05/11/2025 0000 13105361 Pgto conta água 110.501 574,15 D
+ [MISSING?] 05/11/2025 0000 13105109 Pagamento de Boleto 110.502 710,00 D
+ [MISSING?] 05/11/2025 0000 13105109 Pagamento de Boleto 110.503 710,00 D130.223,65 C
+ [MISSING?] 06/11/2025 0000 13105109 Pagamento de Boleto 110.6011.486,05 D
+ [MISSING?] 06/11/2025 0000 13105109 Pagamento de Boleto 110.6021.445,25 D
+ [MISSING?] 06/11/2025 0000 13105109 Pagamento de Boleto 110.6031.289,54 D126.002,81 C
+ [MISSING?] 07/11/2025 0000 13105109 Pagamento de Boleto 110.7012.543,78 D123.459,03 C
+ [MISSING?] 10/11/2025 0000 13105109 Pagamento de Boleto 111.001 303,60 D
+ [MISSING?] 10/11/2025 0000 13105109 Pagamento de Boleto 111.002 6.380,00 D
+ [MISSING?] 10/11/2025 0000 13105109 Pagamento de Boleto 111.003 906,26 D
+ [MISSING?] 10/11/2025 0000 13105363 Pagto conta telefone 111.004 263,22 D
+ [MISSING?] 10/11/2025 0000 13105363 Pagto conta telefone 111.005 232,07 D
+ [MISSING?] 10/11/2025 0000 13105109 Pagamento de Boleto 111.006 87,70 D115.286,18 C
+ [MISSING?] 12/11/2025 0000 13105144 Pix - Enviado 111.201 3.324,04 D
+ ... (truncating) ...
+
+============================================================
+AUDITING: Contabilizado_Banco do Brasil 06.2025.pdf
+============================================================
+Potential Transaction Lines Found: 159
+Parsed Transactions: 127
+SUMMARY: Raw Candidates: 159 vs Parsed: 127
+WARNING: Count mismatch in Contabilizado_Banco do Brasil 06.2025.pdf!
+--- UNMATCHED RAW LINES (Potential Missing Transactions) ---
+ [MISSING?] 02/06/2025 0000 14175976 TED-Crédito em Conta33.554.7492.120,66 C
+ [MISSING?] 02/06/2025 0000 14397821 Pix - Recebido 21.627.172.261.192500,00 C
+ [MISSING?] 02/06 16:27 00001078943192 RODRIGO CLA
+ [MISSING?] 02/06/2025 0000 14397821 Pix - Recebido 21.646.410.025.872400,00 C
+ [MISSING?] 02/06 16:46 00000360693105 JULIANA ANT
+ [MISSING?] 02/06/2025 0000 14020624 Cobrança 111.531.000.009.015455,00 C
+ [MISSING?] 02/06/2025 0000 14397821 Pix - Recebido 488.741.568.192.57162.000,00 C
+ [MISSING?] 02/06 11:22 33105164000132 DOURAMOTO C
+ [MISSING?] 02/06/2025 0000 13128500 FCO Liberação 315.328.866.000.087111.814,85 D8.698,58 C
+ [MISSING?] 03/06/2025 0000 14397821 Pix - Recebido 31.237.476.095.602350,00 C
+ [MISSING?] 03/06 12:37 00000360693105 JULIANA ANT
+ [MISSING?] 03/06/2025 0000 14397821 Pix - Recebido 31.603.066.589.7227.723,94 C
+ [MISSING?] 03/06 16:03 61573796000166 ALLIANZ SEG
+ [MISSING?] 03/06/2025 0000 14020624 Cobrança 111.541.000.008.3721.007,04 C
+ [MISSING?] 03/06/2025 0000 13113124 CBR Registro 204.034.017.0194,08 D17.775,48 C
+ [MISSING?] 04/06/2025 0000 14020624 Cobrança 111.551.000.009.2761.356,48 C
+ ... (truncating) ...

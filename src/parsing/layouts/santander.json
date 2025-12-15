@@ -1,0 +1,11 @@
+{
+    "name": "Santander",
+    "bank_id": "033",
+    "keywords": [
+        "Santander",
+        "Extrato",
+        "Saldo"
+    ],
+    "line_pattern": ".*",
+    "columns": []
+}

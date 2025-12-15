@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  contai_app:
+    image: contai-auditor:latest
+    build: .
+    container_name: contai_auditor
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+      - ./config:/app/config
+      # Uncomment for development (hot reload)
+      # - ./src:/app/src
+      # - ./app.py:/app/app.py
+    environment:
+      - TZ=America/Sao_Paulo
+    restart: unless-stopped
