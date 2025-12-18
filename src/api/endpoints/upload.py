@@ -1,48 +1,53 @@
 from fastapi import APIRouter, File, UploadFile, HTTPException
 from src.api.state import global_state
 from src.parsing.sources.ledger_pdf import LedgerParser
-from src.parsing.sources.ofx import OfxParser
 from src.parsing.facade import ParserFacade
 from src.core.consolidator import TransactionConsolidator
 import pandas as pd
 import shutil
 import os
 import tempfile
+import traceback
 
 router = APIRouter()
 
 @router.post("/ledger")
 async def upload_ledger(file: UploadFile = File(...)):
     try:
-        suffix = os.path.splitext(file.filename)[1]
+        suffix = os.path.splitext(file.filename)[1].lower()
         with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
             shutil.copyfileobj(file.file, tmp)
             tmp_path = tmp.name
         
-        # Process Ledger
-        # Assuming LedgerParser works with file path or stream if modified, 
-        # but existing code uses path in some places.
-        # Let's check LedgerParser usage in existing code.
-        # It takes 'ledger_file' which can be UploadedFile (Streamlit) or path?
-        # In current conciliator_app.py: df_ledger = ledger_parser.parse(ledger_file)
-        # If it's a PDF path, LedgerParser handles it.
+        # Use Legacy LedgerParser which handles both PDF and CSV (delegating to LedgerCSVParser)
+        parser = LedgerParser()
+        try:
+            df = parser.parse(tmp_path)
+            # Legacy parser returns clean DataFrame with date (obj), amount (float), description, source
+        except Exception as e:
+            # If legacy parser fails, raise specific error
+            raise ValueError(f"Erro no parser legado: {e}")
         
-        ledger_parser = LedgerParser()
-        if suffix.lower() == '.csv':
-            df = pd.read_csv(tmp_path)
-        else:
-            df = ledger_parser.parse(tmp_path)
-            
-        df['amount'] = pd.to_numeric(df['amount'], errors='coerce').fillna(0.0)
+        if df.empty:
+             raise ValueError("Nenhuma transação válida encontrada após processamento (LedgerParser).")
+
+        # Ensure correct types just in case, but respect Parser output
+        # Convert date objects to datetime64 for pandas consistency if needed, 
+        # but Facade returns .date objects usually. 
+        # API State expects datetime64 for matching logic.
         df['date'] = pd.to_datetime(df['date'])
         
+        # Store
         global_state.ledger_df = df
         global_state.ledger_filename = file.filename
         
         return {"message": "Ledger uploaded successfully", "count": len(df), "filename": file.filename}
         
+    except ValueError as ve:
+         raise HTTPException(status_code=400, detail=str(ve))
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=f"Erro interno: {str(e)}")
 
 @router.post("/bank")
 async def upload_bank(files: list[UploadFile] = File(...)):
@@ -57,29 +62,28 @@ async def upload_bank(files: list[UploadFile] = File(...)):
                 tmp_path = tmp.name
             
             try:
-                parser = None
-                if suffix == '.ofx':
-                    parser = OfxParser()
-                else:
-                    parser = ParserFacade.get_parser(tmp_path)
+                # Use Legacy Facade which handles OFX and PDF Pipeline
+                # Facade.get_parser returns the facade instance itself in current implementation
+                facade = ParserFacade.get_parser(tmp_path)
+                df, _ = facade.parse(tmp_path)
                 
-                if parser:
-                    df, _ = parser.parse(tmp_path)
+                if df is not None and not df.empty:
                     df['source_file'] = file.filename
                     all_dfs.append(df)
                 else:
-                    errors.append(f"No parser for {file.filename}")
+                    errors.append(f"No transactions found for {file.filename}")
+                    
             except Exception as e:
                 errors.append(f"Error parsing {file.filename}: {str(e)}")
         
         if all_dfs:
             consolidated = TransactionConsolidator.consolidate(all_dfs)
-            # Filter zeros like in legacy
+            # Legacy app filtered small amounts (zeros)
             consolidated = consolidated[abs(consolidated['amount']) > 0.009].copy()
+            
+            # Ensure dates are datetime (Facade returns date objects)
             consolidated['date'] = pd.to_datetime(consolidated['date'])
             
-            # Store in state
-            # If bank data already exists, maybe append? For now, replace.
             global_state.bank_df = consolidated
             
             return {
@@ -88,9 +92,10 @@ async def upload_bank(files: list[UploadFile] = File(...)):
                 "errors": errors
             }
         else:
-             raise HTTPException(status_code=400, detail=f"No valid transactions found. Errors: {errors}")
+             raise HTTPException(status_code=400, detail=f"No valid transactions. Errors: {errors}")
 
     except Exception as e:
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.get("/status")

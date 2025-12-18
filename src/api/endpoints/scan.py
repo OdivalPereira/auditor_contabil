@@ -2,8 +2,13 @@ from fastapi import APIRouter, HTTPException
 from pydantic import BaseModel
 from src.utils.scanner import FileScanner
 from src.api.state import global_state
+from src.parsing.facade import ParserFacade
+from src.core.consolidator import TransactionConsolidator
 import pandas as pd
 import os
+import tkinter as tk
+from tkinter import filedialog
+import traceback
 
 router = APIRouter()
 
@@ -19,25 +24,32 @@ def scan_folder(req: ScanRequest):
         scanner = FileScanner()
         df_scan = scanner.scan_folder(req.path)
         
-        # We process this immediately or just return valid files?
-        # Returning list of files for user to select is better UX, but for MVP let's auto-ingest or just return list.
-        # Frontend will display list.
-        
-        # Convert DF to records for JSON
         records = df_scan.to_dict(orient='records')
         return {"files": records}
         
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@router.post("/browse")
+def browse_folder():
+    try:
+        root = tk.Tk()
+        root.withdraw()
+        root.wm_attributes('-topmost', 1)
+        # Bring to front hack
+        root.lift()
+        root.focus_force()
+        selected_folder = filedialog.askdirectory(master=root)
+        root.destroy()
+        
+        if selected_folder:
+             return {"path": selected_folder}
+        return {"path": ""}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error opening dialog: {e}")
+
 @router.post("/ingest")
 def ingest_scanned_files(files: list[str]):
-    # Ingest specialized logic for locally found files (paths)
-    # Similar to upload but reading from disk
-    from src.parsing.facade import ParserFacade
-    from src.core.consolidator import TransactionConsolidator
-    from src.parsing.sources.ofx import OfxParser
-    
     all_dfs = []
     errors = []
     
@@ -47,18 +59,16 @@ def ingest_scanned_files(files: list[str]):
              continue
              
         try:
-            parser = None
-            if file_path.lower().endswith('.ofx'):
-                 parser = OfxParser()
-            else:
-                 parser = ParserFacade.get_parser(file_path)
+            # Use Legacy Facade EXACTLY like upload_bank
+            facade = ParserFacade.get_parser(file_path)
+            df, _ = facade.parse(file_path)
             
-            if parser:
-                df, _ = parser.parse(file_path)
+            if df is not None and not df.empty:
                 df['source_file'] = os.path.basename(file_path)
                 all_dfs.append(df)
             else:
-                errors.append(f"No parser for {file_path}")
+                errors.append(f"No transactions found for {file_path}")
+                
         except Exception as e:
             errors.append(f"Error {file_path}: {e}")
             
