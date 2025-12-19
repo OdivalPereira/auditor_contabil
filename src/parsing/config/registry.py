@@ -60,18 +60,23 @@ class LayoutRegistry:
         return BankLayout(columns=columns, **layout_data)
 
     def detect(self, text: str) -> Optional[BankLayout]:
-        """
-        Detect the appropriate layout for the given PDF text.
+        """Matches text against registered layout keywords."""
+        if not text:
+            return None
         
-        Args:
-            text: Extracted text from PDF
-            
-        Returns:
-            First matching BankLayout, or None if no match
-        """
+        # Normalize text and keywords (remove accents and upper)
+        def normalize(t: str) -> str:
+            import unicodedata
+            return "".join(
+                c for c in unicodedata.normalize('NFD', t.upper())
+                if unicodedata.category(c) != 'Mn'
+            )
+
+        norm_text = normalize(text)
+        
         for layout in self.layouts:
-            if all(k in text for k in layout.keywords):
-                logger.debug(f"Detected layout: {layout.name}")
+            if all(normalize(k) in norm_text for k in layout.keywords):
+                logger.debug(f"Matches layout: {layout.name}")
                 return layout
         return None
     

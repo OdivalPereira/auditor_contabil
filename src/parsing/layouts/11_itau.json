@@ -1,0 +1,11 @@
+{
+    "name": "Itau",
+    "bank_id": "341",
+    "keywords": [
+        "Agência",
+        "lançamentos",
+        "período"
+    ],
+    "line_pattern": ".*",
+    "columns": []
+}

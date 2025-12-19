@@ -8,8 +8,13 @@ Tests the PDF extraction pipeline including:
 - OCR fallback (mocked)
 """
 import pytest
+import os
+import sys
 from unittest.mock import Mock, patch, MagicMock
 from datetime import datetime
+
+# Add project root to path
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Import from new unified module
 from src.parsing.pipeline import ExtractorPipeline

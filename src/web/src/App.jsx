@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
-import { LayoutDashboard, FileSpreadsheet, UploadCloud } from 'lucide-react';
+import { LayoutDashboard, FileSpreadsheet, UploadCloud, FileType } from 'lucide-react';
 import Dashboard from './pages/Dashboard';
 import Conciliation from './pages/Conciliation';
 import Upload from './pages/Upload';
+import Extractor from './pages/Extractor';
 
 function App() {
     return (
@@ -18,6 +19,10 @@ function App() {
                             <LayoutDashboard size={20} style={{ marginRight: 10 }} />
                             Dashboard
                         </NavLink>
+                        <NavLink to="/extractor" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+                            <FileType size={20} style={{ marginRight: 10 }} />
+                            Conversor PDF
+                        </NavLink>
                         <NavLink to="/conciliation" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
                             <FileSpreadsheet size={20} style={{ marginRight: 10 }} />
                             Conciliação
@@ -32,6 +37,7 @@ function App() {
                 <main className="main-content">
                     <Routes>
                         <Route path="/" element={<Dashboard />} />
+                        <Route path="/extractor" element={<Extractor />} />
                         <Route path="/conciliation" element={<Conciliation />} />
                         <Route path="/upload" element={<Upload />} />
                     </Routes>

@@ -1,0 +1,9 @@
+{
+    "name": "CEF",
+    "bank_id": "104",
+    "keywords": [
+        "Extrato por período"
+    ],
+    "line_pattern": ".*",
+    "columns": []
+}

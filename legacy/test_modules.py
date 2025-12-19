@@ -1,7 +1,7 @@
 import os
 import pandas as pd
-from src.parsers.ledger import LedgerParser
-from src.parsers.bb_pdf import BBPdfParser
+from src.parsing.sources.ledger_pdf import LedgerParser
+from src.parsing.banks.bb import BBMonthlyPDFParser
 from src.core.reconciler import Reconciler
 
 # Paths
@@ -19,8 +19,8 @@ def test_modules():
     assert len(df_ledger) > 0, "Ledger parsing failed"
     
     # 2. Test Bank Parser (BB PDF)
-    print("2. Testing BBPdfParser...")
-    b_parser = BBPdfParser()
+    print("2. Testing BBMonthlyPDFParser...")
+    b_parser = BBMonthlyPDFParser()
     bank_txns = []
     
     # Find a PDF to test

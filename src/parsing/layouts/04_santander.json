@@ -2,9 +2,7 @@
     "name": "Santander",
     "bank_id": "033",
     "keywords": [
-        "Santander",
-        "Extrato",
-        "Saldo"
+        "Internet Banking"
     ],
     "line_pattern": ".*",
     "columns": []

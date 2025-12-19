@@ -18,8 +18,8 @@ import os
 # Add project root to path
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from src.cont_ai.extractor.generic import GenericPDFExtractor
-from src.cont_ai.extractor.layout import BankLayout, ColumnDef
+from src.parsing.extractors.generic import GenericPDFExtractor
+from src.parsing.config.layout import BankLayout, ColumnDef
 
 
 # =============================================================================

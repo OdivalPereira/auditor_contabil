@@ -5,8 +5,8 @@ from ..base import BaseParser
 
 logger = logging.getLogger(__name__)
 
-class BBMonthlyPDFParser(BaseParser):
-    bank_name = 'Banco do Brasil'
+class BradescoPDFParser(BaseParser):
+    bank_name = 'Bradesco'
 
     def parse(self, file_path_or_buffer) -> tuple[pd.DataFrame, dict]:
         return self.parse_pdf(file_path_or_buffer)

@@ -92,43 +92,23 @@ class ExtractorPipeline:
         
         result['layout'] = layout.name
 
-        # 3. Try Generic Extractor with Auto-Correction
-        logger.info(f"Trying Extractor with layout: {layout.name}")
+        # 3. Choose Specialized Parser or Generic Extractor
+        from .banks import PARSERS
         
-        # 3. Try Generic Extractor with Auto-Correction
-        logger.info(f"Trying Extractor with layout: {layout.name}")
-        
-        # Mapping Layout Name -> Specialized Parser Class
-        # Imports done inside method or top-level? Top level preferred or lazy.
-        from .banks.bb import BBPdfParser, BBMonthlyPDFParser
-        from .banks.cef import CEFPdfParser
-        from .banks.sicredi import SicrediPDFParser
-        from .banks.santander import SantanderPDFParser
-        from .banks.stone import StonePDFParser
-        from .banks.itau import ItauPDFParser
-        from .banks.cresol import CresolParser
-        
-        extractor = None
-        name_lower = layout.name.lower()
-        
-        if "banco do brasil" in name_lower or "bb" in name_lower:
-            # Check if receipt or monthly?
-            # For now assume Monthly PDF logic holds
-            extractor = BBMonthlyPDFParser() 
-        elif "caixa" in name_lower or "cef" in name_lower:
-            extractor = CEFPdfParser()
-        elif "sicredi" in name_lower:
-            extractor = SicrediPDFParser()
-        elif "santander" in name_lower:
-            extractor = SantanderPDFParser()
-        elif "stone" in name_lower:
-            extractor = StonePDFParser()
-        elif "itau" in name_lower or "itaú" in name_lower:
-            extractor = ItauPDFParser()
-        elif "cresol" in name_lower:
-             extractor = CresolParser(layout)
+        parser_cls = PARSERS.get(layout.bank_id)
+        if not parser_cls:
+            # Try lookup by normalized name if bank_id fails
+            name_key = layout.name.upper().replace(" ", "")
+            parser_cls = PARSERS.get(name_key)
+            
+        if parser_cls:
+            logger.info(f"Using specialized parser: {parser_cls.__name__}")
+            parser = parser_cls()
         else:
-            extractor = GenericPDFExtractor(layout)
+            logger.info(f"Using GenericPDFExtractor for layout: {layout.name}")
+            parser = GenericPDFExtractor(layout)
+
+        extractor = parser
         
         # Auto-correction loop
         max_attempts = 3

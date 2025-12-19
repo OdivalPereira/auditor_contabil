@@ -10,6 +10,7 @@ from typing import Dict, Any, Tuple
 import logging
 import pandas as pd
 import re
+from datetime import datetime
 
 logger = logging.getLogger(__name__)
 
@@ -23,6 +24,176 @@ class BaseParser(ABC):
         Tuple[DataFrame, Dict]: (transactions_df, metadata)
     """
     
+    def parse_pdf(self, file_path_or_buffer) -> tuple[pd.DataFrame, dict]:
+        """
+        Template method for processing a PDF file.
+        Opens the PDF, iterates through pages, and collects transactions.
+        """
+        import pdfplumber
+        all_txns = []
+        bal_start = None
+        bal_end = None
+        
+        try:
+            with pdfplumber.open(file_path_or_buffer) as pdf:
+                for page in pdf.pages:
+                    txns, b_s, b_e = self.extract_page(page)
+                    all_txns.extend(txns)
+                    
+                    if bal_start is None and b_s is not None:
+                        bal_start = b_s
+                    if b_e is not None:
+                        bal_end = b_e
+        except Exception as e:
+            logger.error(f"Parse Error in {self.__class__.__name__}: {e}")
+            
+        df = pd.DataFrame(all_txns)
+        if not df.empty:
+            df = df.drop_duplicates().reset_index(drop=True)
+            
+        metadata = {
+            'bank': getattr(self, 'bank_name', 'Unknown Bank'),
+            'balance_start': bal_start,
+            'balance_end': bal_end
+        }
+        return df, metadata
+
+    def extract_page(self, page) -> Tuple[list, float, float]:
+        """
+        Extracts transactions and balances from a single page.
+        Defaults to extract_transactions_smart but can be overridden.
+        """
+        return self.extract_transactions_smart(page)
+    
+    def extract_transactions_smart(self, page_or_text) -> Tuple[list, float, float]:
+        """
+        Smart extraction that finds dates and values regardless of exact layout.
+        Returns (transactions_list, first_balance_found, last_balance_found)
+        """
+        import pdfplumber
+        if isinstance(page_or_text, str):
+            return [], None, None
+
+        # If it's a pdfplumber page
+        words = page_or_text.extract_words()
+        lines = {}
+        for w in words:
+            top = int(w['top'] // 2) * 2 # Group by 2px tolerance
+            if top not in lines: lines[top] = []
+            lines[top].append(w)
+            
+        txns = []
+        desc_buffer = []
+        bal_first = None
+        bal_last = None
+        
+        amt_pattern = re.compile(r"(-?[\d\.]*,\d{2})\s*([CD])?")
+
+        # Try to find a global year in the page
+        full_page_text = page_or_text.extract_text() or ""
+        global_year = None
+        year_match = re.search(r"20\d{2}", full_page_text)
+        if year_match: global_year = int(year_match.group(0))
+
+        months_map = {
+            'JAN': 1, 'FEV': 2, 'MAR': 3, 'ABR': 4, 'MAI': 5, 'JUN': 6,
+            'JUL': 7, 'AGO': 8, 'SET': 9, 'OUT': 10, 'NOV': 11, 'DEZ': 12
+        }
+
+        for top in sorted(lines.keys()):
+            line_words = sorted(lines[top], key=lambda x: x['x0'])
+            text = " ".join([w['text'] for w in line_words])
+            
+            # Find all potential amounts on the line
+            matches = list(amt_pattern.finditer(text))
+            
+            # Check for Balance markers
+            is_balance_line = any(k in text.upper() for k in ["SALDO", "S A L D O", "TRANSPORTE"])
+            is_start_bal = any(k in text.upper() for k in ["ANTERIOR", "INICIAL"])
+            
+            if is_balance_line and matches:
+                val_s, dc = matches[-1].groups()
+                bal_val = self._parse_br_amount(val_s)
+                if dc == 'D': bal_val = -abs(bal_val)
+                
+                if bal_first is None or is_start_bal:
+                    bal_first = bal_val
+                bal_last = bal_val
+
+            # Find Date (Supports DD/MM/YYYY, DD.MM.YYYY, DD/MM/YY, DD/MM or DD / MON)
+            date_match = re.search(r"(\d{2})([/\.\s]+)([a-zA-Z]{3}|\d{2})(?:[/\.\s]+(\d{4}|\d{2}))?", text)
+            
+            if not date_match:
+                if not self.should_ignore_line(text):
+                    desc_buffer.append(text)
+                continue
+            
+            # Found a date
+            dt = None
+            day, sep, mon_s, year_s = date_match.groups()
+            
+            try:
+                # Handle numeric month vs name
+                month = 1
+                if mon_s.upper() in months_map:
+                    month = months_map[mon_s.upper()]
+                else:
+                    month = int(mon_s)
+                
+                # Handle year
+                year = global_year or datetime.now().year
+                if year_s:
+                    if len(year_s) == 2: year = 2000 + int(year_s)
+                    else: year = int(year_s)
+                
+                dt = datetime(year, month, int(day)).date()
+            except:
+                # Fallback to simple regex if this custom one failed
+                simple_match = re.search(r"(\d{2}[/\.]\d{2}[/\.](\d{4}|\d{2}))", text)
+                if simple_match:
+                    ds, ys = simple_match.groups()
+                    try:
+                        fmt = "%d/%m/%y" if len(ys)==2 else "%d/%m/%Y"
+                        dt = datetime.strptime(ds.replace(".","/"), fmt).date()
+                    except: pass
+            
+            if not dt:
+                if not self.should_ignore_line(text):
+                    desc_buffer.append(text)
+                continue
+            
+            if len(matches) >= 1:
+                # If we see 2+ numbers on a transaction line, usually last is balance
+                if len(matches) >= 2:
+                    pot_bal = self._parse_br_amount(matches[-1].group(1))
+                    if bal_first is None: bal_first = pot_bal
+                    bal_last = pot_bal
+                    amt_match = matches[-2]
+                else:
+                    amt_match = matches[0]
+                
+                val_s, dc = amt_match.groups()
+                amount = self._parse_br_amount(val_s)
+                
+                # Determine sign
+                keywords_up = text.upper()
+                if "-" in val_s or dc == 'D' or any(k in keywords_up for k in ['DEBITO', 'PAGTO', 'ENVIADO', 'SAQU', 'TARIFA', 'PIX -', 'PGTO', 'RESGATE']):
+                    amount = -abs(amount)
+                elif dc == 'C' or any(k in keywords_up for k in ['CREDITO', 'RECEBIDO', 'ESTORN', 'DEPOSITO', 'PIX +', 'APLICA']):
+                    amount = abs(amount)
+                
+                if amount != 0:
+                    description = " ".join(desc_buffer).strip()
+                    if not description: description = text
+                    txns.append({'date': dt, 'amount': amount, 'description': description, 'source': 'Bank'})
+                    desc_buffer = []
+            else:
+                desc_buffer.append(text)
+                
+        if txns:
+            logger.debug(f"extract_transactions_smart found {len(txns)} txns")
+        return txns, bal_first, bal_last
+
     def should_ignore_line(self, line: str) -> bool:
         """
         Checks if a line should be ignored based on common keywords

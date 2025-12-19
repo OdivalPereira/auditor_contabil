@@ -16,7 +16,8 @@ from .config.layout import BankLayout, ColumnDef
 from .config.registry import LayoutRegistry
 
 # Banks
-from .banks.bb import BBPdfParser, BBMonthlyPDFParser
+from .banks.bb import BBMonthlyPDFParser
+from .banks.itau import ItauPDFParser
 from .banks.stone import StonePDFParser
 
 # Sources

@@ -1,0 +1,10 @@
+{
+    "name": "Banco do Brasil",
+    "bank_id": "001",
+    "keywords": [
+        "Agência",
+        "Lote"
+    ],
+    "line_pattern": ".*",
+    "columns": []
+}

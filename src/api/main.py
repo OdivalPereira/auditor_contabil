@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from src.api.endpoints import upload, reconcile, scan, export
+from src.api.endpoints import upload, reconcile, scan, export, extract
 
 app = FastAPI(title="Auditor Contábil API", version="1.0.0")
 
@@ -24,6 +24,7 @@ app.include_router(upload.router, prefix="/api/upload", tags=["Upload"])
 app.include_router(reconcile.router, prefix="/api/reconcile", tags=["Reconcile"])
 app.include_router(scan.router, prefix="/api/scan", tags=["Scan"])
 app.include_router(export.router, prefix="/api/export", tags=["Export"])
+app.include_router(extract.router, prefix="/api/extract", tags=["Extract"])
 
 @app.get("/api/health")
 def health_check():

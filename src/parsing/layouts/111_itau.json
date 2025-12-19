@@ -2,9 +2,8 @@
     "name": "Itau",
     "bank_id": "341",
     "keywords": [
-        "Lançamentos do período",
-        "Saldo total",
-        "Limite da conta"
+        "lançamentos",
+        "período"
     ],
     "line_pattern": ".*",
     "columns": []

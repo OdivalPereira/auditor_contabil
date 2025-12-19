@@ -1,0 +1,10 @@
+{
+    "name": "Bradesco",
+    "bank_id": "237",
+    "keywords": [
+        "TOTAL DISPONÍVEL",
+        "INVESTIMENTO"
+    ],
+    "line_pattern": ".*",
+    "columns": []
+}

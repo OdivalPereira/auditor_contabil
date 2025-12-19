@@ -2,9 +2,8 @@
     "name": "Banco do Brasil",
     "bank_id": "001",
     "keywords": [
-        "Extrato de conta corrente",
-        "Período do extrato",
-        "Cliente - Conta atual"
+        "Agência",
+        "Lote"
     ],
     "line_pattern": ".*",
     "columns": []

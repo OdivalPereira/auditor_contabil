@@ -1,0 +1,9 @@
+{
+    "name": "Sicoob",
+    "bank_id": "756",
+    "keywords": [
+        "SICOOB"
+    ],
+    "line_pattern": ".*",
+    "columns": []
+}

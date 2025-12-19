@@ -1,0 +1,9 @@
+{
+    "name": "Stone",
+    "bank_id": "999",
+    "keywords": [
+        "Stone"
+    ],
+    "line_pattern": ".*",
+    "columns": []
+}
