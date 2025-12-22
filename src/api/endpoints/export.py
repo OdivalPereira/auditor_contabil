@@ -1,9 +1,14 @@
+"""
+Endpoints de exportação de relatórios de conciliação.
+"""
 from fastapi import APIRouter, HTTPException, Body
 from fastapi.responses import StreamingResponse, Response
 from src.api.state import global_state
 from src.exporters.pdf_renderer import PDFReportExporter
+from src.exporters.excel_exporter import ExcelExporter
 from src.exporting.ofx import OFXWriter
 from src.common.models import UnifiedTransaction
+from src.ui.unified_view import UnifiedViewController
 import io
 import pandas as pd
 from typing import List
@@ -11,65 +16,143 @@ from datetime import datetime
 
 router = APIRouter()
 
-@router.get("/excel")
-def export_excel():
-    results = global_state.reconcile_results
-    if not results:
-        raise HTTPException(status_code=400, detail="No reconciliation data available. Run reconcile first.")
-        
-    buffer = io.BytesIO()
-    with pd.ExcelWriter(buffer, engine='xlsxwriter') as writer:
-        results['remaining_l'].to_excel(writer, sheet_name='So_no_Diario', index=False)
-        results['remaining_b'].to_excel(writer, sheet_name='So_no_Banco', index=False)
-        results['matched_l'].to_excel(writer, sheet_name='Conciliados', index=False)
-        
-    buffer.seek(0)
-    
-    headers = {
-        'Content-Disposition': 'attachment; filename="relatorio_conciliacao.xlsx"'
-    }
-    return StreamingResponse(buffer, media_type='application/vnd.ms-excel', headers=headers)
-
-@router.get("/pdf")
-def export_pdf():
-    results = global_state.reconcile_results
-    if not results:
-         raise HTTPException(status_code=400, detail="No reconciliation data available.")
-         
-    start_date = results['start_date']
-    end_date = results['end_date']
-    df_ledger = results['df_ledger']
-    df_bank = results['df_bank']
-    remaining_l = results['remaining_l']
-    remaining_b = results['remaining_b']
-    
-    pdf_exporter = PDFReportExporter(
-        company_name="1266 - MCM FOODS LTDA",
-        start_date=start_date.strftime('%d/%m/%Y') if not df_ledger.empty else None,
-        end_date=end_date.strftime('%d/%m/%Y') if not df_ledger.empty else None
-    )
-    
-    new_diff = abs(remaining_l['amount'].sum() - remaining_b['amount'].sum())
-    summary_metrics = {
-        'bank_total': df_bank['amount'].sum(),
-        'ledger_total': df_ledger['amount'].sum(),
-        'net_diff': new_diff,
-        'unmatched_bank_count': len(remaining_b),
-        'unmatched_ledger_count': len(remaining_l)
-    }
+@router.post("/excel")
+def export_excel(rows_data: List[dict] = Body(...)):
+    """Exporta relatório de conciliação em formato Excel moderno com dados filtrados."""
+    if not rows_data:
+        raise HTTPException(status_code=400, detail="Nenhum dado fornecido para exportação.")
     
     try:
-        pdf_bytes = pdf_exporter.generate(summary_metrics, remaining_b, remaining_l)
+        # Obter informações do período dos dados fornecidos
+        dates = [r.get('date') for r in rows_data if r.get('date')]
+        if dates:
+            start_date = min(dates)
+            end_date = max(dates)
+            # Converter strings ISO para datetime se necessário
+            if isinstance(start_date, str):
+                start_date = pd.to_datetime(start_date)
+            if isinstance(end_date, str):
+                end_date = pd.to_datetime(end_date)
+            start_str = start_date.strftime('%d/%m/%Y') if pd.notna(start_date) else None
+            end_str = end_date.strftime('%d/%m/%Y') if pd.notna(end_date) else None
+        else:
+            start_str = None
+            end_str = None
+        
+        # Criar exporter
+        print(f"DEBUG Excel: company_name = '{global_state.company_name}'")
+        exporter = ExcelExporter(
+            company_name=global_state.company_name,
+            start_date=start_str,
+            end_date=end_str
+        )
+        
+        # Gerar Excel
+        excel_bytes = exporter.generate(rows_data)
+        buffer = io.BytesIO(excel_bytes)
+        buffer.seek(0)
+        
+        # Nome do arquivo com timestamp
+        timestamp = datetime.now().strftime('%Y-%m-%d_%H%M%S')
+        filename = f"conciliacao_{timestamp}.xlsx"
+        
+        headers = {
+            'Content-Disposition': f'attachment; filename="{filename}"'
+        }
+        
+        return StreamingResponse(
+            buffer,
+            media_type='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            headers=headers
+        )
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=f"Erro ao gerar Excel: {str(e)}")
+
+@router.post("/pdf")
+def export_pdf(rows_data: List[dict] = Body(...)):
+    """Exporta relatório de conciliação em formato PDF moderno com dados filtrados."""
+    if not rows_data:
+        raise HTTPException(status_code=400, detail="Nenhum dado fornecido para exportação.")
+    
+    try:
+        # Separar dados por status para as tabelas de discrepância
+        conciliados = [r for r in rows_data if 'Conciliado' in r.get('status', '')]
+        apenas_banco = [r for r in rows_data if r.get('status') == 'Apenas no Banco']
+        apenas_diario = [r for r in rows_data if r.get('status') == 'Apenas no Diário']
+        
+        # Converter para DataFrames
+        df_apenas_banco = pd.DataFrame(apenas_banco)
+        df_apenas_diario = pd.DataFrame(apenas_diario)
+        
+        # Converter datas de string para datetime se necessário
+        for df in [df_apenas_banco, df_apenas_diario]:
+            if not df.empty and 'date' in df.columns:
+                df['date'] = pd.to_datetime(df['date'])
+        
+        # Obter informações do período
+        dates = [r.get('date') for r in rows_data if r.get('date')]
+        if dates:
+            all_dates = pd.to_datetime(dates)
+            start_date = all_dates.min()
+            end_date = all_dates.max()
+            start_str = start_date.strftime('%d/%m/%Y') if pd.notna(start_date) else None
+            end_str = end_date.strftime('%d/%m/%Y') if pd.notna(end_date) else None
+        else:
+            start_str = None
+            end_str = None
+        
+        # Criar exporter
+        print(f"DEBUG PDF: company_name = '{global_state.company_name}'")
+        pdf_exporter = PDFReportExporter(
+            company_name=global_state.company_name,
+            start_date=start_str,
+            end_date=end_str
+        )
+        
+        # Calcular métricas
+        total_apenas_banco = df_apenas_banco['amount'].sum() if not df_apenas_banco.empty else 0
+        total_apenas_diario = df_apenas_diario['amount'].sum() if not df_apenas_diario.empty else 0
+        new_diff = abs(total_apenas_diario - total_apenas_banco)
+        
+        summary_metrics = {
+            'bank_total': sum(r.get('amount', 0) for r in rows_data if r.get('source') == 'Banco'),
+            'ledger_total': sum(r.get('amount', 0) for r in rows_data if r.get('source') == 'Diário'),
+            'net_diff': new_diff,
+            'unmatched_bank_count': len(apenas_banco),
+            'unmatched_ledger_count': len(apenas_diario)
+        }
+        
+        # Gerar PDF com todas as transações para o resumo
+        pdf_bytes = pdf_exporter.generate(
+            summary_metrics, 
+            df_apenas_banco, 
+            df_apenas_diario,
+            all_rows=rows_data
+        )
         buffer = io.BytesIO(pdf_bytes)
         buffer.seek(0)
         
+        # Nome do arquivo com timestamp
+        timestamp = datetime.now().strftime('%Y-%m-%d_%H%M%S')
+        filename = f"conciliacao_{timestamp}.pdf"
+        
         headers = {
-            'Content-Disposition': 'attachment; filename="relatorio_conciliacao.pdf"'
+            'Content-Disposition': f'attachment; filename="{filename}"'
         }
+        
         return StreamingResponse(buffer, media_type='application/pdf', headers=headers)
         
+    except HTTPException:
+        raise
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(status_code=500, detail=f"Erro ao gerar PDF: {str(e)}")
 
 @router.post("/ofx")
 def export_ofx(transactions: List[dict] = Body(...)):
@@ -111,3 +194,4 @@ def export_ofx(transactions: List[dict] = Body(...)):
         import traceback
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
+

@@ -1,5 +1,4 @@
 import pandas as pd
-import streamlit as st
 
 class UnifiedViewController:
     def __init__(self):
@@ -67,10 +66,10 @@ class UnifiedViewController:
 
         # Process Unmatched (The most important ones)
         for _, row in unmatched_l.iterrows():
-            add_row(row, 'Diário', 'Pendente - Diário', "-1", 'unmatched_ledger')
+            add_row(row, 'Diário', 'Apenas no Diário', "-1", 'unmatched_ledger')
             
         for _, row in unmatched_b.iterrows():
-            add_row(row, 'Banco', 'Pendente - Banco', "-1", 'unmatched_bank')
+            add_row(row, 'Banco', 'Apenas no Banco', "-1", 'unmatched_bank')
             
         df = pd.DataFrame(rows)
         if df.empty:

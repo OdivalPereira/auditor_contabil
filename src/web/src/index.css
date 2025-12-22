@@ -82,12 +82,13 @@ body {
 }
 
 .sidebar {
-    width: 260px;
     background: var(--sidebar-bg);
     border-right: var(--glass-border);
     display: flex;
     flex-direction: column;
     padding: 20px;
+    transition: width 0.3s ease;
+    overflow-x: hidden;
 }
 
 .main-content {
@@ -100,12 +101,14 @@ body {
 .nav-item {
     display: flex;
     align-items: center;
-    padding: 12px 16px;
+    justify-content: flex-start;
+    padding: 12px 14px;
     color: var(--text-secondary);
     text-decoration: none;
     border-radius: 8px;
     margin-bottom: 8px;
     transition: all 0.2s;
+    white-space: nowrap;
 }
 
 .nav-item:hover {

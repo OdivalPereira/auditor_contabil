@@ -91,10 +91,218 @@ class BBMonthlyPDFParser(BaseParser):
     def extract_page(self, page):
         text = page.extract_text() or ""
         
+        # Try different BB layouts in order of specificity
         if "G331" in text:
             return self._extract_g331(page)
+        
+        # Check if this is the full format (with agência/lote codes)
+        # Sample line: "05/03/2025 3935 99020870 Transferência... 5.186,00 C"
+        if self._has_full_format(text):
+            return self._extract_full_format(page)
+        
+        # Otherwise try simplified format
+        # Sample line: "02/01/2025 Dep dinheiro ATM"
+        # Valor may be on same line or next line
+        return self._extract_simplified_format(page)
+    
+    def _has_full_format(self, text):
+        """Check if text contains full format transactions (with agência/lote)."""
+        lines = text.split('\n')
+        import re
+        # Look for pattern: DATE + 4-digit-code + 8-digit-code
+        full_pattern = re.compile(r'\d{2}/\d{2}/\d{4}\s+\d{4}\s+\d{8}')
+        for line in lines[:30]:  # Check first 30 lines
+            if full_pattern.search(line):
+                return True
+        return False
+    
+    def _extract_full_format(self, page):
+        """Extract from BB format with agência/lote codes."""
+        rows = []
+        bal_start = None
+        bal_end = None
+        
+        text = page.extract_text() or ""
+        lines = text.split('\n')
+        
+        import re
+        # Pattern: DATE AGÊNCIA LOTE DESCRIPTION VALOR C/D
+        # Example: 05/03/2025 3935 99020870 Transferência recebida 603.935.000.011.535 5.186,00 C
+        txn_pattern = re.compile(
+            r'(\d{2}/\d{2}/\d{4})\s+(\d{4})\s+(\d{8})\s+(.*?)\s+([\d\.,]+)\s+([CD])'
+        )
+        
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
             
-        return self.extract_transactions_smart(page)
+            # Skip headers
+            if any(word in line.upper() for word in ['DOCUMENTO', 'DATA', 'LANÇAMENTO']):
+                continue
+            
+            m = txn_pattern.search(line)
+            if m:
+                try:
+                    dt_s, ag, lote, desc, val_s, sign = m.groups()
+                    dt = datetime.strptime(dt_s, "%d/%m/%Y").date()
+                    amount = self._parse_br_amount(val_s)
+                    if sign == 'D':
+                        amount = -abs(amount)
+                    else:
+                        amount = abs(amount)
+                    
+                    rows.append({
+                        'date': dt,
+                        'amount': amount,
+                        'description': desc.strip(),
+                        'source': 'Bank'
+                    })
+                except:
+                    pass
+        
+        
+        # DON'T fall back to generic extraction - return what we found
+        return rows, bal_start, bal_end
+    
+    def _extract_simplified_format(self, page):
+        """Extract from simplified BB format where date may be on its own line."""
+        rows = []
+        bal_start = None
+        bal_end = None
+        
+        text = page.extract_text() or ""
+        lines = text.split('\n')
+        
+        import re
+        i = 0
+        while i < len(lines):
+            line = lines[i].strip()
+            if not line:
+                i += 1
+                continue
+            
+            # Check if line is JUST a date (or date + whitespace)
+            date_only_match = re.match(r'^(\d{2}/\d{2}/\d{4})\s*$', line)
+            if date_only_match:
+                # Date is on its own line, transaction details on next line(s)
+                dt_s = date_only_match.group(1)
+                
+                try:
+                    dt = datetime.strptime(dt_s, "%d/%m/%Y").date()
+                    
+                    # Look at next few lines for transaction details
+                    # Format: LOTE DOCUMENTO DESCRIPTION VALOR (+/-)
+                    # Or: DESCRIPTION
+                    #     LOTE DOCUMENTO VALOR (+/-)
+                    
+                    description_parts = []
+                    amount = None
+                    sign_char = None
+                    
+                    j = i + 1
+                    while j < len(lines) and j < i + 5:  # Look ahead max 5 lines
+                        next_line = lines[j].strip()
+                        if not next_line:
+                            j += 1
+                            continue
+                        
+                        # Stop if we hit another date line
+                        if re.match(r'^\d{2}/\d{2}/\d{4}', next_line):
+                            break
+                        
+                        # Look for amount pattern: valor (+) or valor (-)
+                        amt_pattern = re.search(r'([\d\.,]+)\s*\(([+\-])\)', next_line)
+                        if amt_pattern:
+                            val_s, sign_char = amt_pattern.groups()
+                            amount = self._parse_br_amount(val_s)
+                            # Add the rest of this line to description (before the amount)
+                            desc_part = next_line[:amt_pattern.start()].strip()
+                            if desc_part:
+                                description_parts.append(desc_part)
+                            j += 1
+                            break  # Found amount, stop looking
+                        else:
+                            # No amount on this line, it's part of description
+                            description_parts.append(next_line)
+                        
+                        j += 1
+                    
+                    if amount is not None:
+                        if sign_char == '-':
+                            amount = -abs(amount)
+                        else:
+                            amount = abs(amount)
+                        
+                        description = ' '.join(description_parts).strip()
+                        if description:  # Only add if we have a description
+                            rows.append({
+                                'date': dt,
+                                'amount': amount,
+                                'description': description,
+                                'source': 'Bank'
+                            })
+                        
+                        i = j - 1  # Continue from where we left off
+                except:
+                    pass
+            
+            # Also handle case where date + description are on same line
+            else:
+                date_match = re.match(r'^(\d{2}/\d{2}/\d{4})\s+(.*)', line)
+                if date_match:
+                    dt_s, rest = date_match.groups()
+                    
+                    # Skip header lines
+                    if any(word in rest.upper() for word in ['DOCUMENTO', 'DATA', 'SALDO', 'AGÊNCIA', 'LANÇAMENTO', 'HISTÓRICO', 'VALOR', 'DIA', 'LOTE']):
+                        i += 1
+                        continue
+                    
+                    try:
+                        dt = datetime.strptime(dt_s, "%d/%m/%Y").date()
+                        
+                        # Try to find amount on this line or next
+                        # Pattern: valor (+) or (-)
+                        amount_pattern = re.compile(r'([\d\.,]+)\s*\(([+\-])\)')
+                        
+                        # Check current line
+                        amt_match = amount_pattern.search(line)
+                        description = rest.strip()
+                        
+                        if not amt_match and i + 1 < len(lines):
+                            # Check next line
+                            next_line = lines[i + 1].strip()
+                            amt_match = amount_pattern.search(next_line)
+                            if amt_match:
+                                # Amount was on next line, add description parts
+                                desc_part = next_line[:amt_match.start()].strip()
+                                if desc_part:
+                                    description += " " + desc_part
+                                i += 1  # Skip the next line since we consumed it
+                        
+                        if amt_match:
+                            val_s, sign_char = amt_match.groups()
+                            amount = self._parse_br_amount(val_s)
+                            if sign_char == '-':
+                                amount = -abs(amount)
+                            else:
+                                amount = abs(amount)
+                            
+                            if description:  # Only add if we have a description
+                                rows.append({
+                                    'date': dt,
+                                    'amount': amount,
+                                    'description': description,
+                                    'source': 'Bank'
+                                })
+                    except:
+                        pass
+            
+            i += 1
+        
+        
+        # DON'T fall back to generic extraction - return what we found
+        return rows, bal_start, bal_end
 
     def _extract_g331(self, page):
         """

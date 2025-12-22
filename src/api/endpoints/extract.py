@@ -6,7 +6,7 @@ import shutil
 import pandas as pd
 from src.parsing.config.registry import LayoutRegistry
 from src.parsing.pipeline import ExtractorPipeline
-from src.cont_ai.utils.banks import get_bank_name
+from src.common.banks import get_bank_name
 from src.api.state import global_state
 
 router = APIRouter()

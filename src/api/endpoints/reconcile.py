@@ -3,8 +3,10 @@ from src.api.state import global_state
 from src.core.reconciler import Reconciler
 from src.core.matcher import CombinatorialMatcher
 from src.ui.unified_view import UnifiedViewController
+from src.common.logging_config import get_logger
 import pandas as pd
 
+logger = get_logger(__name__)
 router = APIRouter()
 
 @router.post("/")
@@ -24,13 +26,13 @@ def run_reconciliation(tolerance: int = 3):
         (bank['date'] <= end_date)
     ].copy()
 
-    print(f"DEBUG: Ledger range {start_date} to {end_date}")
-    print(f"DEBUG: Bank transactions before filter: {len(bank)}")
-    print(f"DEBUG: Bank transactions after filter: {len(bank_filtered)}")
+    logger.info("Reconciliation started.", ledger_range=(str(start_date), str(end_date)), bank_tx_count=len(bank_filtered))
     
     # 2. Reconcile
     reconciler = Reconciler()
     matched_l, matched_b, unmatched_l, unmatched_b = reconciler.reconcile(start, bank_filtered, date_tolerance=tolerance)
+    
+    logger.info("Exact matching completed.", matched_count=len(matched_l), unmatched_ledger=len(unmatched_l))
     
     # 3. Combinatorial
     matcher = CombinatorialMatcher()
@@ -38,6 +40,8 @@ def run_reconciliation(tolerance: int = 3):
         unmatched_l, unmatched_b, tolerance_days=tolerance
     )
     
+    logger.info("Combinatorial matching completed.", comb_matches=len(comb_matches), remaining_ledger=len(remaining_l))
+
     # 4. Save results in state (for export/pdf generation later if needed)
     global_state.reconcile_results = {
         'matched_l': matched_l,
@@ -79,6 +83,20 @@ def run_reconciliation(tolerance: int = 3):
     merged['date'] = merged['date'].dt.strftime('%Y-%m-%d')
     chart_data = merged.rename(columns={'amount_x': 'ledger', 'amount_y': 'bank'}).to_dict(orient='records')
     
+    # Log status distribution for debugging
+    status_counts = {}
+    for row in results:
+        status = row.get('status', 'Unknown')
+        status_counts[status] = status_counts.get(status, 0) + 1
+    
+    logger.info(
+        "Reconciliation completed",
+        bank_total=metrics['bank_total'],
+        ledger_total=metrics['ledger_total'],
+        comb_matches=len(comb_matches),
+        status_distribution=status_counts
+    )
+
     return {
         "metrics": metrics,
         "rows": results,

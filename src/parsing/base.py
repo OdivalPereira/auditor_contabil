@@ -7,12 +7,12 @@ Provides unified base classes for both:
 """
 from abc import ABC, abstractmethod
 from typing import Dict, Any, Tuple
-import logging
+from src.common.logging_config import get_logger
 import pandas as pd
 import re
 from datetime import datetime
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 
 class BaseParser(ABC):
@@ -43,14 +43,13 @@ class BaseParser(ABC):
                     # Store the VERY FIRST balance found as bal_start
                     if bal_start is None and b_s is not None:
                         bal_start = b_s
-                        logger.debug(f"Found bal_start: {bal_start} on page {i+1}")
+                        logger.debug(f"Found bal_start: {bal_start}", page=i+1)
                         
-                    # Always update bal_end with the LATEST balance found
                     if b_e is not None:
                         bal_end = b_e
-                        logger.debug(f"Updated bal_end: {bal_end} on page {i+1}")
+                        logger.debug(f"Updated bal_end: {bal_end}", page=i+1)
         except Exception as e:
-            logger.error(f"Parse Error in {self.__class__.__name__}: {e}")
+            logger.error(f"Parse Error in {self.__class__.__name__}: {e}", exc_info=True, parser=self.__class__.__name__)
             
         # Balance-Aware Deduplication
         # If specialized parsers include a 'bal_row' in the transaction dict,
@@ -218,7 +217,7 @@ class BaseParser(ABC):
                 desc_buffer.append(text)
                 
         if txns:
-            logger.debug(f"extract_transactions_smart found {len(txns)} txns")
+            logger.debug(f"Smart extraction found transactions.", count=len(txns), page_sample=full_page_text[:100] if 'full_page_text' in locals() else "N/A")
         return txns, bal_first, bal_last
 
     def should_ignore_line(self, line: str) -> bool:
@@ -289,6 +288,7 @@ class BaseParser(ABC):
                 'discarded_candidates': []
             }
         except Exception as e:
+            logger.error(f"Adapter extraction failed: {e}", exc_info=True)
             return {
                 'transactions': [],
                 'account_info': {},

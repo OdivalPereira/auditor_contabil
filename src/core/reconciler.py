@@ -32,10 +32,10 @@ class Reconciler:
 
             # 1. Exact Date Match (with Tolerance on Absolute Amount)
         for l_idx, l_row in df_ledger.iterrows():
-            # Use fuzzy amount match: abs(abs(bank_amt) - abs(ledger_amt)) < 0.01
+            # Use EXACT signed amount match: abs(bank_amt - ledger_amt) < 0.01
             candidates = df_bank[
                 (df_bank['date'] == l_row['date']) &
-                (abs(df_bank['amount'].abs() - abs(l_row['amount'])) < 0.01) &
+                (abs(df_bank['amount'] - l_row['amount']) < 0.01) &
                 (df_bank['matched'] == False)
             ]
             
@@ -50,7 +50,7 @@ class Reconciler:
                 df_bank.at[b_idx, 'match_id'] = mid
                 df_ledger.at[l_idx, 'match_id'] = mid
 
-        # 2. Tolerant Match (Date +/- tolerance days, Absolute Amount tolerance)
+        # 2. Tolerant Match (Date +/- tolerance days, Signed Amount)
         TOLERANCE_DAYS = date_tolerance
         unmatched_ledger_indices = df_ledger[df_ledger['matched'] == False].index
         
@@ -59,10 +59,10 @@ class Reconciler:
             l_date = l_row['date']
             l_amt = l_row['amount']
             
-            # Filter candidates by Absolute Amount Tolerance FIRST
+            # Filter candidates by Signed Amount Tolerance FIRST
             candidates = df_bank[
                 (df_bank['matched'] == False) &
-                (abs(df_bank['amount'].abs() - abs(l_amt)) < 0.01)
+                (abs(df_bank['amount'] - l_amt) < 0.01)
             ].copy()
             
             if not candidates.empty:

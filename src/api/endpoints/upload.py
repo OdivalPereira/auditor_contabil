@@ -3,41 +3,48 @@ from src.api.state import global_state
 from src.parsing.sources.ledger_pdf import LedgerParser
 from src.parsing.facade import ParserFacade
 from src.core.consolidator import TransactionConsolidator
+from src.common.logging_config import get_logger
 import pandas as pd
 import shutil
 import os
 import tempfile
 import traceback
 
+logger = get_logger(__name__)
 router = APIRouter()
 
 @router.post("/ledger")
 async def upload_ledger(file: UploadFile = File(...)):
     try:
+        logger.info(f"Ledger upload started: {file.filename}")
         suffix = os.path.splitext(file.filename)[1].lower()
         with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
             shutil.copyfileobj(file.file, tmp)
             tmp_path = tmp.name
         
-        # Use Legacy LedgerParser which handles both PDF and CSV (delegating to LedgerCSVParser)
         parser = LedgerParser()
         try:
-            df = parser.parse(tmp_path)
-            # Legacy parser returns clean DataFrame with date (obj), amount (float), description, source
+            result = parser.parse(tmp_path)
+            # Check if result is a tuple (df, company_name) or just df
+            if isinstance(result, tuple):
+                df, company_name = result
+                global_state.company_name = company_name
+                logger.info("Company name extracted from ledger.", company=company_name)
+            else:
+                df = result
+                logger.info("Ledger parsed (no company name extracted).")
+            
+            logger.info("Ledger parsed successfully.", tx_count=len(df), format=suffix)
         except Exception as e:
-            # If legacy parser fails, raise specific error
+            logger.error(f"Ledger parsing error: {e}", exc_info=True)
             raise ValueError(f"Erro no parser legado: {e}")
         
         if df.empty:
+             logger.warning("No valid transactions found in ledger.")
              raise ValueError("Nenhuma transação válida encontrada após processamento (LedgerParser).")
 
-        # Ensure correct types just in case, but respect Parser output
-        # Convert date objects to datetime64 for pandas consistency if needed, 
-        # but Facade returns .date objects usually. 
-        # API State expects datetime64 for matching logic.
         df['date'] = pd.to_datetime(df['date'])
         
-        # Store (Accumulate)
         if not global_state.ledger_df.empty:
             global_state.ledger_df = pd.concat([global_state.ledger_df, df], ignore_index=True)
         else:
@@ -45,66 +52,70 @@ async def upload_ledger(file: UploadFile = File(...)):
             
         global_state.ledger_filename = f"{global_state.ledger_filename}, {file.filename}" if global_state.ledger_filename else file.filename
         
-        return {"message": "Ledger uploaded successfully", "count": len(global_state.ledger_df), "filename": file.filename}
+        logger.info(f"Ledger updated: {file.filename}", total_count=len(global_state.ledger_df), file_type="ledger", company=global_state.company_name)
+        return {"message": "Ledger uploaded successfully", "count": len(global_state.ledger_df), "filename": file.filename, "company": global_state.company_name}
         
     except ValueError as ve:
+         logger.warning(f"Ledger upload validation error: {ve}")
          raise HTTPException(status_code=400, detail=str(ve))
     except Exception as e:
-        traceback.print_exc()
+        logger.error(f"Internal error during ledger upload: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Erro interno: {str(e)}")
 
 @router.post("/bank")
 async def upload_bank(files: list[UploadFile] = File(...)):
     try:
+        logger.info(f"Bank upload started: {len(files)} files")
         all_dfs = []
         errors = []
         
         for file in files:
+            logger.debug(f"Processing bank file: {file.filename}")
             suffix = os.path.splitext(file.filename)[1].lower()
             with tempfile.NamedTemporaryFile(delete=False, suffix=suffix) as tmp:
                 shutil.copyfileobj(file.file, tmp)
                 tmp_path = tmp.name
             
             try:
-                # Use Legacy Facade which handles OFX and PDF Pipeline
-                # Facade.get_parser returns the facade instance itself in current implementation
                 facade = ParserFacade.get_parser(tmp_path)
                 df, _ = facade.parse(tmp_path)
                 
                 if df is not None and not df.empty:
+                    logger.info(f"File {file.filename} parsed successfully.", tx_count=len(df))
                     df['source_file'] = file.filename
                     all_dfs.append(df)
                 else:
+                    logger.warning(f"No transactions found in {file.filename}")
                     errors.append(f"No transactions found for {file.filename}")
                     
             except Exception as e:
+                logger.error(f"Error parsing {file.filename}: {e}", exc_info=True)
                 errors.append(f"Error parsing {file.filename}: {str(e)}")
         
         if all_dfs:
             consolidated = TransactionConsolidator.consolidate(all_dfs)
-            # Legacy app filtered small amounts (zeros)
             consolidated = consolidated[abs(consolidated['amount']) > 0.009].copy()
-            
-            # Ensure dates are datetime (Facade returns date objects)
             consolidated['date'] = pd.to_datetime(consolidated['date'])
             
-            # Accumulate
             if not global_state.bank_df.empty:
                 global_state.bank_df = pd.concat([global_state.bank_df, consolidated], ignore_index=True)
             else:
                 global_state.bank_df = consolidated
             
+            logger.info("Bank data accumulated successfully.", total_count=len(global_state.bank_df), files_count=len(files))
             return {
                 "message": "Bank files processed", 
                 "count": len(global_state.bank_df), 
                 "errors": errors
             }
         else:
+             logger.error("Bank upload failed: no valid data extracted.")
              raise HTTPException(status_code=400, detail=f"No valid transactions. Errors: {errors}")
 
     except Exception as e:
-        traceback.print_exc()
-        raise HTTPException(status_code=500, detail=str(e))
+        if not isinstance(e, HTTPException):
+            logger.error(f"Internal error during bank upload: {e}", exc_info=True)
+        raise e
 
 @router.post("/clear")
 async def clear_data():

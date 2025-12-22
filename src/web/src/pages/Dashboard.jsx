@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import api from '../api/client';
+import { useApp } from '../AppContext';
 import {
     LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer,
     PieChart, Pie, Cell
@@ -7,20 +8,23 @@ import {
 import { Activity, Archive, AlertTriangle, CheckCheck, PieChart as PieIcon } from 'lucide-react';
 
 const Dashboard = () => {
-    const [data, setData] = useState(null);
+    const { reconcileResults, setReconcileResults, uploadStatus, refreshUploadStatus, lastTolerance } = useApp();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
     const fetchData = async () => {
+        if (uploadStatus.ledger_count === 0) {
+            await refreshUploadStatus();
+        }
+
         setLoading(true);
         setError('');
         try {
-            const res = await api.post('/reconcile/'); // Trigger reconcile to get fresh stats
+            const res = await api.post(`/reconcile/?tolerance=${lastTolerance}`);
             if (res.data.error) {
                 console.warn(res.data.error);
-                // Don't set error if it's just "Missing data", user needs to upload
             } else {
-                setData(res.data);
+                setReconcileResults(res.data);
             }
         } catch (err) {
             console.error(err);
@@ -31,8 +35,13 @@ const Dashboard = () => {
     };
 
     useEffect(() => {
-        fetchData();
+        // If we don't have results but we have uploaded files, fetch.
+        if (!reconcileResults) {
+            fetchData();
+        }
     }, []);
+
+    const data = reconcileResults;
 
     // Compute Pie Data
     const pieData = useMemo(() => {
@@ -45,9 +54,9 @@ const Dashboard = () => {
         };
 
         data.rows.forEach(r => {
-            if (r.status.includes('Conciliado')) counts['Conciliado']++;
-            else if (r.status.includes('Banco')) counts['Pendente - Banco']++;
-            else if (r.status.includes('Diário')) counts['Pendente - Diário']++;
+            if ((r.status || '').includes('Conciliado')) counts['Conciliado']++;
+            else if ((r.status || '').includes('Banco')) counts['Pendente - Banco']++;
+            else if ((r.status || '').includes('Diário')) counts['Pendente - Diário']++;
         });
 
         return [
@@ -105,7 +114,7 @@ const Dashboard = () => {
             <div className="glass-panel" style={{ display: 'inline-block', padding: 40 }}>
                 <Archive size={60} style={{ color: 'var(--accent-color)', marginBottom: 20 }} opacity={0.5} />
                 <h2>Bem-vindo ao Auditor Contábil</h2>
-                <p style={{ color: 'var(--text-secondary)' }}>Nenhum dado carregado. Comece pela aba <strong style={{ color: 'white' }}>Dados e Upload</strong>.</p>
+                <p style={{ color: 'var(--text-secondary)' }}>Nenhum dado carregado ou processado. Comece pela aba <strong style={{ color: 'white' }}>Dados e Upload</strong>.</p>
             </div>
         </div>
     );
@@ -162,7 +171,7 @@ const Dashboard = () => {
                     <ResponsiveContainer width="100%" height="85%">
                         <LineChart data={chartData}>
                             <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" />
-                            <XAxis dataKey="date" stroke="#94a3b8" fontSize={12} tickFormatter={(str) => str.split('-').slice(1).join('/')} />
+                            <XAxis dataKey="date" stroke="#94a3b8" fontSize={12} tickFormatter={(str) => str ? str.split('-').slice(1).join('/') : ''} />
                             <YAxis stroke="#94a3b8" fontSize={12} tickFormatter={(val) => `R$${val / 1000}k`} />
                             <Tooltip content={<CustomTooltip />} />
                             <Legend wrapperStyle={{ paddingTop: 10 }} />

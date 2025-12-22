@@ -15,94 +15,44 @@ class LedgerCSVParser(BaseParser):
     """
     Parser for accounting ledger CSV files.
     
-    Handles Brazilian CSV format with semicolon separator and Latin1 encoding.
-    Expected columns: Data, Valor, Débito, Crédito, Complemento
+    Handles Brazilian CSV format with proper sign detection based on Debit/Credit columns.
     """
     
-    def parse(self, file_path_or_buffer) -> pd.DataFrame:
+    def parse(self, file_path_or_buffer):
         """
-        Parse ledger CSV file.
+        Parse ledger CSV file with robust handling.
         
         Args:
             file_path_or_buffer: Path to CSV file or file-like object
             
         Returns:
-            DataFrame with columns: date, amount, description, source
+            Tuple of (DataFrame, company_name) where DataFrame has columns: date, amount, description, source
         """
+        # Use the corrected parsing logic from csv_helper
+        from src.utils.csv_helper import _parse_ledger_csv
+        
         try:
-            df_raw = pd.read_csv(
-                file_path_or_buffer, 
-                sep=';', 
-                encoding='latin1', 
-                skiprows=2, 
-                index_col=False,
-                on_bad_lines='skip'
-            )
-        except Exception:
-            # Fallback if skiprows varies
-            df_raw = pd.read_csv(
-                file_path_or_buffer, 
-                sep=';', 
-                encoding='latin1', 
-                header=2,
-                on_bad_lines='skip'
-            )
+            df, company_name = _parse_ledger_csv(file_path_or_buffer)
             
-        # Generic cleanup
-        df_raw.columns = [c.strip() for c in df_raw.columns]
-        
-        # Verify required columns exist
-        required = ['Data', 'Valor', 'Débito', 'Crédito', 'Complemento']
-        if not all(col in df_raw.columns for col in required):
-            logger.warning(f"CSV Missing columns. Found: {list(df_raw.columns)}")
-            return pd.DataFrame()
+            # Ensure output matches expected format
+            # csv_helper returns: date, amount, description (and other numbered columns)
+            # We need to ensure 'source' column exists
+            if 'source' not in df.columns:
+                df['source'] = 'Ledger'
             
-        transactions = []
-        
-        for _, row in df_raw.iterrows():
-            try:
-                date_str = row['Data']
-                if pd.isna(date_str): 
-                    continue
-                
-                dt = datetime.strptime(date_str, "%d/%m/%Y").date()
-                
-                complement = str(row['Complemento']).strip()
-                
-                # Parse Amount (handles multiple formats)
-                val_raw = str(row['Valor']).strip()
-                amount = self._parse_amount_flexible(val_raw)
-                    
-                transactions.append({
-                    'date': dt,
-                    'amount': amount,
-                    'description': complement,
-                    'source': 'Ledger'
-                })
-                
-            except Exception as e:
-                logger.debug(f"Skipping row: {e}")
-                continue
-                
-        return pd.DataFrame(transactions)
-    
-    def _parse_amount_flexible(self, val_raw: str) -> float:
-        """
-        Parse amount from various formats.
-        
-        Handles:
-        - Brazilian: 1.000,00 -> 1000.00
-        - European: 1000,00 -> 1000.00
-        - US: 1,000.00 -> 1000.00
-        """
-        if ',' in val_raw and '.' in val_raw:
-            # 1.000,00 -> 1000.00 (Brazilian)
-            val_clean = val_raw.replace('.', '').replace(',', '.')
-        elif ',' in val_raw:
-            # 1000,00 -> 1000.00 (European)
-            val_clean = val_raw.replace(',', '.')
-        else:
-            # Already float string
-            val_clean = val_raw
+            # Select only needed columns
+            result_df = df[['date', 'amount', 'description', 'source']].copy()
             
-        return abs(float(val_clean))
+            # Ensure date is datetime (csv_helper already does this)
+            result_df['date'] = pd.to_datetime(result_df['date'])
+            
+            # Ensure amount is numeric (csv_helper already does this with sign)
+            result_df['amount'] = pd.to_numeric(result_df['amount'], errors='coerce').fillna(0.0)
+            
+            return result_df, company_name
+            
+        except Exception as e:
+            logger.error(f"Failed to parse ledger CSV: {e}")
+            import traceback
+            traceback.print_exc()
+            return pd.DataFrame(), "Empresa"

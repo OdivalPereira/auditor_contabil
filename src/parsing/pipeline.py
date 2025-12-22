@@ -4,7 +4,7 @@ Extractor Pipeline
 Orchestrates the PDF extraction process with automatic layout detection,
 text-based extraction, OCR fallback, and auto-correction heuristics.
 """
-import logging
+from src.common.logging_config import get_logger
 import pdfplumber
 from typing import Dict, Any
 from .config.registry import LayoutRegistry
@@ -15,7 +15,7 @@ import os
 import dataclasses
 from .extractors.ai_generation import GeminiLayoutGenerator
 
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 
 class ExtractorPipeline:
@@ -63,6 +63,7 @@ class ExtractorPipeline:
                 if len(pdf.pages) > 0:
                     full_text_sample = pdf.pages[0].extract_text() or ""
         except Exception as e:
+            logger.error(f"PDF Read Error: {e}", file_path=file_path, error_type=type(e).__name__)
             result['error'] = f"PDF Read Error: {e}"
             return result
 
@@ -72,25 +73,26 @@ class ExtractorPipeline:
         # AI Fallback
         if not layout and len(full_text_sample.strip()) > 50:
              try:
-                 logger.info("Layout not detected. Attempting AI Layout Generation...")
+                 logger.info("Layout not detected. Attempting AI Layout Generation...", text_length=len(full_text_sample))
                  ai_gen = GeminiLayoutGenerator(api_key=os.getenv('GEMINI_API_KEY'))
                  generated_layout = ai_gen.generate_layout(full_text_sample)
                  
                  if generated_layout:
-                     logger.info(f"AI generated layout: {generated_layout.name}")
+                     logger.info(f"AI generated layout: {generated_layout.name}", bank_id=generated_layout.bank_id)
                      # Save to registry
                      self.registry.save_layout(dataclasses.asdict(generated_layout))
                      layout = generated_layout
              except Exception as e:
-                 logger.error(f"AI Generation failed: {e}")
+                 logger.error(f"AI Generation failed: {e}", exc_info=True)
 
         if not layout:
             if len(full_text_sample.strip()) < 50:
-                logger.warning("Low text confidence. Assuming scanned PDF, but layout not detected.")
+                logger.warning("Low text confidence. Assuming scanned PDF, but layout not detected.", text_length=len(full_text_sample))
             result['error'] = "Layout not detected in Text mode."
             return result
         
         result['layout'] = layout.name
+        logger.info(f"Layout detected: {layout.name}", layout_owner=layout.bank_id)
 
         # 3. Choose Specialized Parser or Generic Extractor
         from .banks import PARSERS
@@ -102,10 +104,10 @@ class ExtractorPipeline:
             parser_cls = PARSERS.get(name_key)
             
         if parser_cls:
-            logger.info(f"Using specialized parser: {parser_cls.__name__}")
+            logger.info(f"Using specialized parser: {parser_cls.__name__}", parser_type="specialized")
             parser = parser_cls()
         else:
-            logger.info(f"Using GenericPDFExtractor for layout: {layout.name}")
+            logger.info(f"Using GenericPDFExtractor for layout: {layout.name}", parser_type="generic")
             parser = GenericPDFExtractor(layout)
 
         extractor = parser
@@ -115,7 +117,7 @@ class ExtractorPipeline:
         best_result = None
         
         for attempt in range(max_attempts):
-            logger.debug(f"Extraction attempt {attempt+1}/{max_attempts}")
+            logger.debug(f"Extraction attempt {attempt+1}/{max_attempts}", attempt=attempt+1)
             
             data = extractor.extract(file_path)
             transactions_dict = data['transactions']
@@ -126,7 +128,7 @@ class ExtractorPipeline:
             
             # Check if valid
             if validation.get('is_valid'):
-                logger.info("Extraction validated successfully.")
+                logger.info("Extraction validated successfully.", tx_count=len(transactions_dict))
                 best_result = data
                 break
                 
@@ -137,15 +139,17 @@ class ExtractorPipeline:
                 
                 fixed = self._try_sign_flip_heuristic(data, transactions_dict)
                 if fixed:
+                    logger.info("Heuristic A (Sign Flip) fixed the discrepancy.", method="sign_flip")
                     best_result = data
                     break
                 
                 fixed = self._try_ghost_recovery_heuristic(data, transactions_dict)
                 if fixed:
+                    logger.info("Heuristic B (Ghost Recovery) fixed the discrepancy.", method="ghost_recovery")
                     best_result = data
                     break
             
-            logger.warning("Heuristics failed to fix automatically.")
+            logger.warning("Heuristics failed to fix automatically.", diff=diff)
             break 
         
         # Use best result
@@ -168,8 +172,10 @@ class ExtractorPipeline:
                     transactions = ocr_data['transactions']
                     result['account_info'] = ocr_data['account_info']
                     result['method'] = 'OCR'
+                    logger.info("Transactions recovered via OCR.", tx_count=len(transactions))
                 else:
                     result['method'] = 'Failed'
+                    logger.error("OCR failed to find transactions.")
 
             # Standardize to UnifiedTransaction
             unified_txs = []

@@ -8,12 +8,14 @@ class AppState:
         self.bank_df: pd.DataFrame = pd.DataFrame()
         self.reconcile_results = {}
         self.ledger_filename = None
+        self.company_name = "Empresa"  # Nome padrão
     
     def clear(self):
         self.ledger_df = pd.DataFrame()
         self.bank_df = pd.DataFrame()
         self.reconcile_results = {}
         self.ledger_filename = None
+        self.company_name = "Empresa"
 
 # Global Instance
 global_state = AppState()
