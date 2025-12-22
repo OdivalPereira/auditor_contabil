@@ -37,11 +37,15 @@ async def upload_ledger(file: UploadFile = File(...)):
         # API State expects datetime64 for matching logic.
         df['date'] = pd.to_datetime(df['date'])
         
-        # Store
-        global_state.ledger_df = df
-        global_state.ledger_filename = file.filename
+        # Store (Accumulate)
+        if not global_state.ledger_df.empty:
+            global_state.ledger_df = pd.concat([global_state.ledger_df, df], ignore_index=True)
+        else:
+            global_state.ledger_df = df
+            
+        global_state.ledger_filename = f"{global_state.ledger_filename}, {file.filename}" if global_state.ledger_filename else file.filename
         
-        return {"message": "Ledger uploaded successfully", "count": len(df), "filename": file.filename}
+        return {"message": "Ledger uploaded successfully", "count": len(global_state.ledger_df), "filename": file.filename}
         
     except ValueError as ve:
          raise HTTPException(status_code=400, detail=str(ve))
@@ -84,11 +88,15 @@ async def upload_bank(files: list[UploadFile] = File(...)):
             # Ensure dates are datetime (Facade returns date objects)
             consolidated['date'] = pd.to_datetime(consolidated['date'])
             
-            global_state.bank_df = consolidated
+            # Accumulate
+            if not global_state.bank_df.empty:
+                global_state.bank_df = pd.concat([global_state.bank_df, consolidated], ignore_index=True)
+            else:
+                global_state.bank_df = consolidated
             
             return {
                 "message": "Bank files processed", 
-                "count": len(consolidated), 
+                "count": len(global_state.bank_df), 
                 "errors": errors
             }
         else:
@@ -97,6 +105,14 @@ async def upload_bank(files: list[UploadFile] = File(...)):
     except Exception as e:
         traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
+
+@router.post("/clear")
+async def clear_data():
+    """
+    Clears both bank and ledger data from global state.
+    """
+    global_state.clear()
+    return {"message": "Todos os dados foram limpos."}
 
 @router.get("/status")
 def get_status():

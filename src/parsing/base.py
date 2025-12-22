@@ -36,19 +36,46 @@ class BaseParser(ABC):
         
         try:
             with pdfplumber.open(file_path_or_buffer) as pdf:
-                for page in pdf.pages:
+                for i, page in enumerate(pdf.pages):
                     txns, b_s, b_e = self.extract_page(page)
                     all_txns.extend(txns)
                     
+                    # Store the VERY FIRST balance found as bal_start
                     if bal_start is None and b_s is not None:
                         bal_start = b_s
+                        logger.debug(f"Found bal_start: {bal_start} on page {i+1}")
+                        
+                    # Always update bal_end with the LATEST balance found
                     if b_e is not None:
                         bal_end = b_e
+                        logger.debug(f"Updated bal_end: {bal_end} on page {i+1}")
         except Exception as e:
             logger.error(f"Parse Error in {self.__class__.__name__}: {e}")
             
-        df = pd.DataFrame(all_txns)
+        # Balance-Aware Deduplication
+        # If specialized parsers include a 'bal_row' in the transaction dict,
+        # we can use it to deduplicate items that are actually parts of the same transaction.
+        deduped = []
+        seen_keys = {}
+        
+        for tx in all_txns:
+            # Create a key that uniquely identifies a physical transaction in the statement
+            # (Date, Amount, Row Balance)
+            key = (tx['date'], tx['amount'], tx.get('bal_row'))
+            
+            if key in seen_keys:
+                # Merge description if it's different and not just a prefix
+                existing = seen_keys[key]
+                new_desc = tx['description'].strip()
+                if new_desc and new_desc not in existing['description']:
+                    existing['description'] += " " + new_desc
+            else:
+                seen_keys[key] = tx
+                deduped.append(tx)
+
+        df = pd.DataFrame(deduped)
         if not df.empty:
+            # Still drop strict duplicates as a safety net
             df = df.drop_duplicates().reset_index(drop=True)
             
         metadata = {

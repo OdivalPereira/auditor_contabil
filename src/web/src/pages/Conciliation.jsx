@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import api from '../api/client';
-import { Search, Filter, Download, RefreshCw, Settings, Play, CheckCircle2, XCircle, HelpCircle, Layers } from 'lucide-react';
+import { Search, Filter, Download, RefreshCw, Settings, Play, CheckCircle2, XCircle, HelpCircle, Layers, AlertCircle } from 'lucide-react';
 
 const Conciliation = () => {
     const [rows, setRows] = useState([]);
@@ -38,15 +38,25 @@ const Conciliation = () => {
 
     const filteredRows = useMemo(() => {
         return rows.filter(row => {
-            if (!filterStatus.includes(row.status)) {
-                if (row.status.includes('Conciliado') && !filterStatus.includes('Conciliado')) return false;
-            }
+            // Status filter: Only show rows matching selected statuses
+            const statusMatch = filterStatus.some(fs => {
+                if (fs === 'Conciliado') {
+                    return row.status.includes('Conciliado');
+                } else {
+                    return row.status === fs;
+                }
+            });
+
+            if (!statusMatch) return false;
+
+            // Search filter
             if (searchTerm) {
                 const term = searchTerm.toLowerCase();
                 const desc = (row.description || '').toLowerCase();
                 const val = typeof row.amount === 'number' ? row.amount.toString() : '';
                 return desc.includes(term) || val.includes(term);
             }
+
             return true;
         });
     }, [rows, filterStatus, searchTerm]);

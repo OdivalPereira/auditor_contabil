@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import api from '../api/client';
-import { Upload, FolderSearch, CheckCircle, AlertCircle, FolderOpen, MousePointer2, FileSpreadsheet, File as FileIcon } from 'lucide-react';
+import { Upload, FolderSearch, CheckCircle, AlertCircle, FolderOpen, MousePointer2, FileSpreadsheet, File as FileIcon, Trash2 } from 'lucide-react';
 
 const UploadPage = () => {
     const [ledgerFile, setLedgerFile] = useState(null);
@@ -131,9 +131,48 @@ const UploadPage = () => {
         }
     };
 
+    const handleClearData = async () => {
+        if (!window.confirm("Isso irá remover todos os diários e extratos carregados nesta sessão. Continuar?")) return;
+
+        try {
+            setStatus({ type: 'info', msg: 'Limpando dados...' });
+            await api.post('/upload/clear');
+            setLedgerFile(null);
+            setBankFiles([]);
+            setScannedFiles([]);
+            setSelectedScanFiles([]);
+            setStatus({ type: 'success', msg: 'Todos os dados foram limpos com sucesso!' });
+        } catch (error) {
+            console.error(error);
+            setStatus({ type: 'error', msg: 'Erro ao limpar dados.' });
+        }
+    };
+
     return (
         <div className="glass-panel" style={{ padding: '30px' }}>
-            <h2 style={{ marginBottom: '20px' }}>📂 Importação de Dados</h2>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+                <h2 style={{ margin: 0 }}>📂 Importação de Dados</h2>
+                <button
+                    onClick={handleClearData}
+                    style={{
+                        background: 'rgba(239, 68, 68, 0.1)',
+                        color: '#fca5a5',
+                        border: '1px solid rgba(239, 68, 68, 0.2)',
+                        padding: '8px 16px',
+                        borderRadius: '8px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '8px',
+                        cursor: 'pointer',
+                        fontSize: '0.9rem',
+                        transition: 'all 0.2s'
+                    }}
+                    onMouseOver={(e) => e.target.style.background = 'rgba(239, 68, 68, 0.2)'}
+                    onMouseOut={(e) => e.target.style.background = 'rgba(239, 68, 68, 0.1)'}
+                >
+                    <Trash2 size={16} /> Limpar Todos os Dados
+                </button>
+            </div>
 
             {status.msg && (
                 <div style={{

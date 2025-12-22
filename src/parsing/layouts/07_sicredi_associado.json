@@ -1,0 +1,10 @@
+{
+    "name": "Sicredi Associado",
+    "bank_id": "748",
+    "keywords": [
+        "Associado:",
+        "Cooperativa:"
+    ],
+    "line_pattern": ".*",
+    "columns": []
+}

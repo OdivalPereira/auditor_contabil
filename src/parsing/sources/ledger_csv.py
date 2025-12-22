@@ -35,7 +35,8 @@ class LedgerCSVParser(BaseParser):
                 sep=';', 
                 encoding='latin1', 
                 skiprows=2, 
-                index_col=False
+                index_col=False,
+                on_bad_lines='skip'
             )
         except Exception:
             # Fallback if skiprows varies
@@ -43,7 +44,8 @@ class LedgerCSVParser(BaseParser):
                 file_path_or_buffer, 
                 sep=';', 
                 encoding='latin1', 
-                header=2
+                header=2,
+                on_bad_lines='skip'
             )
             
         # Generic cleanup

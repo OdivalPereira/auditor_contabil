@@ -77,10 +77,15 @@ def ingest_scanned_files(files: list[str]):
         consolidated = consolidated[abs(consolidated['amount']) > 0.009].copy()
         consolidated['date'] = pd.to_datetime(consolidated['date'])
         
-        global_state.bank_df = consolidated
+        # Accumulate
+        if not global_state.bank_df.empty:
+            global_state.bank_df = pd.concat([global_state.bank_df, consolidated], ignore_index=True)
+        else:
+            global_state.bank_df = consolidated
+            
         return {
             "message": "Scanned files ingested",
-            "count": len(consolidated),
+            "count": len(global_state.bank_df),
             "errors": errors
         }
     

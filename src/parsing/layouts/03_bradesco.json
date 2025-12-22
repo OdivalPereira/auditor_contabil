@@ -2,8 +2,7 @@
     "name": "Bradesco",
     "bank_id": "237",
     "keywords": [
-        "TOTAL DISPONÍVEL",
-        "INVESTIMENTO"
+        "TOTAL DISPONÍVEL"
     ],
     "line_pattern": ".*",
     "columns": []

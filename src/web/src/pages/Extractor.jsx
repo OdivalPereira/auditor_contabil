@@ -9,6 +9,7 @@ const Extractor = () => {
     const [files, setFiles] = useState([]);
     const [results, setResults] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [syncLoading, setSyncLoading] = useState(false);
     const [status, setStatus] = useState({ type: '', msg: '' });
 
     const handleFileChange = (e) => {
@@ -62,12 +63,18 @@ const Extractor = () => {
         if (!results) return;
         const allTransactions = results.audit.flatMap(a => a.transactions || []);
 
+        setSyncLoading(true);
         try {
             await api.post('/extract/send-to-reconciler', allTransactions);
-            setStatus({ type: 'success', msg: 'Dados enviados para Auditoria! Vá para a aba Conciliação.' });
+            setStatus({
+                type: 'success',
+                msg: `✅ ${allTransactions.length} transações enviadas para Auditoria! Os dados agora estão disponíveis na aba CONCILIAÇÃO para cruzamento com o Diário.`
+            });
         } catch (err) {
             console.error(err);
             setStatus({ type: 'error', msg: 'Erro ao enviar dados para reconciliação.' });
+        } finally {
+            setSyncLoading(false);
         }
     };
 
@@ -198,8 +205,12 @@ const Extractor = () => {
                             <button className="btn-primary" onClick={handleDownloadOFX} style={{ background: 'rgba(255,255,255,0.1)', border: '1px solid rgba(255,255,255,0.2)' }}>
                                 <Download size={18} style={{ marginRight: 8 }} /> Baixar OFX Unificado
                             </button>
-                            <button className="btn-primary" onClick={handleSendToReconciler}>
-                                <Activity size={18} style={{ marginRight: 8 }} /> Enviar para Auditoria
+                            <button className="btn-primary" onClick={handleSendToReconciler} disabled={syncLoading}>
+                                {syncLoading ? (
+                                    <><Activity className="spin" size={18} style={{ marginRight: 8 }} /> Sincronizando...</>
+                                ) : (
+                                    <><Activity size={18} style={{ marginRight: 8 }} /> Enviar para Auditoria</>
+                                )}
                             </button>
                         </div>
                     </div>

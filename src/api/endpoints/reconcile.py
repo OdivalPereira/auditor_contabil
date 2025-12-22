@@ -23,6 +23,10 @@ def run_reconciliation(tolerance: int = 3):
         (bank['date'] >= start_date) & 
         (bank['date'] <= end_date)
     ].copy()
+
+    print(f"DEBUG: Ledger range {start_date} to {end_date}")
+    print(f"DEBUG: Bank transactions before filter: {len(bank)}")
+    print(f"DEBUG: Bank transactions after filter: {len(bank_filtered)}")
     
     # 2. Reconcile
     reconciler = Reconciler()
