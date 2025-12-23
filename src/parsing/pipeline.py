@@ -186,7 +186,9 @@ class ExtractorPipeline:
                     memo=tx['memo'],
                     type=tx.get('type', 'OTHER'),
                     doc_id=tx.get('doc_id'),
-                    fitid=tx.get('fitid')
+                    fitid=tx.get('fitid'),
+                    internal_id=tx.get('internal_id'),
+                    source_file=tx.get('source_file', os.path.basename(file_path))
                 ))
             
             result['transactions'] = unified_txs

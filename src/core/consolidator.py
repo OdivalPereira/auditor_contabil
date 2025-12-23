@@ -13,22 +13,16 @@ class TransactionConsolidator:
         combined_df['amount'] = pd.to_numeric(combined_df['amount'])
         combined_df['description'] = combined_df['description'].fillna('').astype(str).str.strip()
         
-        # Deduplication Logic
-        # Strictly remove duplicates where Date, Amount, and Description match exactly
-        # We might want to be lenient on Description if it comes from different parsers?
-        # For now, strict.
-        
-        # However, "Payment Receipt" descriptions might differ from "Monthly Statement" descriptions.
-        # e.g. "Pagamento Boleto" vs "COMPROVANTE DE PAGAMENTO..."
-        # If we have same Date and Amount, it's highly likely the same transaction.
-        # Let's try deduplicating on Date + Amount first if they are on the SAME DAY.
-        # But legitimate duplicate amounts exist (e.g. two transfers of 50.00).
-        # So check description similarity or just keep strict first.
-        
-        # User requested: "detect repetition... duplicate entries during analysis"
-        # Strategy: Drop exact duplicates first.
-        
-        deduplicated_df = combined_df.drop_duplicates(subset=['date', 'amount', 'description'], keep='first')
+        # Deduplication Strategy:
+        # We now use 'source_file' and 'internal_id' (added by BaseParser) 
+        # as a unique composite key for each physical transaction in each file.
+        # This keeps legitimate duplicates (same day/amount/desc) within a file,
+        # but removes redundant data if the same file is uploaded multiple times.
+        if 'internal_id' in combined_df.columns and 'source_file' in combined_df.columns:
+            deduplicated_df = combined_df.drop_duplicates(subset=['source_file', 'internal_id'], keep='first')
+        else:
+            # Fallback for legacy/other data sources
+            deduplicated_df = combined_df.drop_duplicates(subset=['date', 'amount', 'description'], keep='first')
         
         # Conflict Check: Same Date/Amount but different Description (from diff files)
         # This is where we might double count if we are not careful.

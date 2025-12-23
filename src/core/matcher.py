@@ -24,9 +24,9 @@ class CombinatorialMatcher:
         df_l = unmatched_ledger.copy()
         df_b = unmatched_bank.copy()
         
-        # Ensure dates are datetime objects
-        df_l['date'] = pd.to_datetime(df_l['date'])
-        df_b['date'] = pd.to_datetime(df_b['date'])
+        # Ensure dates are datetime.date objects for consistent comparison
+        df_l['date'] = pd.to_datetime(df_l['date']).dt.date
+        df_b['date'] = pd.to_datetime(df_b['date']).dt.date
         
         # Track used indices
         used_ledger_indices = set()

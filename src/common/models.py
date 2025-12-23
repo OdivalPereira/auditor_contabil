@@ -14,6 +14,8 @@ class UnifiedTransaction:
     type: str # 'DEBIT', 'CREDIT', 'OTHER'
     doc_id: Optional[str] = None # Document number / Check number
     fitid: Optional[str] = None # Financial Institution Transaction ID (Unique)
+    internal_id: Optional[int] = None # Internal sequence ID for deduplication
+    source_file: Optional[str] = None # Source filename
     
     def to_dict(self):
         return {
@@ -22,5 +24,7 @@ class UnifiedTransaction:
             'memo': self.memo,
             'type': self.type,
             'doc_id': self.doc_id,
-            'fitid': self.fitid
+            'fitid': self.fitid,
+            'internal_id': self.internal_id,
+            'source_file': self.source_file
         }

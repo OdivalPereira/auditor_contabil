@@ -73,41 +73,26 @@ export const AppProvider = ({ children }) => {
 
     const clearAll = async () => {
         try {
-            await api.post('/upload/clear');
+            // 1. Clear Local State immediately for responsiveness
             setLedgerFile(null);
             setBankFiles([]);
             setReconcileResults(null);
             setUploadStatus({ ledger_count: 0, bank_count: 0, ledger_name: null });
 
-            // Clear localStorage
+            // 2. Clear localStorage
             localStorage.removeItem(STORAGE_KEYS.UPLOAD_STATUS);
             localStorage.removeItem(STORAGE_KEYS.RECONCILE_RESULTS);
             localStorage.removeItem(STORAGE_KEYS.TOLERANCE);
 
-            console.log('All data cleared from memory and storage');
+            // 3. Notify Server
+            await api.post('/upload/clear');
+            console.log('All data cleared from server, memory and storage');
         } catch (err) {
-            console.error("Failed to clear data", err);
+            console.error("Failed to clear server data, but local state was cleared.", err);
         }
     };
 
-    // Clear server data when browser/tab closes
-    useEffect(() => {
-        const handleBeforeUnload = (e) => {
-            // Use sendBeacon for reliable data sending during page unload
-            // This ensures the request is sent even if the page is closing
-            const blob = new Blob([JSON.stringify({})], { type: 'application/json' });
-            navigator.sendBeacon(`${api.defaults.baseURL}/upload/clear`, blob);
 
-            // Note: We don't clear localStorage here because we want
-            // the data to persist across page reloads for better UX
-        };
-
-        window.addEventListener('beforeunload', handleBeforeUnload);
-
-        return () => {
-            window.removeEventListener('beforeunload', handleBeforeUnload);
-        };
-    }, []);
 
 
     return (
@@ -123,5 +108,4 @@ export const AppProvider = ({ children }) => {
         </AppContext.Provider>
     );
 };
-
-export const useApp = () => useContext(AppContext);
+export { AppContext };

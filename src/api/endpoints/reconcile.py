@@ -59,9 +59,9 @@ def run_reconciliation(request: Request, tolerance: int = 3):
     
     # Transform for JSON
     # Convert dates to ISO string
-    df_view['date'] = df_view['date'].dt.strftime('%Y-%m-%d')
+    df_view['date'] = pd.to_datetime(df_view['date']).dt.strftime('%Y-%m-%d')
     if 'cluster_date' in df_view.columns:
-        df_view['cluster_date'] = df_view['cluster_date'].dt.strftime('%Y-%m-%d')
+        df_view['cluster_date'] = pd.to_datetime(df_view['cluster_date']).dt.strftime('%Y-%m-%d')
         
     results = df_view.to_dict(orient='records')
     
@@ -81,7 +81,7 @@ def run_reconciliation(request: Request, tolerance: int = 3):
     
     # Merge for consistent dates
     merged = pd.merge(l_grouped, b_grouped, on='date', how='outer').fillna(0)
-    merged['date'] = merged['date'].dt.strftime('%Y-%m-%d')
+    merged['date'] = pd.to_datetime(merged['date']).dt.strftime('%Y-%m-%d')
     chart_data = merged.rename(columns={'amount_x': 'ledger', 'amount_y': 'bank'}).to_dict(orient='records')
     
     # Log status distribution for debugging

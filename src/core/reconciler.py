@@ -13,11 +13,19 @@ class Reconciler:
         if df_ledger.empty or df_bank.empty:
             return df_ledger, df_bank, df_ledger, df_bank
 
+        # Work on copies to avoid side-effects on original state
+        df_ledger = df_ledger.copy()
+        df_bank = df_bank.copy()
+
         # Ensure columns exist
         required_cols = ['date', 'amount', 'description', 'source']
         for col in required_cols:
             if col not in df_ledger.columns: df_ledger[col] = None
             if col not in df_bank.columns: df_bank[col] = None
+
+        # Normalize dates to datetime.date for consistent comparison
+        df_ledger['date'] = pd.to_datetime(df_ledger['date']).dt.date
+        df_bank['date'] = pd.to_datetime(df_bank['date']).dt.date
 
         # Sort for deterministic matching
         df_ledger = df_ledger.sort_values(by=['date', 'amount']).reset_index(drop=True)

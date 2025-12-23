@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useMemo } from 'react';
 import api from '../api/client';
-import { useApp } from '../AppContext';
+import { useApp } from '../hooks/useApp';
 import { Search, Download, RefreshCw, Settings, Play, CheckCircle2, XCircle, HelpCircle, Layers, AlertCircle } from 'lucide-react';
 
 const Conciliation = () => {
@@ -321,10 +321,14 @@ const Conciliation = () => {
                         )}
                         {!loading && filteredRows.map((row, idx) => {
                             // Format date to PT-BR (DD/MM/YYYY)
+                            // Using manual split to avoid UTC/Local timezone shift from new Date()
                             const formatDate = (dateStr) => {
                                 if (!dateStr) return '';
-                                const d = new Date(dateStr);
-                                return d.toLocaleDateString('pt-BR');
+                                if (dateStr.includes('-')) {
+                                    const [y, m, d] = dateStr.split('-');
+                                    return `${d}/${m}/${y}`;
+                                }
+                                return dateStr;
                             };
 
                             // Create group color alternation based on visible groups

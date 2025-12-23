@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
 import { LayoutDashboard, FileSpreadsheet, UploadCloud, FileType, CheckCircle, AlertCircle, ChevronLeft, ChevronRight, FileDown } from 'lucide-react';
-import { useApp } from './AppContext';
+import { useApp } from './hooks/useApp';
 import Dashboard from './pages/Dashboard';
 import Conciliation from './pages/Conciliation';
 import Upload from './pages/Upload';

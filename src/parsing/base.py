@@ -52,31 +52,29 @@ class BaseParser(ABC):
             logger.error(f"Parse Error in {self.__class__.__name__}: {e}", exc_info=True, parser=self.__class__.__name__)
             
         # Balance-Aware Deduplication
-        # If specialized parsers include a 'bal_row' in the transaction dict,
-        # we can use it to deduplicate items that are actually parts of the same transaction.
         deduped = []
         seen_keys = {}
         
         for tx in all_txns:
-            # Create a key that uniquely identifies a physical transaction
-            # MUST include description to avoid removing legitimate transactions
-            # with same date/amount (e.g., multiple deposits on same day)
-            desc_key = tx['description'][:50].strip()  # Use first 50 chars for key
-            key = (tx['date'], tx['amount'], tx.get('bal_row'), desc_key)
+            desc_val = str(tx['description']).strip()
+            balance_val = tx.get('balance', tx.get('bal_row'))
+            key = (tx['date'], tx['amount'], balance_val, desc_val)
             
             if key in seen_keys:
-                # Merge description if it's different and not just a prefix
                 existing = seen_keys[key]
-                new_desc = tx['description'].strip()
-                if new_desc and new_desc not in existing['description']:
-                    existing['description'] += " " + new_desc
+                if desc_val and desc_val not in existing['description']:
+                    existing['description'] += " | " + desc_val
             else:
                 seen_keys[key] = tx
                 deduped.append(tx)
+        
+        # Add a unique sequence ID to each transaction within this file
+        # to prevent them from being collapsed during consolidation if they are identical.
+        for i, tx in enumerate(deduped):
+            tx['internal_id'] = i
 
         df = pd.DataFrame(deduped)
         if not df.empty:
-            # Still drop strict duplicates as a safety net
             df = df.drop_duplicates().reset_index(drop=True)
             
         metadata = {

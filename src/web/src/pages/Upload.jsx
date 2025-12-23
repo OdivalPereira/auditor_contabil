@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../api/client';
-import { useApp } from '../AppContext';
+import { useApp } from '../hooks/useApp';
 import { Upload, FolderSearch, CheckCircle, AlertCircle, FolderOpen, FileSpreadsheet, File as FileIcon, Trash2, Play } from 'lucide-react';
 
 const UploadPage = () => {
@@ -184,10 +184,19 @@ const UploadPage = () => {
         }
     };
 
-    const onClear = () => {
+    const onClear = async () => {
         if (window.confirm("Isso irá remover todos os diários e extratos carregados nesta sessão. Continuar?")) {
-            clearAll();
-            setStatus({ type: 'success', msg: 'Todos os dados foram limpos com sucesso!' });
+            try {
+                await clearAll();
+                // Clear local page specific state
+                setFolderPath('');
+                setScannedFiles([]);
+                setSelectedScanFiles([]);
+                setStatus({ type: 'success', msg: 'Todos os dados foram limpos com sucesso!' });
+            } catch (error) {
+                console.error("Error during manual clear:", error);
+                setStatus({ type: 'error', msg: 'Erro ao limpar dados. Tente novamente.' });
+            }
         }
     };
 

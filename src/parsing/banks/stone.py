@@ -105,14 +105,14 @@ class StonePDFParser(BaseParser):
         text = page.extract_text() or ""
         lines = [line.strip() for line in text.split('\n') if line.strip()]
         
-        # Date pattern for anchors
-        date_pattern = re.compile(r'^(\d{2}/\d{2}/\d{2,4})\s')
-        
         # Full transaction parsing patterns (robust against IDs/CPF/CNPJ in middle)
-        # Pattern 1: has description between type and amounts
-        txn_pattern_full = re.compile(r'^(\d{2}/\d{2}/\d{2,4})\s+(Entrada|Saída|Crédito|Débito|Cr[ée]dito|D[ée]bito)\s+(.*?)\s+(-?\s*(?:R\$\s*)?[\d\.]+,\d{2})\s+(-?\s*(?:R\$\s*)?[\d\.]+,\d{2})$')
-        # Pattern 2: amounts follow type immediately
-        txn_pattern_short = re.compile(r'^(\d{2}/\d{2}/\d{2,4})\s+(Entrada|Saída|Crédito|Débito|Cr[ée]dito|D[ée]bito)\s+(-?\s*(?:R\$\s*)?[\d\.]+,\d{2})\s+(-?\s*(?:R\$\s*)?[\d\.]+,\d{2})$')
+        # Using . to match any character for Type (encoding safety: CrÚdito, DÚbito)
+        # Removed strict $ anchor to avoid failures on lines with trailing content/spaces.
+        txn_pattern_full = re.compile(r'^(\d{2}/\d{2}(?:/\d{2,4})?)\s+(E\w+|S\w+|Cr.dito|D.bito)\s+(.*?)\s+(-?\s*(?:R\$\s*)?[\d\.]+,\d{2})\s+(-?\s*(?:R\$\s*)?[\d\.]+,\d{2})', re.IGNORECASE)
+        txn_pattern_short = re.compile(r'^(\d{2}/\d{2}(?:/\d{2,4})?)\s+(E\w+|S\w+|Cr.dito|D.bito)\s+(-?\s*(?:R\$\s*)?[\d\.]+,\d{2})\s+(-?\s*(?:R\$\s*)?[\d\.]+,\d{2})', re.IGNORECASE)
+        
+        # Date pattern for anchors (DD/MM/YYYY, DD/MM/YY, or DD/MM)
+        date_pattern = re.compile(r'^(\d{2}/\d{2}(?:/\d{2,4})?)(\s|$)')
 
         # Find all anchor indices
         anchors = []
@@ -145,31 +145,58 @@ class StonePDFParser(BaseParser):
                 block_lines = []
                 
                 # 1. Look UP for names (only if not a tariff)
-                if not is_tariff and anchor_idx > 0:
-                    prev_idx = anchor_idx - 1
-                    if prev_idx not in anchors and prev_idx not in consumed_lines:
-                        # Extra check: names don't usually have digits like balances
-                        if not re.search(r'\d{2,},\d{2}', lines[prev_idx]):
-                            block_lines.append(lines[prev_idx])
-                            consumed_lines.add(prev_idx)
+                # Look for up to 3 lines up for consolidated names/types
+                if not is_tariff:
+                    for offset in range(1, 4):
+                        prev_idx = anchor_idx - offset
+                        if prev_idx >= 0 and prev_idx not in anchors and prev_idx not in consumed_lines:
+                            line_text = lines[prev_idx].upper()
+                            # Stop if we hit a header, a balance, or another transaction-like line
+                            if "DATA TIPO LANÇAMENTO" in line_text or "SALDO" in line_text or "TRANSPORTE" in line_text:
+                                break
+                            if not re.search(r'\d{2,},\d{2}', lines[prev_idx]):
+                                block_lines.insert(0, lines[prev_idx])
+                                consumed_lines.add(prev_idx)
+                            else:
+                                break
+                        else:
+                            break
                 
                 # 2. Add the CORE transaction line
                 block_lines.append(line)
                 consumed_lines.add(anchor_idx)
                 
                 # 3. Look DOWN for details (only if not a tariff)
-                if not is_tariff and anchor_idx < len(lines) - 1:
-                    next_idx = anchor_idx + 1
-                    if next_idx not in anchors and next_idx not in consumed_lines:
-                        # Details like "Pix | Maquininha"
-                        block_lines.append(lines[next_idx])
-                        consumed_lines.add(next_idx)
+                # Look for up to 2 lines down if they are not anchors
+                if not is_tariff:
+                    for offset in [1, 2]:
+                        next_idx = anchor_idx + offset
+                        if next_idx < len(lines) and next_idx not in anchors and next_idx not in consumed_lines:
+                            # Details like "Pix | Maquininha" or "Antecipação..."
+                            # Extra check: stop if we see something that looks like an amount of another txn 
+                            # (though anchors check should cover most)
+                            if not re.search(r'\d{2,},\d{2}', lines[next_idx]):
+                                block_lines.append(lines[next_idx])
+                                consumed_lines.add(next_idx)
+                            else:
+                                break
+                        else:
+                            break
 
                 # --- PARSING THE BLOCK ---
                 
-                # Date
-                fmt = "%d/%m/%Y" if len(dt_s.split('/')[-1]) == 4 else "%d/%m/%y"
-                dt = datetime.strptime(dt_s, fmt).date()
+                # Date parsing with robustness for missing years
+                parts = dt_s.split('/')
+                if len(parts) == 3:
+                    # DD/MM/YYYY or DD/MM/YY
+                    fmt = "%d/%m/%Y" if len(parts[-1]) == 4 else "%d/%m/%y"
+                    dt = datetime.strptime(dt_s, fmt).date()
+                else:
+                    # Truncated DD/MM - Infer year from context (current year for now, 
+                    # but usually statements are from a specific known period)
+                    # We can use metadata year if we had it, or default to 2025 for this client
+                    day, month = map(int, parts)
+                    dt = datetime(2025, month, day).date()
                 
                 # Parse amount (sign is now part of val_s)
                 amount = self._parse_br_amount(val_s)
