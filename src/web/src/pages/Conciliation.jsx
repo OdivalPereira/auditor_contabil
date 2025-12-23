@@ -327,11 +327,26 @@ const Conciliation = () => {
                                 return d.toLocaleDateString('pt-BR');
                             };
 
+                            // Create group color alternation based on visible groups
+                            // Get unique groups in order of appearance in filteredRows
+                            const visibleGroups = [...new Set(filteredRows.map(r => r.group_id))];
+                            const groupIndex = visibleGroups.indexOf(row.group_id);
+                            const isEvenGroup = groupIndex % 2 === 0;
+
+                            // Define background colors for alternating groups
+                            let rowBackground = 'transparent';
+                            if (row.group_id !== "-1") {
+                                // Groups with combinatorial matches get alternating subtle backgrounds
+                                rowBackground = isEvenGroup
+                                    ? 'rgba(99, 102, 241, 0.12)'
+                                    : 'rgba(99, 102, 241, 0.06)';
+                            }
+
                             return (
                                 <tr key={idx} className={getRowClass(row)} style={{
                                     transition: 'background 0.2s',
                                     borderLeft: row.group_id !== "-1" ? '3px solid var(--accent-color)' : 'none',
-                                    background: row.group_id !== "-1" ? 'rgba(99, 102, 241, 0.05)' : 'transparent'
+                                    background: rowBackground
                                 }}>
                                     <td style={{ fontSize: '0.9rem', color: '#cbd5e1', whiteSpace: 'nowrap' }}>{formatDate(row.date)}</td>
                                     <td>

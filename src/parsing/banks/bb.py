@@ -132,6 +132,16 @@ class BBMonthlyPDFParser(BaseParser):
             r'(\d{2}/\d{2}/\d{4})\s+(\d{4})\s+(\d{8})\s+(.*?)\s+([\d\.,]+)\s+([CD])'
         )
         
+        # Compact format (all on one line, may have truncated date)
+        # Pattern: DD/MM/202X LOTE [DOC] DESC VALOR (+/-)
+        # Example: 03/01/202 9903 BB Rende Fácil 13.508,56 (-)
+        # Amount pattern is specific: ends with ,DD (two decimal digits)
+        compact_pattern = re.compile(
+            r'(\d{2}/\d{2}/\d{3,4})\s+\d+\s+(?:\d+\s+)?(.*?)\s+([\d\.]+,\d{2})\s*\(([+\-])\)'
+        )
+        
+        last_year = datetime.now().year  # Fallback year
+        
         for line in lines:
             line = line.strip()
             if not line:
@@ -141,11 +151,13 @@ class BBMonthlyPDFParser(BaseParser):
             if any(word in line.upper() for word in ['DOCUMENTO', 'DATA', 'LANÇAMENTO']):
                 continue
             
+            # Try standard full format first
             m = txn_pattern.search(line)
             if m:
                 try:
                     dt_s, ag, lote, desc, val_s, sign = m.groups()
                     dt = datetime.strptime(dt_s, "%d/%m/%Y").date()
+                    last_year = dt.year  # Remember year for next truncated date
                     amount = self._parse_br_amount(val_s)
                     if sign == 'D':
                         amount = -abs(amount)
@@ -160,7 +172,35 @@ class BBMonthlyPDFParser(BaseParser):
                     })
                 except:
                     pass
-        
+                continue
+            
+            # Try compact format (often last line with truncated date)
+            m_compact = compact_pattern.search(line)
+            if m_compact:
+                try:
+                    dt_s, desc, val_s, sign_char = m_compact.groups()
+                    
+                    # Handle truncated date: use year from previous transaction
+                    if len(dt_s) == 9:  # DD/MM/202
+                        dt_s = dt_s + str(last_year)[-1]  # Complete with last digit of previous year
+                    
+                    dt = datetime.strptime(dt_s, "%d/%m/%Y").date()
+                    last_year = dt.year  # Update for next transaction
+                    
+                    amount = self._parse_br_amount(val_s)
+                    if sign_char == '-':
+                        amount = -abs(amount)
+                    else:
+                        amount = abs(amount)
+                    
+                    rows.append({
+                        'date': dt,
+                        'amount': amount,
+                        'description': desc.strip(),
+                        'source': 'Bank'
+                    })
+                except:
+                    pass
         
         # DON'T fall back to generic extraction - return what we found
         return rows, bal_start, bal_end
@@ -175,12 +215,49 @@ class BBMonthlyPDFParser(BaseParser):
         lines = text.split('\n')
         
         import re
+        
+        # Compact format pattern (for last lines with truncated dates)
+        compact_pattern = re.compile(
+            r'(\d{2}/\d{2}/\d{3,4})\s+\d+\s+(?:\d+\s+)?(.*?)\s+([\d\.]+,\d{2})\s*\(([+\-])\)'
+        )
+        last_year = datetime.now().year
+        
         i = 0
         while i < len(lines):
             line = lines[i].strip()
             if not line:
                 i += 1
                 continue
+            
+            # FIRST: Check for compact format (often last line of page)
+            m_compact = compact_pattern.search(line)
+            if m_compact:
+                try:
+                    dt_s, desc, val_s, sign_char = m_compact.groups()
+                    
+                    # Handle truncated date
+                    if len(dt_s) == 9:  # DD/MM/202
+                        dt_s = dt_s + str(last_year)[-1]
+                    
+                    dt = datetime.strptime(dt_s, "%d/%m/%Y").date()
+                    last_year = dt.year
+                    
+                    amount = self._parse_br_amount(val_s)
+                    if sign_char == '-':
+                        amount = -abs(amount)
+                    else:
+                        amount = abs(amount)
+                    
+                    rows.append({
+                        'date': dt,
+                        'amount': amount,
+                        'description': desc.strip(),
+                        'source': 'Bank'
+                    })
+                    i += 1
+                    continue  # Skip remaining checks for this line
+                except:
+                    pass  # Fall through to other checks
             
             # Check if line is JUST a date (or date + whitespace)
             date_only_match = re.match(r'^(\d{2}/\d{2}/\d{4})\s*$', line)
@@ -243,7 +320,9 @@ class BBMonthlyPDFParser(BaseParser):
                                 'source': 'Bank'
                             })
                         
-                        i = j - 1  # Continue from where we left off
+                        # Move to the line after the one we consumed
+                        i = j
+                        continue  # Use continue to skip the i+=1 at end
                 except:
                     pass
             
@@ -278,8 +357,28 @@ class BBMonthlyPDFParser(BaseParser):
                                 desc_part = next_line[:amt_match.start()].strip()
                                 if desc_part:
                                     description += " " + desc_part
-                                i += 1  # Skip the next line since we consumed it
+                                
+                                # Extract amount and add transaction
+                                val_s, sign_char = amt_match.groups()
+                                amount = self._parse_br_amount(val_s)
+                                if sign_char == '-':
+                                    amount = -abs(amount)
+                                else:
+                                    amount = abs(amount)
+                                
+                                if description:
+                                    rows.append({
+                                        'date': dt,
+                                        'amount': amount,
+                                        'description': description,
+                                        'source': 'Bank'
+                                    })
+                                
+                                # Skip both current and next line
+                                i += 2
+                                continue
                         
+                        # Amount was on current line (or not found)
                         if amt_match:
                             val_s, sign_char = amt_match.groups()
                             amount = self._parse_br_amount(val_s)

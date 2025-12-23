@@ -1,9 +1,9 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request
 from pydantic import BaseModel
 from src.utils.scanner import FileScanner
-from src.api.state import global_state
 from src.parsing.facade import ParserFacade
 from src.core.consolidator import TransactionConsolidator
+from src.api.state import get_session_state
 import pandas as pd
 import os
 import tkinter as tk
@@ -49,7 +49,9 @@ def browse_folder():
         raise HTTPException(status_code=500, detail=f"Error opening dialog: {e}")
 
 @router.post("/ingest")
-def ingest_scanned_files(files: list[str]):
+def ingest_scanned_files(request: Request, files: list[str]):
+    """Process files from scanner and add to bank statements"""
+    state = get_session_state(request)
     all_dfs = []
     errors = []
     
@@ -59,7 +61,7 @@ def ingest_scanned_files(files: list[str]):
              continue
              
         try:
-            # Use Legacy Facade EXACTLY like upload_bank
+            # Use ParserFacade like upload_bank
             facade = ParserFacade.get_parser(file_path)
             df, _ = facade.parse(file_path)
             
@@ -77,16 +79,16 @@ def ingest_scanned_files(files: list[str]):
         consolidated = consolidated[abs(consolidated['amount']) > 0.009].copy()
         consolidated['date'] = pd.to_datetime(consolidated['date'])
         
-        # Accumulate
-        if not global_state.bank_df.empty:
-            global_state.bank_df = pd.concat([global_state.bank_df, consolidated], ignore_index=True)
+        if not state.bank_df.empty:
+            state.bank_df = pd.concat([state.bank_df, consolidated], ignore_index=True)
         else:
-            global_state.bank_df = consolidated
+            state.bank_df = consolidated
             
         return {
             "message": "Scanned files ingested",
-            "count": len(global_state.bank_df),
+            "count": len(state.bank_df),
             "errors": errors
         }
     
     raise HTTPException(status_code=400, detail=f"No valid data. Errors: {errors}")
+

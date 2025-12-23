@@ -80,15 +80,36 @@ def _parse_ledger_csv(file_obj):
         if hasattr(file_obj, 'seek'):
             file_obj.seek(0)
             
-        df = pd.read_csv(
-            file_obj, 
-            sep=';', 
-            encoding='latin1', 
-            skiprows=4, 
-            header=None, 
-            on_bad_lines='warn', 
-            engine='python'
-        )
+        # Manual CSV parsing to handle variable column counts
+        # This is necessary because legacy systems export inconsistent CSVs
+        import csv
+        
+        if hasattr(file_obj, 'seek'):
+            file_obj.seek(0)
+        
+        # Read file content
+        if hasattr(file_obj, 'read'):
+            content = file_obj.read()
+            if isinstance(content, bytes):
+                content = content.decode('latin1', errors='ignore')
+        else:
+            with open(file_obj, 'r', encoding='latin1', errors='ignore') as f:
+                content = f.read()
+        
+        lines = content.split('\n')[4:]  # Skip first 4 lines
+        
+        # Parse manually with csv reader to handle quoted fields
+        rows = []
+        reader = csv.reader(lines, delimiter=';')
+        for line_num, row in enumerate(reader, 5):  # Start from line 5 (after skip)
+            if len(row) >= 16:  # Need at least columns up to 15 (description)
+                rows.append(row)
+        
+        # Create DataFrame from parsed rows
+        df = pd.DataFrame(rows)
+        
+        # Now df has all rows regardless of column count
+        print(f"DEBUG: Successfully parsed {len(df)} rows from CSV")
         
         # Check if it looks right (19 cols?)
         if len(df.columns) > 10:

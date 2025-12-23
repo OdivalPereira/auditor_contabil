@@ -1,15 +1,51 @@
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 import uuid
 import time
-from src.api.endpoints import upload, reconcile, scan, export, extract
+from src.api.endpoints import upload, reconcile, scan, export, extract, export_lancamentos
 from src.common.logging_config import setup_logging, set_request_id, get_logger
+from src.api.state import session_manager
 
 # Initialize Structured Logging
 setup_logging()
 logger = get_logger("api.main")
 
+# Session Cookie Name
+SESSION_COOKIE_NAME = "auditor_session_id"
+
+
 app = FastAPI(title="Auditor Contábil API", version="1.0.0")
+
+# Session Middleware - Must run FIRST to set up session
+@app.middleware("http")
+async def session_middleware(request: Request, call_next):
+    """Manage session ID via cookies"""
+    # Get or create session ID
+    session_id = request.cookies.get(SESSION_COOKIE_NAME)
+    
+    if not session_id:
+        session_id = session_manager.generate_session_id()
+        logger.debug(f"Created new session: {session_id}")
+    
+    # Store session_id in request state for use in endpoints
+    request.state.session_id = session_id
+    
+    # Process request
+    response = await call_next(request)
+    
+    # Set session cookie in response (if not already set)
+    if SESSION_COOKIE_NAME not in request.cookies:
+        response.set_cookie(
+            key=SESSION_COOKIE_NAME,
+            value=session_id,
+            httponly=True,  # Prevent JavaScript access for security
+            samesite="lax",  # CSRF protection
+            max_age=60 * 60 * 24  # 24 hours
+        )
+    
+    return response
+
 
 # Middleware for Request ID and Logging
 @app.middleware("http")
@@ -76,6 +112,7 @@ app.include_router(reconcile.router, prefix="/api/reconcile", tags=["Reconcile"]
 app.include_router(scan.router, prefix="/api/scan", tags=["Scan"])
 app.include_router(export.router, prefix="/api/export", tags=["Export"])
 app.include_router(extract.router, prefix="/api/extract", tags=["Extract"])
+app.include_router(export_lancamentos.router, prefix="/api/export-lancamentos", tags=["Export Lancamentos"])
 
 @app.get("/api/health")
 def health_check():

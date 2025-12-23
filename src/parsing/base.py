@@ -58,9 +58,11 @@ class BaseParser(ABC):
         seen_keys = {}
         
         for tx in all_txns:
-            # Create a key that uniquely identifies a physical transaction in the statement
-            # (Date, Amount, Row Balance)
-            key = (tx['date'], tx['amount'], tx.get('bal_row'))
+            # Create a key that uniquely identifies a physical transaction
+            # MUST include description to avoid removing legitimate transactions
+            # with same date/amount (e.g., multiple deposits on same day)
+            desc_key = tx['description'][:50].strip()  # Use first 50 chars for key
+            key = (tx['date'], tx['amount'], tx.get('bal_row'), desc_key)
             
             if key in seen_keys:
                 # Merge description if it's different and not just a prefix

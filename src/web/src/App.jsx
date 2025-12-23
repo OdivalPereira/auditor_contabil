@@ -1,10 +1,11 @@
 import { BrowserRouter, Routes, Route, NavLink } from 'react-router-dom';
-import { LayoutDashboard, FileSpreadsheet, UploadCloud, FileType, CheckCircle, AlertCircle, ChevronLeft, ChevronRight } from 'lucide-react';
+import { LayoutDashboard, FileSpreadsheet, UploadCloud, FileType, CheckCircle, AlertCircle, ChevronLeft, ChevronRight, FileDown } from 'lucide-react';
 import { useApp } from './AppContext';
 import Dashboard from './pages/Dashboard';
 import Conciliation from './pages/Conciliation';
 import Upload from './pages/Upload';
 import Extractor from './pages/Extractor';
+import ExportLancamentos from './pages/ExportLancamentos';
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -63,6 +64,10 @@ function App() {
                             <FileSpreadsheet size={20} style={{ marginRight: sidebarCollapsed ? 0 : 10 }} />
                             {!sidebarCollapsed && 'Conciliação'}
                         </NavLink>
+                        <NavLink to="/export-lancamentos" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`} title="Exportar Lançamentos">
+                            <FileDown size={20} style={{ marginRight: sidebarCollapsed ? 0 : 10 }} />
+                            {!sidebarCollapsed && 'Exportar Lançamentos'}
+                        </NavLink>
                         <NavLink to="/upload" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`} title="Dados e Upload">
                             <UploadCloud size={20} style={{ marginRight: sidebarCollapsed ? 0 : 10 }} />
                             {!sidebarCollapsed && 'Dados e Upload'}
@@ -91,6 +96,7 @@ function App() {
                         <Route path="/" element={<Dashboard />} />
                         <Route path="/extractor" element={<Extractor />} />
                         <Route path="/conciliation" element={<Conciliation />} />
+                        <Route path="/export-lancamentos" element={<ExportLancamentos />} />
                         <Route path="/upload" element={<Upload />} />
                     </Routes>
                 </main>

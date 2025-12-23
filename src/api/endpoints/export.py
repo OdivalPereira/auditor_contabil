@@ -1,9 +1,9 @@
 """
 Endpoints de exportação de relatórios de conciliação.
 """
-from fastapi import APIRouter, HTTPException, Body
+from fastapi import APIRouter, HTTPException, Body, Request
 from fastapi.responses import StreamingResponse, Response
-from src.api.state import global_state
+from src.api.state import get_session_state
 from src.exporters.pdf_renderer import PDFReportExporter
 from src.exporters.excel_exporter import ExcelExporter
 from src.exporting.ofx import OFXWriter
@@ -17,7 +17,7 @@ from datetime import datetime
 router = APIRouter()
 
 @router.post("/excel")
-def export_excel(rows_data: List[dict] = Body(...)):
+def export_excel(request: Request, rows_data: list[dict] = Body(...)):
     """Exporta relatório de conciliação em formato Excel moderno com dados filtrados."""
     if not rows_data:
         raise HTTPException(status_code=400, detail="Nenhum dado fornecido para exportação.")
@@ -39,10 +39,10 @@ def export_excel(rows_data: List[dict] = Body(...)):
             start_str = None
             end_str = None
         
-        # Criar exporter
-        print(f"DEBUG Excel: company_name = '{global_state.company_name}'")
+        # Criar exporter  
+        state = get_session_state(request)
         exporter = ExcelExporter(
-            company_name=global_state.company_name,
+            company_name=state.company_name,
             start_date=start_str,
             end_date=end_str
         )
@@ -74,7 +74,7 @@ def export_excel(rows_data: List[dict] = Body(...)):
         raise HTTPException(status_code=500, detail=f"Erro ao gerar Excel: {str(e)}")
 
 @router.post("/pdf")
-def export_pdf(rows_data: List[dict] = Body(...)):
+def export_pdf(request: Request, rows_data: list[dict] = Body(...)):
     """Exporta relatório de conciliação em formato PDF moderno com dados filtrados."""
     if not rows_data:
         raise HTTPException(status_code=400, detail="Nenhum dado fornecido para exportação.")
@@ -107,9 +107,9 @@ def export_pdf(rows_data: List[dict] = Body(...)):
             end_str = None
         
         # Criar exporter
-        print(f"DEBUG PDF: company_name = '{global_state.company_name}'")
+        state = get_session_state(request)
         pdf_exporter = PDFReportExporter(
-            company_name=global_state.company_name,
+            company_name=state.company_name,
             start_date=start_str,
             end_date=end_str
         )

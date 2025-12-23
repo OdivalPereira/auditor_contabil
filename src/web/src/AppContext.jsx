@@ -90,6 +90,26 @@ export const AppProvider = ({ children }) => {
         }
     };
 
+    // Clear server data when browser/tab closes
+    useEffect(() => {
+        const handleBeforeUnload = (e) => {
+            // Use sendBeacon for reliable data sending during page unload
+            // This ensures the request is sent even if the page is closing
+            const blob = new Blob([JSON.stringify({})], { type: 'application/json' });
+            navigator.sendBeacon(`${api.defaults.baseURL}/upload/clear`, blob);
+
+            // Note: We don't clear localStorage here because we want
+            // the data to persist across page reloads for better UX
+        };
+
+        window.addEventListener('beforeunload', handleBeforeUnload);
+
+        return () => {
+            window.removeEventListener('beforeunload', handleBeforeUnload);
+        };
+    }, []);
+
+
     return (
         <AppContext.Provider value={{
             ledgerFile, setLedgerFile,

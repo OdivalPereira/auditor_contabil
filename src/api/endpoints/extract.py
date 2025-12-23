@@ -1,4 +1,4 @@
-from fastapi import APIRouter, File, UploadFile, HTTPException
+from fastapi import APIRouter, File,  UploadFile, HTTPException, Request
 from typing import List
 import os
 import tempfile
@@ -7,7 +7,7 @@ import pandas as pd
 from src.parsing.config.registry import LayoutRegistry
 from src.parsing.pipeline import ExtractorPipeline
 from src.common.banks import get_bank_name
-from src.api.state import global_state
+from src.api.state import get_session_state
 
 router = APIRouter()
 
@@ -89,9 +89,9 @@ async def extract_and_validate(files: List[UploadFile] = File(...)):
     }
 
 @router.post("/send-to-reconciler")
-async def send_to_reconciler(transactions: List[dict]):
+async def send_to_reconciler(request: Request, transactions: list[dict]):
     """
-    Sets the imported transactions into the global state for the Reconciler tab.
+    Sets the imported transactions into the session state for the Reconciler tab.
     """
     if not transactions:
         raise HTTPException(status_code=400, detail="Nenhuma transação enviada.")
@@ -103,5 +103,6 @@ async def send_to_reconciler(transactions: List[dict]):
     if 'amount' in df.columns:
         df['amount'] = pd.to_numeric(df['amount'], errors='coerce').fillna(0.0)
     
-    global_state.bank_df = df
+    state = get_session_state(request)
+    state.bank_df = df
     return {"message": f"{len(df)} transações enviadas para Auditoria."}

@@ -1,5 +1,5 @@
-from fastapi import APIRouter
-from src.api.state import global_state
+from fastapi import APIRouter, Request
+from src.api.state import get_session_state
 from src.core.reconciler import Reconciler
 from src.core.matcher import CombinatorialMatcher
 from src.ui.unified_view import UnifiedViewController
@@ -10,9 +10,10 @@ logger = get_logger(__name__)
 router = APIRouter()
 
 @router.post("/")
-def run_reconciliation(tolerance: int = 3):
-    start = global_state.ledger_df
-    bank = global_state.bank_df
+def run_reconciliation(request: Request, tolerance: int = 3):
+    state = get_session_state(request)
+    start = state.ledger_df
+    bank = state.bank_df
     
     if start.empty or bank.empty:
         return {"error": "Missing data", "ledger_count": len(start), "bank_count": len(bank)}
@@ -42,8 +43,8 @@ def run_reconciliation(tolerance: int = 3):
     
     logger.info("Combinatorial matching completed.", comb_matches=len(comb_matches), remaining_ledger=len(remaining_l))
 
-    # 4. Save results in state (for export/pdf generation later if needed)
-    global_state.reconcile_results = {
+    # 4. Save results in session state (for export/pdf generation later if needed)
+    state.reconcile_results = {
         'matched_l': matched_l,
         'matched_b': matched_b,
         'comb_matches': comb_matches,
