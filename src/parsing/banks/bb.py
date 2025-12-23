@@ -95,6 +95,10 @@ class BBMonthlyPDFParser(BaseParser):
         if "G331" in text:
             return self._extract_g331(page)
         
+        # Check for the Mod. 0.51 layout (dot dates)
+        if self._is_dot_date_layout(text):
+            return self._extract_dot_date_layout(page)
+
         # Check if this is the full format (with agência/lote codes)
         # Sample line: "05/03/2025 3935 99020870 Transferência... 5.186,00 C"
         if self._has_full_format(text):
@@ -105,6 +109,122 @@ class BBMonthlyPDFParser(BaseParser):
         # Valor may be on same line or next line
         return self._extract_simplified_format(page)
     
+    def _is_dot_date_layout(self, text):
+        """Check if the text corresponds to the layout with dot-separated dates."""
+        return bool(re.search(r'\d{2}\.\d{2}\.\d{4}', text))
+
+    def _extract_dot_date_layout(self, page):
+        """
+        Extract transactions from the 'Mod. 0.51' layout (DD.MM.YYYY dates).
+        Anchors on lines starting with a date and appends subsequent lines to description.
+        Also extracts Start/End balances from "Saldo anterior" or "Saldo" lines.
+        """
+        rows = []
+        bal_start = None
+        bal_end = None
+
+        text = page.extract_text() or ""
+        lines = text.split('\n')
+
+        # Regex to match a line starting with a date
+        # Example: 02.05.2025 870-Transferência recebida 99020 3935 603935000011535 504,00 C
+        # Note: We capture everything after date to parse manually because fields vary
+        date_line_pattern = re.compile(r'^(\d{2}\.\d{2}\.\d{4})\s+(.*)')
+
+        # Pattern to extract amounts at end of line: VALOR [CD] (optional SALDO [CD])
+        # We look for one or two amounts at the end.
+        amounts_pattern = re.compile(r'([\d\.,]+)\s+([CD])(?:\s+([\d\.,]+)\s+([CD]))?\s*$')
+
+        current_txn = None
+
+        for line in lines:
+            line = line.strip()
+            if not line:
+                continue
+
+            # Check if this is a new transaction line (starts with date)
+            m_date = date_line_pattern.match(line)
+            if m_date:
+                # If we had a previous transaction pending (unlikely with this logic as we process immediately,
+                # but good for structure if we changed to accumulate lines first), handle it.
+                # Actually, in this logic, we will finalize the *previous* transaction before starting a new one?
+                # No, we append description lines as we go. But wait, if we process line-by-line,
+                # when we hit a date line, the previous transaction is already "done" in terms of capturing its first line,
+                # but we need to know if we are currently "inside" a transaction to append description.
+                # Since we are iterating, when we hit a NEW date line, the previous one is finished.
+
+                dt_s, rest = m_date.groups()
+                dt = datetime.strptime(dt_s, "%d.%m.%Y").date()
+
+                # Check for "Saldo anterior" special case
+                if "Saldo anterior" in rest:
+                    # Parse balance
+                    m_amt = amounts_pattern.search(rest)
+                    if m_amt:
+                        val_s, sign = m_amt.group(1), m_amt.group(2)
+                        amount = self._parse_br_amount(val_s)
+                        if sign == 'D':
+                            amount = -abs(amount)
+                        else:
+                            amount = abs(amount)
+                        bal_start = amount
+                    # Do not create a transaction for Saldo anterior
+                    current_txn = None
+                    continue
+
+                # Parse regular transaction amounts
+                m_amt = amounts_pattern.search(rest)
+                if not m_amt:
+                    # Maybe amount is on next line? Unlikely for this layout based on samples.
+                    # Or maybe it's a header line that looked like a date?
+                    current_txn = None
+                    continue
+
+                val_s, sign = m_amt.group(1), m_amt.group(2)
+                amount = self._parse_br_amount(val_s)
+                if sign == 'D':
+                    amount = -abs(amount)
+                else:
+                    amount = abs(amount)
+
+                # Check if there is a second amount (Balance)
+                # If present, capture it (could use for verification, or bal_end if it's the last one)
+                if m_amt.group(3):
+                    bal_s, bal_sign = m_amt.group(3), m_amt.group(4)
+                    bal_val = self._parse_br_amount(bal_s)
+                    if bal_sign == 'D':
+                        bal_val = -abs(bal_val)
+                    else:
+                        bal_val = abs(bal_val)
+                    # We can update bal_end progressively; the last one seen will be the final balance
+                    bal_end = bal_val
+
+                # Extract initial description (everything before the amounts)
+                # m_amt.start() gives index where amounts begin in 'rest'
+                desc_text = rest[:m_amt.start()].strip()
+
+                # Create new transaction object
+                current_txn = {
+                    'date': dt,
+                    'amount': amount,
+                    'description': desc_text,
+                    'source': 'Bank'
+                }
+                rows.append(current_txn)
+
+            else:
+                # Line does not start with date
+                # Check if it's a continuation of the previous transaction
+                # Identify if it's a header/footer to ignore
+                if any(k in line.upper() for k in ["SALDO", "DATA", "HISTÓRICO", "MOD.", "EXTRATO", "CONTA CORRENTE", "AGÊNCIA", "LIM. ESPECIAL", "BLOQUEADO", "DISPONÍVEL", "CPMF", "VENCIMENTO", "OURO EMPRESARIAL"]):
+                    continue
+
+                if current_txn:
+                    # Append to description
+                    current_txn['description'] += " " + line
+
+        return rows, bal_start, bal_end
+
     def _has_full_format(self, text):
         """Check if text contains full format transactions (with agência/lote)."""
         lines = text.split('\n')
