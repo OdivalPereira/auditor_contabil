@@ -15,8 +15,10 @@ class BBMonthlyPDFParser(BaseParser):
         df, metadata = self.parse_pdf(file_path_or_buffer)
         
         # Apply automatic investment reconciliation for BB whenever we have balance info
-        if not df.empty and metadata.get('balance_start') is not None and metadata.get('balance_end') is not None:
-            df = self._inject_rende_facil_movements(df, metadata['balance_start'], metadata['balance_end'])
+        # DISABLED: This was causing duplicate Rende Facil transactions. 
+        # The parser already extracts these correctly from the G331 layout.
+        # if not df.empty and metadata.get('balance_start') is not None and metadata.get('balance_end') is not None:
+        #     df = self._inject_rende_facil_movements(df, metadata['balance_start'], metadata['balance_end'])
         
         return df, metadata
     
