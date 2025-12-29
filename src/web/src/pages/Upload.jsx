@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import api from '../api/client';
 import { useApp } from '../hooks/useApp';
-import { Upload, FolderSearch, CheckCircle, AlertCircle, FolderOpen, FileSpreadsheet, File as FileIcon, Trash2, Play } from 'lucide-react';
+import { Upload, FolderSearch, CheckCircle, AlertCircle, FolderOpen, FileSpreadsheet, File as FileIcon, Trash2, Play, Receipt, UserCog, Landmark, FileText, FileCode } from 'lucide-react';
+
+// Tab configuration for each conciliation mode
+const CONCILIATION_MODES = [
+    { id: 'bancaria', label: 'Bancária', icon: Landmark, color: '#6366f1', bgColor: 'rgba(99, 102, 241, 0.15)' },
+    { id: 'fiscal', label: 'Fiscal', icon: Receipt, color: '#10b981', bgColor: 'rgba(16, 185, 129, 0.15)' },
+    { id: 'folha', label: 'Folha', icon: UserCog, color: '#f59e0b', bgColor: 'rgba(245, 158, 11, 0.15)' },
+];
 
 const UploadPage = () => {
     const {
@@ -13,7 +20,18 @@ const UploadPage = () => {
         clearAll
     } = useApp();
 
-    const [dragActive, setDragActive] = useState({ ledger: false, bank: false });
+    // Active conciliation mode
+    const [activeMode, setActiveMode] = useState('bancaria');
+
+    // Fiscal files state (UI only - no backend logic)
+    const [nfeFiles, setNfeFiles] = useState([]);
+    const [spedFile, setSpedFile] = useState(null);
+
+    // Folha files state (UI only - no backend logic)
+    const [folhaFiles, setFolhaFiles] = useState([]);
+    const [guiasFiles, setGuiasFiles] = useState([]);
+
+    const [dragActive, setDragActive] = useState({ ledger: false, bank: false, nfe: false, sped: false, folha: false, guias: false });
 
     //Scan State
     const [scanning, setScanning] = useState(false);
@@ -32,6 +50,9 @@ const UploadPage = () => {
         refreshUploadStatus();
     }, []);
 
+    // Get current mode config
+    const currentMode = CONCILIATION_MODES.find(m => m.id === activeMode);
+
     // --- Drag & Drop Handlers ---
     const handleDrag = (e, type, active) => {
         e.preventDefault();
@@ -45,16 +66,37 @@ const UploadPage = () => {
         setDragActive(prev => ({ ...prev, [type]: false }));
 
         if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-            if (type === 'ledger') {
-                setLedgerFile(e.dataTransfer.files[0]);
-            } else if (type === 'bank') {
-                setBankFiles(prev => [...prev, ...Array.from(e.dataTransfer.files)]);
+            const files = Array.from(e.dataTransfer.files);
+            switch (type) {
+                case 'ledger':
+                    setLedgerFile(e.dataTransfer.files[0]);
+                    break;
+                case 'bank':
+                    setBankFiles(prev => [...prev, ...files]);
+                    break;
+                case 'nfe':
+                    setNfeFiles(prev => [...prev, ...files]);
+                    break;
+                case 'sped':
+                    setSpedFile(e.dataTransfer.files[0]);
+                    break;
+                case 'folha':
+                    setFolhaFiles(prev => [...prev, ...files]);
+                    break;
+                case 'guias':
+                    setGuiasFiles(prev => [...prev, ...files]);
+                    break;
             }
         }
     };
 
-    // UNIFIED PROCESSING FUNCTION
+    // UNIFIED PROCESSING FUNCTION (only works for bancaria mode currently)
     const handleProcessReconciliation = async () => {
+        if (activeMode !== 'bancaria') {
+            setStatus({ type: 'info', msg: `O processamento para Conciliação ${currentMode.label} ainda está em desenvolvimento.` });
+            return;
+        }
+
         if (!ledgerFile && uploadStatus.ledger_count === 0) {
             setStatus({ type: 'error', msg: 'Selecione o Livro Diário primeiro.' });
             return;
@@ -109,7 +151,7 @@ const UploadPage = () => {
 
             setStatus({
                 type: 'success',
-                msg: `✅ Conciliação concluída! Taxa de conciliação: ${matchRate}%. Veja os resultados na aba "Conciliação".`
+                msg: `✅ Conciliação concluída! Taxa de conciliação: ${matchRate}%. Veja os resultados na aba "Conciliação Bancária".`
             });
 
             // Clear local file selection after successful upload/process
@@ -185,13 +227,17 @@ const UploadPage = () => {
     };
 
     const onClear = async () => {
-        if (window.confirm("Isso irá remover todos os diários e extratos carregados nesta sessão. Continuar?")) {
+        if (window.confirm("Isso irá remover todos os dados carregados nesta sessão. Continuar?")) {
             try {
                 await clearAll();
                 // Clear local page specific state
                 setFolderPath('');
                 setScannedFiles([]);
                 setSelectedScanFiles([]);
+                setNfeFiles([]);
+                setSpedFile(null);
+                setFolhaFiles([]);
+                setGuiasFiles([]);
                 setStatus({ type: 'success', msg: 'Todos os dados foram limpos com sucesso!' });
             } catch (error) {
                 console.error("Error during manual clear:", error);
@@ -200,8 +246,78 @@ const UploadPage = () => {
         }
     };
 
+    // Reusable DropZone component
+    const DropZone = ({ type, title, description, accept, multiple, files, setFiles, icon: Icon, color }) => (
+        <div
+            style={{
+                background: dragActive[type] ? `${color}33` : 'rgba(0,0,0,0.2)',
+                padding: '20px',
+                borderRadius: '12px',
+                border: dragActive[type] ? `2px dashed ${color}` : '2px dashed #ffffff11',
+                transition: 'all 0.2s',
+                position: 'relative'
+            }}
+            onDragEnter={(e) => handleDrag(e, type, true)}
+            onDragLeave={(e) => handleDrag(e, type, false)}
+            onDragOver={(e) => handleDrag(e, type, true)}
+            onDrop={(e) => handleDrop(e, type)}
+        >
+            <h4 style={{ marginTop: 0, display: 'flex', alignItems: 'center', gap: 8 }}>
+                <Icon size={20} style={{ color }} />
+                {title}
+            </h4>
+            <p style={{ color: 'var(--text-secondary)', fontSize: '0.85rem', margin: '8px 0 15px' }}>{description}</p>
+
+            <input
+                type="file"
+                accept={accept}
+                multiple={multiple}
+                id={`${type}-input`}
+                onChange={(e) => {
+                    if (multiple) {
+                        setFiles(prev => [...prev, ...Array.from(e.target.files)]);
+                    } else {
+                        setFiles(e.target.files[0]);
+                    }
+                }}
+                style={{ display: 'none' }}
+            />
+            <label htmlFor={`${type}-input`} style={{
+                display: 'block',
+                textAlign: 'center',
+                background: 'rgba(255,255,255,0.08)',
+                padding: '10px',
+                borderRadius: '8px',
+                cursor: 'pointer',
+                border: `1px solid ${color}44`,
+                color: color,
+                fontSize: '0.9rem',
+                transition: 'all 0.2s'
+            }}>
+                {multiple ? 'Adicionar Arquivos...' : 'Selecionar Arquivo'}
+            </label>
+
+            {((multiple && files.length > 0) || (!multiple && files)) && (
+                <div style={{ marginTop: 10, fontSize: '0.8rem', color: '#10b981', background: 'rgba(0,0,0,0.2)', padding: '8px 10px', borderRadius: 5, maxHeight: 80, overflowY: 'auto' }}>
+                    {multiple ? (
+                        files.map((f, i) => <div key={i}><CheckCircle size={12} style={{ verticalAlign: -2 }} /> {f.name}</div>)
+                    ) : (
+                        <div><CheckCircle size={12} style={{ verticalAlign: -2 }} /> {files.name}</div>
+                    )}
+                </div>
+            )}
+
+            {multiple && files.length > 0 && (
+                <button onClick={() => setFiles([])} style={{ background: 'none', border: 'none', color: '#fca5a5', fontSize: '0.8rem', cursor: 'pointer', width: '100%', marginTop: 5 }}>
+                    Limpar seleção
+                </button>
+            )}
+        </div>
+    );
+
     return (
         <div className="glass-panel" style={{ padding: '30px' }}>
+            {/* Header */}
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
                 <h2 style={{ margin: 0 }}>📂 Importação de Dados</h2>
                 <div style={{ display: 'flex', alignItems: 'center', gap: 20 }}>
@@ -227,11 +343,43 @@ const UploadPage = () => {
                             transition: 'all 0.2s'
                         }}
                     >
-                        <Trash2 size={16} /> Limpar Todos os Dados
+                        <Trash2 size={16} /> Limpar Dados
                     </button>
                 </div>
             </div>
 
+            {/* Mode Tabs */}
+            <div style={{ display: 'flex', gap: '10px', marginBottom: '25px', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '15px' }}>
+                {CONCILIATION_MODES.map(mode => {
+                    const Icon = mode.icon;
+                    const isActive = activeMode === mode.id;
+                    return (
+                        <button
+                            key={mode.id}
+                            onClick={() => setActiveMode(mode.id)}
+                            style={{
+                                background: isActive ? mode.bgColor : 'transparent',
+                                border: isActive ? `1px solid ${mode.color}` : '1px solid rgba(255,255,255,0.1)',
+                                color: isActive ? mode.color : '#94a3b8',
+                                padding: '12px 24px',
+                                borderRadius: '10px',
+                                cursor: 'pointer',
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '10px',
+                                fontSize: '1rem',
+                                fontWeight: isActive ? 600 : 400,
+                                transition: 'all 0.2s'
+                            }}
+                        >
+                            <Icon size={20} />
+                            Conciliação {mode.label}
+                        </button>
+                    );
+                })}
+            </div>
+
+            {/* Status Message */}
             {status.msg && (
                 <div style={{
                     padding: '15px',
@@ -246,8 +394,8 @@ const UploadPage = () => {
                 </div>
             )}
 
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '30px', marginBottom: 30 }}>
-                {/* Ledger Section */}
+            {/* Ledger Section - Common to all modes */}
+            <div style={{ marginBottom: 25 }}>
                 <div
                     style={{
                         background: dragActive.ledger ? 'rgba(99, 102, 241, 0.2)' : 'rgba(0,0,0,0.2)',
@@ -262,11 +410,32 @@ const UploadPage = () => {
                     onDragOver={(e) => handleDrag(e, 'ledger', true)}
                     onDrop={(e) => handleDrop(e, 'ledger')}
                 >
-                    <h3 style={{ marginTop: 0 }}>1. Livro Diário</h3>
-                    <p style={{ color: 'var(--text-secondary)' }}>Arraste o PDF ou CSV aqui.</p>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                        <div>
+                            <h3 style={{ marginTop: 0, display: 'flex', alignItems: 'center', gap: 8 }}>
+                                <FileSpreadsheet size={20} />
+                                1. Livro Diário
+                            </h3>
+                            <p style={{ color: 'var(--text-secondary)', margin: 0 }}>Arraste o PDF ou CSV aqui.</p>
+                        </div>
+                        <div style={{
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: 8,
+                            padding: '6px 14px',
+                            borderRadius: '20px',
+                            background: currentMode.bgColor,
+                            border: `1px solid ${currentMode.color}44`
+                        }}>
+                            <currentMode.icon size={16} style={{ color: currentMode.color }} />
+                            <span style={{ fontSize: '0.85rem', color: currentMode.color, fontWeight: 500 }}>
+                                Para: Conciliação {currentMode.label}
+                            </span>
+                        </div>
+                    </div>
 
-                    <div style={{ textAlign: 'center', margin: '30px 0', opacity: 0.6 }}>
-                        <FileSpreadsheet size={48} />
+                    <div style={{ textAlign: 'center', margin: '20px 0', opacity: 0.5 }}>
+                        <FileSpreadsheet size={40} />
                     </div>
 
                     <input
@@ -286,55 +455,121 @@ const UploadPage = () => {
                         </div>
                     )}
                 </div>
+            </div>
 
-                {/* Bank Section */}
-                <div
-                    style={{
-                        background: dragActive.bank ? 'rgba(16, 185, 129, 0.2)' : 'rgba(0,0,0,0.2)',
-                        padding: '20px',
-                        borderRadius: '12px',
-                        border: dragActive.bank ? '2px dashed #10b981' : '2px dashed #ffffff11',
-                        transition: 'all 0.2s'
-                    }}
-                    onDragEnter={(e) => handleDrag(e, 'bank', true)}
-                    onDragLeave={(e) => handleDrag(e, 'bank', false)}
-                    onDragOver={(e) => handleDrag(e, 'bank', true)}
-                    onDrop={(e) => handleDrop(e, 'bank')}
-                >
-                    <h3 style={{ marginTop: 0 }}>2. Extratos Bancários</h3>
-                    <p style={{ color: 'var(--text-secondary)' }}>Arraste vários PDFs ou OFXs aqui.</p>
+            {/* Mode-specific sections */}
+            <div style={{ marginBottom: 30 }}>
+                {/* BANCÁRIA MODE */}
+                {activeMode === 'bancaria' && (
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px' }}>
+                        <div
+                            style={{
+                                background: dragActive.bank ? 'rgba(16, 185, 129, 0.2)' : 'rgba(0,0,0,0.2)',
+                                padding: '20px',
+                                borderRadius: '12px',
+                                border: dragActive.bank ? '2px dashed #10b981' : '2px dashed #ffffff11',
+                                transition: 'all 0.2s'
+                            }}
+                            onDragEnter={(e) => handleDrag(e, 'bank', true)}
+                            onDragLeave={(e) => handleDrag(e, 'bank', false)}
+                            onDragOver={(e) => handleDrag(e, 'bank', true)}
+                            onDrop={(e) => handleDrop(e, 'bank')}
+                        >
+                            <h3 style={{ marginTop: 0, display: 'flex', alignItems: 'center', gap: 8 }}>
+                                <Landmark size={20} style={{ color: '#6366f1' }} />
+                                2. Extratos Bancários
+                            </h3>
+                            <p style={{ color: 'var(--text-secondary)' }}>Arraste vários PDFs ou OFXs aqui.</p>
 
-                    <div style={{ textAlign: 'center', margin: '30px 0', opacity: 0.6 }}>
-                        <FileIcon size={48} />
-                    </div>
-
-                    <input
-                        type="file"
-                        multiple
-                        accept=".pdf,.ofx"
-                        id="bank-input"
-                        onChange={(e) => setBankFiles(prev => [...prev, ...Array.from(e.target.files)])}
-                        style={{ display: 'none' }}
-                    />
-                    <label htmlFor="bank-input" className="btn-primary" style={{ display: 'block', textAlign: 'center', background: 'rgba(255,255,255,0.1)', cursor: 'pointer' }}>
-                        Adicionar Arquivos...
-                    </label>
-
-                    {(bankFiles.length > 0 || uploadStatus.bank_count > 0) && (
-                        <>
-                            <div style={{ marginTop: 10, marginBottom: 10, maxHeight: 100, overflowY: 'auto', fontSize: '0.8rem', color: '#94a3b8', background: 'rgba(0,0,0,0.2)', padding: '5px 10px', borderRadius: 4 }}>
-                                {bankFiles.length > 0 ? (
-                                    bankFiles.map((f, i) => <div key={i}>{f.name}</div>)
-                                ) : (
-                                    <div>{uploadStatus.bank_count} arquivos já no servidor</div>
-                                )}
+                            <div style={{ textAlign: 'center', margin: '20px 0', opacity: 0.5 }}>
+                                <FileIcon size={40} />
                             </div>
-                            {bankFiles.length > 0 && <button onClick={() => setBankFiles([])} style={{ background: 'none', border: 'none', color: '#fca5a5', fontSize: '0.8rem', cursor: 'pointer', width: '100%' }}>
-                                Limpar seleção local
-                            </button>}
-                        </>
-                    )}
-                </div>
+
+                            <input
+                                type="file"
+                                multiple
+                                accept=".pdf,.ofx"
+                                id="bank-input"
+                                onChange={(e) => setBankFiles(prev => [...prev, ...Array.from(e.target.files)])}
+                                style={{ display: 'none' }}
+                            />
+                            <label htmlFor="bank-input" className="btn-primary" style={{ display: 'block', textAlign: 'center', background: 'rgba(255,255,255,0.1)', cursor: 'pointer' }}>
+                                Adicionar Arquivos...
+                            </label>
+
+                            {(bankFiles.length > 0 || uploadStatus.bank_count > 0) && (
+                                <>
+                                    <div style={{ marginTop: 10, marginBottom: 10, maxHeight: 100, overflowY: 'auto', fontSize: '0.8rem', color: '#94a3b8', background: 'rgba(0,0,0,0.2)', padding: '5px 10px', borderRadius: 4 }}>
+                                        {bankFiles.length > 0 ? (
+                                            bankFiles.map((f, i) => <div key={i}>{f.name}</div>)
+                                        ) : (
+                                            <div>{uploadStatus.bank_count} arquivos já no servidor</div>
+                                        )}
+                                    </div>
+                                    {bankFiles.length > 0 && <button onClick={() => setBankFiles([])} style={{ background: 'none', border: 'none', color: '#fca5a5', fontSize: '0.8rem', cursor: 'pointer', width: '100%' }}>
+                                        Limpar seleção local
+                                    </button>}
+                                </>
+                            )}
+                        </div>
+                    </div>
+                )}
+
+                {/* FISCAL MODE */}
+                {activeMode === 'fiscal' && (
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                        <DropZone
+                            type="nfe"
+                            title="2. XMLs de NFe"
+                            description="Notas fiscais de entrada e saída (.xml)"
+                            accept=".xml"
+                            multiple={true}
+                            files={nfeFiles}
+                            setFiles={setNfeFiles}
+                            icon={FileCode}
+                            color="#10b981"
+                        />
+                        <DropZone
+                            type="sped"
+                            title="3. SPED Fiscal (Opcional)"
+                            description="Arquivo SPED EFD (.txt)"
+                            accept=".txt"
+                            multiple={false}
+                            files={spedFile}
+                            setFiles={setSpedFile}
+                            icon={FileText}
+                            color="#10b981"
+                        />
+                    </div>
+                )}
+
+                {/* FOLHA MODE */}
+                {activeMode === 'folha' && (
+                    <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+                        <DropZone
+                            type="folha"
+                            title="2. Folha de Pagamento"
+                            description="Relatórios da folha (.pdf, .csv)"
+                            accept=".pdf,.csv"
+                            multiple={true}
+                            files={folhaFiles}
+                            setFiles={setFolhaFiles}
+                            icon={FileSpreadsheet}
+                            color="#f59e0b"
+                        />
+                        <DropZone
+                            type="guias"
+                            title="3. Guias FGTS/INSS"
+                            description="DARFs e guias de recolhimento (.pdf)"
+                            accept=".pdf"
+                            multiple={true}
+                            files={guiasFiles}
+                            setFiles={setGuiasFiles}
+                            icon={FileText}
+                            color="#f59e0b"
+                        />
+                    </div>
+                )}
             </div>
 
             {/* UNIFIED PROCESS BUTTON */}
@@ -342,14 +577,16 @@ const UploadPage = () => {
                 <button
                     className="btn-primary"
                     onClick={handleProcessReconciliation}
-                    disabled={(!ledgerFile && uploadStatus.ledger_count === 0) || (!bankFiles.length && uploadStatus.bank_count === 0) || processing}
+                    disabled={processing || (activeMode !== 'bancaria')}
                     style={{
                         fontSize: '1.2rem',
                         padding: '18px 45px',
-                        background: 'linear-gradient(135deg, #6366f1 0%, #a855f7 100%)',
-                        boxShadow: '0 10px 20px -5px rgba(99, 102, 241, 0.4)',
-                        opacity: ((!ledgerFile && uploadStatus.ledger_count === 0) || (!bankFiles.length && uploadStatus.bank_count === 0) || processing) ? 0.5 : 1,
-                        cursor: 'pointer',
+                        background: activeMode === 'bancaria'
+                            ? 'linear-gradient(135deg, #6366f1 0%, #a855f7 100%)'
+                            : `linear-gradient(135deg, ${currentMode.color} 0%, ${currentMode.color}aa 100%)`,
+                        boxShadow: `0 10px 20px -5px ${currentMode.color}66`,
+                        opacity: (processing || activeMode !== 'bancaria') ? 0.5 : 1,
+                        cursor: (activeMode !== 'bancaria') ? 'not-allowed' : 'pointer',
                         display: 'inline-flex',
                         alignItems: 'center',
                         gap: '12px',
@@ -361,111 +598,117 @@ const UploadPage = () => {
                     ) : (
                         <>
                             <Play size={22} fill="currentColor" />
-                            🚀 Processar Conciliação Unificada
+                            🚀 Processar Conciliação {currentMode.label}
                         </>
                     )}
                 </button>
                 <div style={{ marginTop: 15, fontSize: '0.9rem', color: '#94a3b8' }}>
-                    A conciliação será realizada cruzando todos os dados carregados usando tolerância de <strong>{lastTolerance} dias</strong>.
+                    {activeMode === 'bancaria' ? (
+                        <>A conciliação será realizada cruzando todos os dados carregados usando tolerância de <strong>{lastTolerance} dias</strong>.</>
+                    ) : (
+                        <>⚠️ O processamento para Conciliação {currentMode.label} estará disponível em breve.</>
+                    )}
                 </div>
             </div>
 
-            {/* Scan Section Full Width */}
-            <div style={{ background: 'rgba(0,0,0,0.2)', padding: '20px', borderRadius: '12px' }}>
-                <h3 style={{ marginTop: 0 }}>3. Escanear Pasta de Extratos</h3>
-                <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
-                    <div style={{ flex: 1, display: 'flex', gap: 5 }}>
-                        <input
-                            type="text"
-                            placeholder="C:\\Caminho\\Para\\Extratos"
-                            value={folderPath}
-                            onChange={(e) => setFolderPath(e.target.value)}
-                            style={{
-                                flex: 1,
-                                padding: '10px',
-                                borderRadius: '6px',
-                                border: '1px solid rgba(255,255,255,0.2)',
-                                background: 'rgba(0,0,0,0.3)',
-                                color: 'white'
-                            }}
-                        />
-                        <button
-                            title="Selecionar Pasta"
-                            onClick={handleBrowseRequest}
-                            style={{
-                                background: 'rgba(255,255,255,0.1)',
-                                border: '1px solid rgba(255,255,255,0.2)',
-                                borderRadius: '6px',
-                                cursor: 'pointer',
-                                color: 'white',
-                                padding: '0 12px'
-                            }}
-                        >
-                            <FolderOpen size={18} />
-                        </button>
-                    </div>
-
-                    <button
-                        className="btn-primary"
-                        onClick={handleScan}
-                        disabled={scanning || !folderPath}
-                        style={{ padding: '8px 16px' }}
-                    >
-                        {scanning ? '...' : <FolderSearch size={18} style={{ marginRight: 6 }} />}
-                        Escanear
-                    </button>
-                </div>
-
-                {/* Scan Results Table */}
-                {scannedFiles.length > 0 && (
-                    <div style={{ marginTop: '20px', animation: 'fadeIn 0.5s' }}>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
-                            <h4 style={{ margin: 0 }}>Arquivos Encontrados ({selectedScanFiles.length} selecionados)</h4>
-                            <button className="btn-primary" onClick={handleIngestSelected} style={{ background: '#10b981' }}>
-                                Importar Selecionados
+            {/* Scan Section - Only for Bancária mode */}
+            {activeMode === 'bancaria' && (
+                <div style={{ background: 'rgba(0,0,0,0.2)', padding: '20px', borderRadius: '12px' }}>
+                    <h3 style={{ marginTop: 0 }}>📁 Escanear Pasta de Extratos</h3>
+                    <div style={{ display: 'flex', gap: '10px', marginBottom: '20px' }}>
+                        <div style={{ flex: 1, display: 'flex', gap: 5 }}>
+                            <input
+                                type="text"
+                                placeholder="C:\\Caminho\\Para\\Extratos"
+                                value={folderPath}
+                                onChange={(e) => setFolderPath(e.target.value)}
+                                style={{
+                                    flex: 1,
+                                    padding: '10px',
+                                    borderRadius: '6px',
+                                    border: '1px solid rgba(255,255,255,0.2)',
+                                    background: 'rgba(0,0,0,0.3)',
+                                    color: 'white'
+                                }}
+                            />
+                            <button
+                                title="Selecionar Pasta"
+                                onClick={handleBrowseRequest}
+                                style={{
+                                    background: 'rgba(255,255,255,0.1)',
+                                    border: '1px solid rgba(255,255,255,0.2)',
+                                    borderRadius: '6px',
+                                    cursor: 'pointer',
+                                    color: 'white',
+                                    padding: '0 12px'
+                                }}
+                            >
+                                <FolderOpen size={18} />
                             </button>
                         </div>
 
-                        <div style={{ maxHeight: '300px', overflowY: 'auto', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8 }}>
-                            <table className="data-table" style={{ marginTop: 0 }}>
-                                <thead style={{ position: 'sticky', top: 0, background: '#1e293b', zIndex: 1 }}>
-                                    <tr>
-                                        <th style={{ width: 40 }}>
-                                            <input
-                                                type="checkbox"
-                                                checked={selectedScanFiles.length === scannedFiles.length}
-                                                onChange={(e) => {
-                                                    if (e.target.checked) setSelectedScanFiles(scannedFiles.map(f => f.path));
-                                                    else setSelectedScanFiles([]);
-                                                }}
-                                            />
-                                        </th>
-                                        <th>Arquivo</th>
-                                        <th>Banco</th>
-                                        <th>Período</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {scannedFiles.map((file, idx) => (
-                                        <tr key={idx} style={{ background: selectedScanFiles.includes(file.path) ? 'rgba(99, 102, 241, 0.1)' : 'transparent' }}>
-                                            <td>
+                        <button
+                            className="btn-primary"
+                            onClick={handleScan}
+                            disabled={scanning || !folderPath}
+                            style={{ padding: '8px 16px' }}
+                        >
+                            {scanning ? '...' : <FolderSearch size={18} style={{ marginRight: 6 }} />}
+                            Escanear
+                        </button>
+                    </div>
+
+                    {/* Scan Results Table */}
+                    {scannedFiles.length > 0 && (
+                        <div style={{ marginTop: '20px', animation: 'fadeIn 0.5s' }}>
+                            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 10 }}>
+                                <h4 style={{ margin: 0 }}>Arquivos Encontrados ({selectedScanFiles.length} selecionados)</h4>
+                                <button className="btn-primary" onClick={handleIngestSelected} style={{ background: '#10b981' }}>
+                                    Importar Selecionados
+                                </button>
+                            </div>
+
+                            <div style={{ maxHeight: '300px', overflowY: 'auto', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 8 }}>
+                                <table className="data-table" style={{ marginTop: 0 }}>
+                                    <thead style={{ position: 'sticky', top: 0, background: '#1e293b', zIndex: 1 }}>
+                                        <tr>
+                                            <th style={{ width: 40 }}>
                                                 <input
                                                     type="checkbox"
-                                                    checked={selectedScanFiles.includes(file.path)}
-                                                    onChange={() => toggleScanFile(file.path)}
+                                                    checked={selectedScanFiles.length === scannedFiles.length}
+                                                    onChange={(e) => {
+                                                        if (e.target.checked) setSelectedScanFiles(scannedFiles.map(f => f.path));
+                                                        else setSelectedScanFiles([]);
+                                                    }}
                                                 />
-                                            </td>
-                                            <td>{file.filename}</td>
-                                            <td>{file.bank}</td>
-                                            <td>{file.period}</td>
+                                            </th>
+                                            <th>Arquivo</th>
+                                            <th>Banco</th>
+                                            <th>Período</th>
                                         </tr>
-                                    ))}
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        {scannedFiles.map((file, idx) => (
+                                            <tr key={idx} style={{ background: selectedScanFiles.includes(file.path) ? 'rgba(99, 102, 241, 0.1)' : 'transparent' }}>
+                                                <td>
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={selectedScanFiles.includes(file.path)}
+                                                        onChange={() => toggleScanFile(file.path)}
+                                                    />
+                                                </td>
+                                                <td>{file.filename}</td>
+                                                <td>{file.bank}</td>
+                                                <td>{file.period}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
-                )}
-            </div>
+                    )}
+                </div>
+            )}
         </div>
     );
 };

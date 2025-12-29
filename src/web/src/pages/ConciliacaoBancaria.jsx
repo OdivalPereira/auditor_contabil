@@ -158,7 +158,7 @@ const Conciliation = () => {
         <div style={{ animation: 'fadeIn 0.5s ease-out' }}>
             {/* Page Header */}
             <div style={{ marginBottom: '25px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <h1 style={{ margin: 0 }}>Conciliação Detalhada</h1>
+                <h1 style={{ margin: 0 }}>Conciliação Bancária</h1>
                 <div style={{ display: 'flex', gap: '10px' }}>
                     <button className="btn-primary" onClick={() => handleDownload('excel')} style={{ background: '#059669', display: 'inline-flex', alignItems: 'center', gap: 6 }}>
                         <Download size={18} /> Excel
