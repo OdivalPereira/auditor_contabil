@@ -53,19 +53,13 @@ class CombinatorialMatcher:
                 (df_l['date'] <= b_date + timedelta(days=tolerance_days))
             ]
             
-            # Optimization: Sort candidates by amount (optional, but might speed up logic?)
-            # Or filtering candidates that are smaller than B_amt?? 
-            # Not necessarily, because Ledger sum might include negative adjustment? 
-            # But we are using absolute logic so amounts are positive.
-            # So sum(L_subset) = B_amt. Thus individual L items usually smaller than B_amt.
-            # Unless we support "Splitting" (Ledger > Bank)? No, user said "140 + 10 = 150".
-            # So Ledger items must be <= B_amt (mostly).
-            # But floating point issues? Let's check abs(sum - B) < 0.01.
+            # Note: We removed the filter `candidates['amount'].abs() <= b_amt + 0.01`
+            # because it was too restrictive for payment+discount scenarios where
+            # individual ledger amounts might exceed the net bank amount
+            # Example: Payment -6825.97 + Discount +2242.68 = Net -4583.29
+            # The filter would have eliminated the -6825.97 entry since |6825.97| > 4583.29
             
-            candidates = candidates[candidates['amount'].abs() <= b_amt + 0.01]
-            
-            # If too many candidates, optimization becomes critical.
-            # Limit to top N candidates closest in date? Or just strict count limit.
+            # Optimization: If too many candidates, limit to avoid hanging
             if len(candidates) > 20: 
                  # If too many, maybe skip to avoid hanging? Or reduce search.
                  # Prioritize closest amounts or dates.
@@ -79,16 +73,18 @@ class CombinatorialMatcher:
             for r in range(2, max_combination_size + 1):
                 # We need indices to track usage
                 for combo_indices in combinations(candidate_indices, r):
-                    # Get the actual amounts
-                    # We can map indices back to amounts
+                    # Get the actual amounts and sum WITH SIGN first
+                    # This allows matching payment (negative) + discount (positive) scenarios
                     current_sum = 0
                     subset_rows = []
                     
                     for idx in combo_indices:
                         val = df_l.at[idx, 'amount']
-                        current_sum += abs(val) # ABS matching strategy
+                        current_sum += val  # Sum WITH sign, not abs!
                     
-                    if abs(current_sum - b_amt) < 0.02: # Float tolerance
+                    # Now compare the ABSOLUTE values
+                    # Bank amount might be negative, so compare abs(current_sum) to abs(b_amt)
+                    if abs(abs(current_sum) - b_amt) < 0.02: # Float tolerance
                         # MATCH FOUND!
                         found_combo = True
                         
